@@ -1,4 +1,9 @@
 <h1>Log In</h1>
+
+<%# if flash[:notice] %>
+    <div id="notice"><%= flash[:notice] %></div>
+<%# end %>
+
   <%=form_tag log_in_path do%>
     <%=label_tag :email %>
     <%=text_field_tag :email %>
