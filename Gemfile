@@ -38,6 +38,9 @@ gem 'bcrypt-ruby', '~> 3.0.0', require: "bcrypt"
 #Debugger
 gem 'pry'
 
+# Reading csv files
+gem 'smarter_csv'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.1.2'
 
