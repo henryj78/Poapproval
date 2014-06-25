@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_created: MyString
+  time_modified: MyString
+  ref_number: MyString
+  duedate: MyString
+  expected_drive: MyString
+  total_amount: MyString
+  is_manually_closed: MyString
+  is_fully_received: MyString
+  custom_field_authorized_buyer: MyString
+  custom_field_status: MyString
+
+two:
+  time_created: MyString
+  time_modified: MyString
+  ref_number: MyString
+  duedate: MyString
+  expected_drive: MyString
+  total_amount: MyString
+  is_manually_closed: MyString
+  is_fully_received: MyString
+  custom_field_authorized_buyer: MyString
+  custom_field_status: MyString

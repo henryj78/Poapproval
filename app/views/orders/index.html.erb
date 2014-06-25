@@ -1,0 +1,58 @@
+<h1>Listing orders</h1>
+
+	<tr>
+	 <%= form_tag import_orders_path, multipart: true do %>
+	   <%= file_field_tag :file %>
+	   <p> <%= text_field_tag "subject" %></p>
+	   <%= submit_tag "Import CSV" %>
+	 <% end %>	
+	</tr>
+	
+	<p>
+	  Download:
+	  <%= link_to "CSV", orders_path(format: "csv") %> 
+	</p> 
+
+<table>
+  <thead>
+    <tr>
+      <th>Time created</th>
+      <th>Time modified</th>
+      <th>Ref number</th>
+      <th>Duedate</th>
+      <th>Expected drive</th>
+      <th>Total amount</th>
+      <th>Is manually closed</th>
+      <th>Is fully received</th>
+      <th>Custom field authorized buyer</th>
+      <th>Custom field status</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.time_created %></td>
+        <td><%= order.time_modified %></td>
+        <td><%= order.ref_number %></td>
+        <td><%= order.duedate %></td>
+        <td><%= order.expected_drive %></td>
+        <td><%= order.total_amount %></td>
+        <td><%= order.is_manually_closed %></td>
+        <td><%= order.is_fully_received %></td>
+        <td><%= order.custom_field_authorized_buyer %></td>
+        <td><%= order.custom_field_status %></td>
+        <td><%= link_to 'Show', order %></td>
+        <td><%= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Order', new_order_path %>

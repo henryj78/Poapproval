@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
      #THIS IS THE MOST IMPORTANT PART. Actually log the user in by storing their ID in the session hash with the [:user_id] key!
      session[:user_id] = @user.id
      #then redirect them to the homepage
-     redirect_to "/"
+     redirect_to orders_path
      #let the user know they've been logged in with a flash message
      flash[:notice] = "You've been logged in."
     else

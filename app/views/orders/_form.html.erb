@@ -1,0 +1,57 @@
+<%= form_for(@order) do |f| %>
+  <% if @order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+      <% @order.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :time_created %><br>
+    <%= f.text_field :time_created %>
+  </div>
+  <div class="field">
+    <%= f.label :time_modified %><br>
+    <%= f.text_field :time_modified %>
+  </div>
+  <div class="field">
+    <%= f.label :ref_number %><br>
+    <%= f.text_field :ref_number %>
+  </div>
+  <div class="field">
+    <%= f.label :duedate %><br>
+    <%= f.text_field :duedate %>
+  </div>
+  <div class="field">
+    <%= f.label :expected_drive %><br>
+    <%= f.text_field :expected_drive %>
+  </div>
+  <div class="field">
+    <%= f.label :total_amount %><br>
+    <%= f.text_field :total_amount %>
+  </div>
+  <div class="field">
+    <%= f.label :is_manually_closed %><br>
+    <%= f.text_field :is_manually_closed %>
+  </div>
+  <div class="field">
+    <%= f.label :is_fully_received %><br>
+    <%= f.text_field :is_fully_received %>
+  </div>
+  <div class="field">
+    <%= f.label :custom_field_authorized_buyer %><br>
+    <%= f.text_field :custom_field_authorized_buyer %>
+  </div>
+  <div class="field">
+    <%= f.label :custom_field_status %><br>
+    <%= f.text_field :custom_field_status %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

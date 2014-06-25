@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:o="urn:schemas-microsoft-com:office:office"
+  xmlns:x="urn:schemas-microsoft-com:office:excel"
+  xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet"
+  xmlns:html="http://www.w3.org/TR/REC-html40">
+  <Worksheet ss:Name="Sheet1">
+    <Table>
+      <Row>
+        <Cell><Data ss:Type="String">Time_Created</Data></Cell>
+        <Cell><Data ss:Type="String">Time_Modified</Data></Cell>
+        <Cell><Data ss:Type="String">Ref_Number</Data></Cell>
+        <Cell><Data ss:Type="String">DueDate</Data></Cell>	
+        <Cell><Data ss:Type="String">Expected_Drive</Data></Cell>
+        <Cell><Data ss:Type="String">Total_Amount</Data></Cell>
+		<Cell><Data ss:Type="String">is_manually_closed</Data></Cell>
+		<Cell><Data ss:Type="String">is_fully_received</Data></Cell>
+        <Cell><Data ss:Type="String">custom_field_authorized_buyer</Data></Cell>
+        <Cell><Data ss:Type="String">custom_field_status</Data></Cell>									
+      </Row>
+    <% @open_pos.each do |opo| %>
+      <Row>
+        <Cell><Data ss:Type="Time_Created"><%= opo.top_created %></Data></Cell>
+        <Cell><Data ss:Type="Time_Modified"><%= opo.time_modified %></Data></Cell>
+        <Cell><Data ss:Type="Ref_Number"><%= opo.ref_number %></Data></Cell>
+		<Cell><Data ss:Type="DueDate"><%= opo.duedate %></Data></Cell>
+		<Cell><Data ss:Type="Expected Drive"><%= opo.expected_drive %></Data></Cell>
+		<Cell><Data ss:Type="Total Amount"><%= opo.total_amount %></Data></Cell>
+		<Cell><Data ss:Type="Is Manually Closed"><%= opo.is_manully_closed %></Data></Cell>
+		<Cell><Data ss:Type="Is Fully Received"><%= opo.is_fully_received %></Data></Cell>
+		<Cell><Data ss:Type="Custom Field Authorized Buyer"><%= opo.custom_field_authorized_buyer %></Data></Cell>
+		<Cell><Data ss:Type="Custom Field Status"><%= opo.custom_field_status %></Data></Cell>
+      </Row>
+    <% end %>
+    </Table>
+  </Worksheet>
+</Workbook>

@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time created:</strong>
+  <%= @order.time_created %>
+</p>
+
+<p>
+  <strong>Time modified:</strong>
+  <%= @order.time_modified %>
+</p>
+
+<p>
+  <strong>Ref number:</strong>
+  <%= @order.ref_number %>
+</p>
+
+<p>
+  <strong>Duedate:</strong>
+  <%= @order.duedate %>
+</p>
+
+<p>
+  <strong>Expected drive:</strong>
+  <%= @order.expected_drive %>
+</p>
+
+<p>
+  <strong>Total amount:</strong>
+  <%= @order.total_amount %>
+</p>
+
+<p>
+  <strong>Is manually closed:</strong>
+  <%= @order.is_manually_closed %>
+</p>
+
+<p>
+  <strong>Is fully received:</strong>
+  <%= @order.is_fully_received %>
+</p>
+
+<p>
+  <strong>Custom field authorized buyer:</strong>
+  <%= @order.custom_field_authorized_buyer %>
+</p>
+
+<p>
+  <strong>Custom field status:</strong>
+  <%= @order.custom_field_status %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>

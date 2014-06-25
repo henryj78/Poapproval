@@ -11,7 +11,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140624181025) do
+ActiveRecord::Schema.define(version: 20140625173553) do
+
+  create_table "orders", force: true do |t|
+    t.string   "time_created"
+    t.string   "time_modified"
+    t.string   "ref_number"
+    t.string   "duedate"
+    t.string   "expected_drive"
+    t.string   "total_amount"
+    t.string   "is_manually_closed"
+    t.string   "is_fully_received"
+    t.string   "custom_field_authorized_buyer"
+    t.string   "custom_field_status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email"
