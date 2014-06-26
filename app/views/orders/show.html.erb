@@ -1,16 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Time created:</strong>
-  <%= @order.time_created %>
-</p>
-
-<p>
-  <strong>Time modified:</strong>
-  <%= @order.time_modified %>
-</p>
-
-<p>
   <strong>Ref number:</strong>
   <%= @order.ref_number %>
 </p>
@@ -21,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Expected drive:</strong>
+  <strong>Expected:</strong>
   <%= @order.expected_drive %>
 </p>
 
@@ -31,24 +21,30 @@
 </p>
 
 <p>
-  <strong>Is manually closed:</strong>
+  <strong>closed:</strong>
   <%= @order.is_manually_closed %>
 </p>
 
 <p>
-  <strong>Is fully received:</strong>
+  <strong>received:</strong>
   <%= @order.is_fully_received %>
 </p>
 
 <p>
-  <strong>Custom field authorized buyer:</strong>
+  <strong>authorized buyer:</strong>
   <%= @order.custom_field_authorized_buyer %>
 </p>
 
 <p>
-  <strong>Custom field status:</strong>
-  <%= @order.custom_field_status %>
+  <strong>Approved By:</strong>
+  <%= @current_user.first_name + " " + @current_user.last_name %>
 </p>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
+<p>
+  <strong>Title:</strong>
+  <%= @current_user.title %>
+</p>
+
+<%#= link_to 'Approve', corder_orders_path(@order) %>
+<%#= link_to 'Edit', edit_order_path(@order) %> 
 <%= link_to 'Back', orders_path %>

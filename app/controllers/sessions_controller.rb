@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
      #then redirect them to the homepage
      redirect_to orders_path
      #let the user know they've been logged in with a flash message
-     flash[:notice] = "You've been logged in."
+     flash[:notice] = "You've been logged in successfully."
     else
      #whoops, either the user wasn't in the database or their password is incorrect, so let them know, then redirect them back to the log in page
      redirect_to log_in_path

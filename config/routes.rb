@@ -1,9 +1,14 @@
 Poapproval::Application.routes.draw do
   
   resources :orders do 
-    collection { post :import }
+    collection do 
+      post :import 
+      get "approved"
+      get "received"
+    end
   end
   
+
   get "/log-in" => "sessions#new"
   post "/log-in" => "sessions#create", as: :log_in
   get "/log-out" => "sessions#destroy", as: :log_out

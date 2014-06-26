@@ -1,5 +1,10 @@
 <h1>Listing orders</h1>
-
+    <%= link_to 'Logout', log_out_path %>
+	<%= link_to 'Approved', approved_orders_path %>
+	<%= link_to 'Received', received_orders_path %>
+	
+    <div id="notice"><%= flash[:notice] %></div>
+	
 	<tr>
 	 <%= form_tag import_orders_path, multipart: true do %>
 	   <%= file_field_tag :file %>
@@ -16,16 +21,13 @@
 <table>
   <thead>
     <tr>
-      <th>Time created</th>
-      <th>Time modified</th>
       <th>Ref number</th>
       <th>Duedate</th>
-      <th>Expected drive</th>
+      <th>Expected</th>
       <th>Total amount</th>
-      <th>Is manually closed</th>
-      <th>Is fully received</th>
-      <th>Custom field authorized buyer</th>
-      <th>Custom field status</th>
+      <th>Closed</th>
+      <th>Received</th>
+      <th>Buyer</th>
       <th></th>
       <th></th>
       <th></th>
@@ -34,9 +36,7 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-        <td><%= order.time_created %></td>
-        <td><%= order.time_modified %></td>
+      <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
         <td><%= order.duedate %></td>
         <td><%= order.expected_drive %></td>
@@ -44,10 +44,9 @@
         <td><%= order.is_manually_closed %></td>
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
-        <td><%= order.custom_field_status %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Approved', edit_order_path(order) if  order.total_amount.to_f <= @current_user.amount.to_f %></td>
+        <td><%#= link_to 'Edit', edit_order_path(order) %></td>
+        <td><%#= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -55,4 +54,4 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%#= link_to 'New Order', new_order_path %>
