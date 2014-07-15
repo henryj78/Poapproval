@@ -45,6 +45,7 @@ class OrdersController < ApplicationController
   def update
     respond_to do |format|
       if @order.update(order_params)
+        UserMailer.poapproval_email('ihenryjackson@gmail.com').deliver
         format.html { redirect_to @order, notice: 'Order was successfully updated.' }
         format.json { head :no_content }
       else
