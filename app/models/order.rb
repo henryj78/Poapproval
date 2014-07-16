@@ -1,4 +1,7 @@
 class Order < ActiveRecord::Base
+  
+  scope :find_order, lambda {|id| where(:id => id)}
+  
   def self.import(file, name)
     CSV.foreach(file.path, :encoding => 'ISO-8859-1', :quote_char => '"', headers: true) do |row|
       insert_row = Order.new

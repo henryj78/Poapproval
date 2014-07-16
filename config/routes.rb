@@ -5,6 +5,7 @@ Poapproval::Application.routes.draw do
       post :import 
       get "approved"
       get "received"
+      get "decline"
     end
   end
   

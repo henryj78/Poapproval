@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
-  require 'pry'
+  #require = 'pry'
   
   # GET /orders
   # GET /orders.json
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   # GET /orders/1.json
   def show
   end
-
+  
   # GET /orders/new
   def new
     @order = Order.new
@@ -22,6 +22,20 @@ class OrdersController < ApplicationController
 
   # GET /orders/1/edit
   def edit
+     str_approve = Order.find_order(params[:id])
+     strApproval = str_approve[0]
+     
+     if strApproval.is_manually_closed == 0.to_s
+      strApproval.is_manually_closed = 1
+      msg = "PO approval  was successful."
+     else
+       strApproval.is_fully_received = 1
+       msg = "PO was received successfully." 
+     end     
+     
+     strApproval.save
+     redirect_to orders_path 
+     flash[:notice] = msg
   end
 
   # POST /orders
@@ -77,6 +91,9 @@ class OrdersController < ApplicationController
   
   def received
     @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1')
+  end
+  
+  def decline
   end
   
   private

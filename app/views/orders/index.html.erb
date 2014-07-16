@@ -30,7 +30,6 @@
       <th>Buyer</th>
       <th></th>
       <th></th>
-      <th></th>
     </tr>
   </thead>
 
@@ -44,9 +43,8 @@
         <td><%= order.is_manually_closed %></td>
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
-        <td><%= link_to 'Approved', edit_order_path(order) if  order.total_amount.to_f <= @current_user.amount.to_f %></td>
-        <td><%#= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%#= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Approved', edit_order_path(order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
+        <td><%= link_to 'Decline', decline_orders_path(order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
       </tr>
     <% end %>
   </tbody>
