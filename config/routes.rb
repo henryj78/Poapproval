@@ -6,6 +6,8 @@ Poapproval::Application.routes.draw do
       get "approved"
       get "received"
       get "decline"
+      get "decline_rpt"
+      get "load_data"
     end
   end
   

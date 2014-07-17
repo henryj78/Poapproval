@@ -1,6 +1,5 @@
-<h1>Received Orders</h1>
-
-
+<h1>Decline orders</h1>
+	
 <table>
   <thead>
     <tr>
@@ -11,8 +10,8 @@
       <th>Closed</th>
       <th>Received</th>
       <th>Buyer</th>
-      <th>Received Date</th>
-      <th>ReceiveD By</th>
+      <th>Decline Date</th>
+      <th>Declined By</th>
     </tr>
   </thead>
 
@@ -26,11 +25,12 @@
         <td><%= order.is_manually_closed %></td>
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
-		<td><%= order.receive_date %></td>
-		<td><%= order.receive_by %></td>
+		<td><%= order.decline_date %></td>
+		<td><%= order.decline_by %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+

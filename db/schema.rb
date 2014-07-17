@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140626060526) do
+ActiveRecord::Schema.define(version: 20140717171913) do
 
   create_table "orders", force: true do |t|
     t.string   "time_created"
@@ -26,6 +26,18 @@ ActiveRecord::Schema.define(version: 20140626060526) do
     t.string   "custom_field_status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "decline"
+    t.string   "decline_date"
+    t.string   "decline_by"
+    t.string   "approve_date"
+    t.string   "approve_by"
+    t.string   "receive_date"
+    t.string   "receive_by"
+    t.string   "vendor_ref_list_id"
+    t.string   "ord_line_qty"
+    t.string   "ord_line_desc"
+    t.string   "ord_line_rate"
+    t.string   "ord_line_amount"
   end
 
   create_table "users", force: true do |t|

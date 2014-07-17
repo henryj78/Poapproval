@@ -1,0 +1,12 @@
+	<tr>
+	 <%= form_tag import_orders_path, multipart: true do %>
+	   <%= file_field_tag :file %>
+	   <p> <%= text_field_tag "subject" %></p>
+	   <%= submit_tag "Import CSV" %>
+	 <% end %>	
+	</tr>
+	
+	<p>
+	  <!-- Download: -->
+	  <%#= link_to "CSV", orders_path(format: "csv") %> 
+	</p> 

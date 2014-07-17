@@ -11,9 +11,8 @@
       <th>Closed</th>
       <th>Received</th>
       <th>Buyer</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Approved Date</th>
+      <th>Approved By</th>
     </tr>
   </thead>
 
@@ -27,6 +26,8 @@
         <td><%= order.is_manually_closed %></td>
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
+		<td><%= order.approve_date %></td>
+		<td><%= order.approve_by %></td>
 		<td><%= link_to 'Received', edit_order_path(order) %></td>
       </tr>
     <% end %>

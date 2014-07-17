@@ -20,6 +20,12 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_id(session[:user_id]) 
   end#current_user
    
+  # Filter method to enforce a login requirement
+  # Apply as a before_filter on any controller you want to protect
+  def authenticate
+    logged_in? ? true : access_denied
+  end
+   
   # Predicate method to test for a logged in user    
   def logged_in?
     current_user.is_a? User

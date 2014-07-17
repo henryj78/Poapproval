@@ -2,7 +2,8 @@
     <%= link_to 'Logout', log_out_path %>
 	<%= link_to 'Approved', approved_orders_path %>
 	<%= link_to 'Received', received_orders_path %>
-	
+	<%= link_to 'Decline', decline_rpt_orders_path %>
+		
     <div id="notice"><%= flash[:notice] %></div>
 	
 	<tr>
@@ -14,8 +15,8 @@
 	</tr>
 	
 	<p>
-	  Download:
-	  <%= link_to "CSV", orders_path(format: "csv") %> 
+	  <!-- Download: -->
+	  <%#= link_to "CSV", orders_path(format: "csv") %> 
 	</p> 
 
 <table>
@@ -44,7 +45,7 @@
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
         <td><%= link_to 'Approved', edit_order_path(order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
-        <td><%= link_to 'Decline', decline_orders_path(order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
+        <td><%= link_to 'Decline', decline_orders_path(:id => order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
       </tr>
     <% end %>
   </tbody>

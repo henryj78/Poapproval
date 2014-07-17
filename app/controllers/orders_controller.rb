@@ -1,8 +1,8 @@
 class OrdersController < ApplicationController
-  
+  before_filter :authenticate
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
-  #require = 'pry'
+  
   
   # GET /orders
   # GET /orders.json
@@ -27,9 +27,13 @@ class OrdersController < ApplicationController
      
      if strApproval.is_manually_closed == 0.to_s
       strApproval.is_manually_closed = 1
+      strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+      strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name      
       msg = "PO approval  was successful."
      else
        strApproval.is_fully_received = 1
+       strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+       strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name         
        msg = "PO was received successfully." 
      end     
      
@@ -93,7 +97,18 @@ class OrdersController < ApplicationController
     @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1')
   end
   
+  def decline_rpt
+    @orders = Order.where(:decline => '1')
+  end
+    
   def decline
+     @order_decline = Order.find(params[:id])
+     @order_decline.is_manually_closed = 3
+     @order_decline.is_fully_received = 3
+     @order_decline.decline = 1
+     @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+     @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
+     @order_decline.save
   end
   
   private
