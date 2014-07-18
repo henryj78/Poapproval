@@ -89,7 +89,7 @@ class OrdersController < ApplicationController
   end  
   
   def approved
-    @orders = Order.where(:is_manually_closed => '1' )
+    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil )
   end
   
   def received

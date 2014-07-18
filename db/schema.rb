@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140717214805) do
+ActiveRecord::Schema.define(version: 20140718143328) do
 
   create_table "orders", force: true do |t|
     t.string   "time_created"
@@ -80,6 +80,7 @@ ActiveRecord::Schema.define(version: 20140717214805) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "title"
+    t.string   "buyer"
   end
 
 end
