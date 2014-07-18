@@ -3,19 +3,46 @@ class Order < ActiveRecord::Base
   scope :find_order, lambda {|id| where(:id => id)}
   
   def self.import(file, name)
+    cus_name = ""
+    cus_name_new = ""
+    
     CSV.foreach(file.path, :encoding => 'ISO-8859-1', :quote_char => '"', headers: true) do |row|
-      insert_row = Order.new
-      insert_row.time_created = row[0]
-      insert_row.time_modified = row[1]
-      insert_row.ref_number = row[2]
-      insert_row.duedate = row[3]
-      insert_row.expected_drive = row[4]
-      insert_row.total_amount = row[5]
-      insert_row.is_manually_closed = row[6]
-      insert_row.is_fully_received = row[7]
-      insert_row.custom_field_authorized_buyer = row[8]
-      insert_row.custom_field_status = row[9]
-      insert_row.save
+      if row[106] != cus_name
+        cus_name = row[106]
+        insert_row = Order.new
+        insert_row.time_created = row[1]
+        insert_row.time_modified = row[2]
+        insert_row.ref_number = row[17]
+        insert_row.duedate = row[54]
+        insert_row.expected_drive = row[55]
+        insert_row.total_amount = row[59]
+        insert_row.is_manually_closed = row[64]
+        insert_row.custom_field_authorized_buyer = row[153]
+        insert_row.vendor_ref_list_id = row[5]
+        insert_row.ord_line_qty = row[96]
+        insert_row.ord_line_desc = row[95]
+        insert_row.ord_line_rate = row[100]
+        insert_row.ord_line_amount= row[103]
+        insert_row.customer_name = row[106]
+        insert_row.save
+     else
+       insert_row = Ordln.new
+       insert_row.time_created = row[1]
+       insert_row.time_modified = row[2]
+       insert_row.ref_number = row[17]
+       insert_row.duedate = row[54]
+       insert_row.expected_drive = row[55]
+       insert_row.total_amount = row[59]
+       insert_row.is_manually_closed = row[64]
+       insert_row.custom_field_authorized_buyer = row[153]
+       insert_row.vendor_ref_list_id = row[5]
+       insert_row.ord_line_qty = row[96]
+       insert_row.ord_line_desc = row[95]
+       insert_row.ord_line_rate = row[100]
+       insert_row.ord_line_amount= row[103]
+       insert_row.customer_name = row[106]
+       insert_row.save           
+     end
     end
   end #end import
 

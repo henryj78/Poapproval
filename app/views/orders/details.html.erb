@@ -1,0 +1,28 @@
+<h1>Order Line Number</h1>
+
+<table>
+  <thead>
+    <tr>
+	  <th>Customer</th>	
+      <th>Description</th>
+      <th>Order Qty</th>
+      <th>Line amount</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orderln.each do |order| %>
+      <tr class="<%= cycle("even", "odd") %>">
+		<td><%= order.customer_name %></td>  
+        <td><%= order.ord_line_desc %></td>
+        <td><%= order.ord_line_qty %></td>
+        <td><%= order.ord_line_amount %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Order', new_order_path %>

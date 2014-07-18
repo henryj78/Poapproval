@@ -1,0 +1,53 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_created: MyString
+  time_modified: MyString
+  ref_number: MyString
+  duedate: MyString
+  expected_drive: MyString
+  total_amount: MyString
+  is_manually_closed: MyString
+  is_fully_received: MyString
+  custom_field_authorized_buyer: MyString
+  custom_field_status: MyString
+  decline: MyString
+  decline_rpt: MyString
+  decline_date: MyString
+  decline_by: MyString
+  approve_date: MyString
+  approve_by: MyString
+  receive_date: MyString
+  receive_by: MyString
+  vendor_ref_list_id: MyString
+  ord_line_qty: MyString
+  ord_line_desc: MyString
+  ord_line_rate: MyString
+  ord_line_amount: MyString
+  customer_name: MyString
+
+two:
+  time_created: MyString
+  time_modified: MyString
+  ref_number: MyString
+  duedate: MyString
+  expected_drive: MyString
+  total_amount: MyString
+  is_manually_closed: MyString
+  is_fully_received: MyString
+  custom_field_authorized_buyer: MyString
+  custom_field_status: MyString
+  decline: MyString
+  decline_rpt: MyString
+  decline_date: MyString
+  decline_by: MyString
+  approve_date: MyString
+  approve_by: MyString
+  receive_date: MyString
+  receive_by: MyString
+  vendor_ref_list_id: MyString
+  ord_line_qty: MyString
+  ord_line_desc: MyString
+  ord_line_rate: MyString
+  ord_line_amount: MyString
+  customer_name: MyString

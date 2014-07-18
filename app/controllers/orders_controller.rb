@@ -3,7 +3,6 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
   
-  
   # GET /orders
   # GET /orders.json
   def index
@@ -90,12 +89,18 @@ class OrdersController < ApplicationController
   end  
   
   def approved
-    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '0')
+    @orders = Order.where(:is_manually_closed => '1' )
   end
   
   def received
     @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1')
   end
+  
+  def details
+    str_get_ref_id = Order.find(params[:id])
+    str_vendor_ref_id = str_get_ref_id.ref_number
+    @orderln = Ordln.where(:ref_number => str_vendor_ref_id).group('ord_line_desc','ord_line_amount')
+  end  
   
   def decline_rpt
     @orders = Order.where(:decline => '1')
@@ -109,6 +114,7 @@ class OrdersController < ApplicationController
      @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
      @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
      @order_decline.save
+     redirect_to orders_path
   end
   
   private
