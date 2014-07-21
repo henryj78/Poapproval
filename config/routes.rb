@@ -1,5 +1,21 @@
 Poapproval::Application.routes.draw do
   
+  namespace :api, defaults: {format: 'json'} do
+   namespace :v1 do
+     resources :orders do 
+       collection do 
+         post :import 
+         get "approved"
+         get "received"
+         get "decline"
+         get "decline_rpt"
+         get "load_data"
+         get "details"
+       end#end collection
+     end #end resources
+    end #end v1
+  end #end api   
+      
   resources :orders do 
     collection do 
       post :import 
