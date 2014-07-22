@@ -1,7 +1,7 @@
 module Api
   module V1
     class OrdersController < ApplicationController
-      http_basic_authenticate_with name: "Admin", password: "secret"
+      #http_basic_authenticate_with name: "Admin", password: "secret"
       respond_to :json
       
       def index
@@ -18,6 +18,10 @@ module Api
       
       def decline_rpt
         respond_with Order.where(:decline => '1')
+      end
+      
+      def details
+        respond_with Ordln.all
       end
       
     end
