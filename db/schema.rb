@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140718143328) do
+ActiveRecord::Schema.define(version: 20140722191409) do
 
   create_table "orders", force: true do |t|
     t.string   "time_created"
     t.string   "time_modified"
     t.string   "ref_number"
     t.string   "duedate"
-    t.string   "expected_drive"
     t.string   "total_amount"
     t.string   "is_manually_closed"
     t.string   "is_fully_received"
@@ -33,22 +32,12 @@ ActiveRecord::Schema.define(version: 20140718143328) do
     t.string   "approve_by"
     t.string   "receive_date"
     t.string   "receive_by"
-    t.string   "vendor_ref_list_id"
-    t.string   "ord_line_qty"
-    t.string   "ord_line_desc"
-    t.string   "ord_line_rate"
-    t.string   "ord_line_amount"
     t.string   "customer_name"
+    t.string   "expected_date"
   end
 
   create_table "ordlns", force: true do |t|
-    t.string   "time_created"
-    t.string   "time_modified"
     t.string   "ref_number"
-    t.string   "duedate"
-    t.string   "expected_drive"
-    t.string   "total_amount"
-    t.string   "is_manually_closed"
     t.string   "is_fully_received"
     t.string   "custom_field_authorized_buyer"
     t.string   "custom_field_status"

@@ -21,14 +21,14 @@
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
         <td><%= order.duedate %></td>
-        <td><%= order.expected_drive %></td>
+        <td><%= order.expected_date %></td>
         <td><%= order.total_amount %></td>
         <td><%= order.is_manually_closed %></td>
         <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
 		<td><%= order.approve_date %></td>
 		<td><%= order.approve_by %></td>
-		<td><%= link_to 'Received', edit_order_path(order) if order.custom_field_authorized_buyer == @current_user.buyer %></td>
+		<td><%= link_to 'Received', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></td>
       </tr>
     <% end %>
   </tbody>

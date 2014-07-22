@@ -99,10 +99,10 @@ class OrdersController < ApplicationController
   def details
     str_get_ref_id = Order.find(params[:id])
     str_vendor_ref_id = str_get_ref_id.ref_number
-    @orderln = Ordln.where(:ref_number => str_vendor_ref_id).group('ord_line_desc','ord_line_amount')
-    if @orderln == []
-      @orderln = Order.where(:ref_number => str_vendor_ref_id).group('ord_line_desc','ord_line_amount')
-    end  
+    @orderln = Ordln.where(:ref_number => str_vendor_ref_id)     #.group('ord_line_desc','ord_line_amount')
+    # if @orderln == []
+    #   @orderln = Order.where(:ref_number => str_vendor_ref_id) #.group('ord_line_desc','ord_line_amount')
+    # end
   end  
   
   def decline_rpt
@@ -128,6 +128,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:time_created, :time_modified, :ref_number, :duedate, :expected_drive, :total_amount, :is_manually_closed, :is_fully_received, :custom_field_authorized_buyer, :custom_field_status)
+      params.require(:order).permit(:time_created, :time_modified, :ref_number, :duedate, :expected_date, :total_amount, :is_manually_closed, :is_fully_received, :custom_field_authorized_buyer, :custom_field_status)
     end
 end
