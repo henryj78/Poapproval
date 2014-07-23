@@ -7,11 +7,11 @@
     <div id="notice"><%= flash[:notice] %></div>
 	
 	<tr>
-	 <%#= form_tag import_orders_path, multipart: true do %>
-	   <%#= file_field_tag :file %>
-	   <p> <%#= text_field_tag "subject" %></p>
-	   <%#= submit_tag "Import CSV" %>
-	 <%# end %>	
+	 <%= form_tag import_orders_path, multipart: true do %>
+	   <%= file_field_tag :file %>
+	   <p> <%= text_field_tag "subject" %></p>
+	   <%= submit_tag "Import CSV" %>
+	 <% end %>	
 	</tr>
 	
 	<p>
@@ -23,7 +23,7 @@
   <thead>
     <tr>
       <th>Ref number</th>
-      <th>Customer Name</th>
+      <th>Vendor Name</th>
 	  <th>Date Submitted</th>
 	  <th>Date Due</th>
 	  <th>Expected Date</th>
@@ -37,7 +37,7 @@
     <% @orders.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
-        <td><%= order.customer_name %></td>
+        <td><%= order.vendor_name %></td>
 		<td><%= order.time_created %></td>
 		<td><%= order.duedate %></td>
 		<td><%= order.expected_date %></td>

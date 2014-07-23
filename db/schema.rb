@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140723151835) do
+ActiveRecord::Schema.define(version: 20140723165054) do
 
   create_table "buyers", force: true do |t|
     t.string   "phone"
@@ -41,8 +41,8 @@ ActiveRecord::Schema.define(version: 20140723151835) do
     t.string   "approve_by"
     t.string   "receive_date"
     t.string   "receive_by"
-    t.string   "customer_name"
     t.string   "expected_date"
+    t.string   "vendor_name"
   end
 
   create_table "ordlns", force: true do |t|

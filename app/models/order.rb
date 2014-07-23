@@ -18,7 +18,7 @@ class Order < ActiveRecord::Base
         insert_row.total_amount = row[59]
         insert_row.is_manually_closed = row[64]
         insert_row.custom_field_authorized_buyer = row[153]
-        insert_row.customer_name = row[106]
+        insert_row.vendor_name = row[6]
         insert_row.save
         
         insert_row = Ordln.new
