@@ -13,6 +13,7 @@ Poapproval::Application.routes.draw do
          get "decline_rpt"
          get "load_data"
          get "details"
+         get "buyers"
        end#end collection
      end #end resources
     end #end v1

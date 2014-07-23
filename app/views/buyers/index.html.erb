@@ -21,7 +21,7 @@
         <td><%= buyer.cell %></td>
         <td><%= buyer.office %></td>
         <td><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
-        <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Delete', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -29,4 +29,4 @@
 
 <br>
 
-<%#= link_to 'New Buyer', new_buyer_path %>
+<%= link_to 'Back', orders_path %>
