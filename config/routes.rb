@@ -9,8 +9,7 @@ Poapproval::Application.routes.draw do
          post :import 
          get "approved"
          get "received"
-         get "decline"
-         get "decline_rpt"
+         get "declined"
          get "load_data"
          get "details"
          get "buyers"
