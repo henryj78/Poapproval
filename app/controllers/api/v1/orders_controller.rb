@@ -21,8 +21,8 @@ module Api
       end
       
       def details
-        x = Ordln.where(:ref_number => params[:po])
-        respond_with x
+        strOrdln = Ordln.where(:ref_number => params[:ref_num])
+        respond_with strOrdln
       end
       
       def buyers
