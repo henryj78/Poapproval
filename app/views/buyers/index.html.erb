@@ -1,0 +1,33 @@
+<h1>Buyers Phone List</h1>
+
+<table>
+  <thead>
+    <tr>
+	 <th>Name</th>	
+      <th>Phone</th>
+      <th>Cell</th>
+      <th>Office</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @buyers.each do |buyer| %>
+       <tr class="<%= cycle("even", "odd") %>">
+		<td><%= buyer.name %></td>  
+        <td><%= buyer.phone %></td>
+        <td><%= buyer.cell %></td>
+        <td><%= buyer.office %></td>
+        <td><%= link_to 'Show', buyer %></td>
+        <td><%= link_to 'Edit', edit_buyer_path(buyer) %></td>
+        <td><%= link_to 'Destroy', buyer, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%#= link_to 'New Buyer', new_buyer_path %>

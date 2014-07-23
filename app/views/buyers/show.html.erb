@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @buyer.phone %>
+</p>
+
+<p>
+  <strong>Cell:</strong>
+  <%= @buyer.cell %>
+</p>
+
+<p>
+  <strong>Office:</strong>
+  <%= @buyer.office %>
+</p>
+
+<%= link_to 'Edit', edit_buyer_path(@buyer) %> |
+<%= link_to 'Back', buyers_path %>

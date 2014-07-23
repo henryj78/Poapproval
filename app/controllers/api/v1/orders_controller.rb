@@ -24,6 +24,10 @@ module Api
         respond_with Ordln.all
       end
       
+      def buyers
+        respond_with Buyer.all
+      end      
+      
     end
   end#Vi
 end#Api

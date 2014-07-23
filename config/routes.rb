@@ -1,5 +1,7 @@
 Poapproval::Application.routes.draw do
   
+  resources :buyers
+
   namespace :api, defaults: {format: 'json'} do
    namespace :v1 do
      resources :orders do 
