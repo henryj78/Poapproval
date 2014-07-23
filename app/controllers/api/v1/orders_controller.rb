@@ -16,7 +16,7 @@ module Api
         respond_with Order.where(:is_manually_closed => '1', :is_fully_received => '1')
       end
       
-      def decline_rpt
+      def declined
         respond_with Order.where(:decline => '1')
       end
       
