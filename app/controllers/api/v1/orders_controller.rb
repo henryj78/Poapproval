@@ -21,7 +21,7 @@ module Api
       end
       
       def details
-        strOrdln = Ordln.where(:ref_number => params[:ref_num])
+        strOrdln = Ordln.where(:ref_number => params[:ref_number])
         respond_with strOrdln
       end
       

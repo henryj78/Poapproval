@@ -1,3 +1,4 @@
+
 <h1>Listing orders</h1>
     <%= link_to 'Logout', log_out_path %>
 	<%= link_to 'Approved', approved_orders_path %>
@@ -22,12 +23,11 @@
 <table>
   <thead>
     <tr>
-      <th>Ref number</th>
-      <th>Vendor Name</th>
-	  <th>Date Submitted</th>
-	  <th>Date Due</th>
-	  <th>Expected Date</th>
-      <th>Total amount</th>
+      <th bgcolor="#A9F5F2">Ref number</th>
+      <th bgcolor="#A9F5F2">Vendor Name</th>
+	  <th bgcolor="#A9F5F2">Total amount</th>
+	  <th bgcolor="#A9F5F2">Date Submitted</th>
+	  <th bgcolor="#A9F5F2">Expected Date</th>
       <th></th>
       <th></th>
     </tr>
@@ -37,20 +37,17 @@
     <% @orders.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
-        <td><%= order.vendor_name %></td>
+        <td><%= link_to order.vendor_name, details_orders_path(:id => order) if order.total_amount.to_f <= @current_user.amount.to_f  %></td>
+		<td><%= order.total_amount %></td>
 		<td><%= order.time_created %></td>
-		<td><%= order.duedate %></td>
 		<td><%= order.expected_date %></td>
-        <td><%= order.total_amount %></td>
         <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
-        <td><%= link_to 'Approve', edit_order_path(order),:confirm => 'Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f %></td>
-		<td><%= link_to 'Details', details_orders_path(:id => order) if order.total_amount.to_f <= @current_user.amount.to_f %></td>
-        <td><%= link_to 'Decline', decline_orders_path(:id => order), :confirm => 'Are you sure?'  if order.total_amount.to_f <= @current_user.amount.to_f %></td>
+		<td><%=link_to image_tag("thumbs_up.png"), edit_order_path(order), :confirm => 'Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
+				<td><%=link_to image_tag("thumbs_down.png"), decline_orders_path(:id => order), :confirm => 'Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
 <%#= link_to 'New Order', new_order_path %>
