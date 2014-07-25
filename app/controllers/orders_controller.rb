@@ -116,7 +116,7 @@ class OrdersController < ApplicationController
      @order_decline.is_manually_closed = 3
      @order_decline.is_fully_received = 3
      @order_decline.decline = 1
-     @order.custom_field_status = 2 #decline
+     @order_decline.custom_field_status = 2 #decline
      @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
      @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
      @order_decline.save
