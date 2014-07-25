@@ -10,15 +10,15 @@ class Order < ActiveRecord::Base
       if row[106] != cus_name
         cus_name = row[106]
         insert_row = Order.new
-        insert_row.time_created = row[1]
-        insert_row.time_modified = row[2]
         insert_row.ref_number = row[17]
-        insert_row.duedate = row[54]
+        insert_row.date_due = row[54]
         insert_row.expected_date = row[55]
         insert_row.total_amount = row[59]
         insert_row.is_manually_closed = row[64]
         insert_row.custom_field_authorized_buyer = row[153]
         insert_row.vendor_name = row[6]
+        insert_row.customer_name = row[106]
+        #insert_row.project_name = row[?]
         insert_row.save
         
         insert_row = Ordln.new
@@ -29,6 +29,8 @@ class Order < ActiveRecord::Base
         insert_row.ord_line_rate = row[100]
         insert_row.ord_line_amount= row[103]
         insert_row.customer_name = row[106]
+        #insert_row.device = row[106]
+        #insert_row.assemblies = row[106]
         insert_row.save           
         
      else
@@ -40,6 +42,8 @@ class Order < ActiveRecord::Base
        insert_row.ord_line_rate = row[100]
        insert_row.ord_line_amount= row[103]
        insert_row.customer_name = row[106]
+       #insert_row.device = row[106]
+       #insert_row.assemblies = row[106]       
        insert_row.save           
      end
     end

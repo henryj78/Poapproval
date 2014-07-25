@@ -8,8 +8,6 @@
       <th bgcolor="#A9F5F2">Duedate</th>
       <th bgcolor="#A9F5F2">Expected</th>
       <th bgcolor="#A9F5F2">Total amount</th>
-      <th bgcolor="#A9F5F2">Closed</th>
-      <th bgcolor="#A9F5F2">Received</th>
       <th bgcolor="#A9F5F2">Buyer</th>
       <th bgcolor="#A9F5F2">Approved Date</th>
       <th bgcolor="#A9F5F2">Approved By</th>
@@ -20,11 +18,9 @@
     <% @orders.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
-        <td><%= order.duedate %></td>
+        <td><%= order.date_due %></td>
         <td><%= order.expected_date %></td>
         <td><%= order.total_amount %></td>
-        <td><%= order.is_manually_closed %></td>
-        <td><%= order.is_fully_received %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
 		<td><%= order.approve_date %></td>
 		<td><%= order.approve_by %></td>
