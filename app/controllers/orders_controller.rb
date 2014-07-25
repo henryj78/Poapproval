@@ -26,11 +26,13 @@ class OrdersController < ApplicationController
      
      if strApproval.is_manually_closed == 0.to_s
       strApproval.is_manually_closed = 1
+      strApproval.custom_field_status = 1 #Approved
       strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
       strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name      
       msg = "PO approval  was successful."
      else
        strApproval.is_fully_received = 1
+       strApproval.custom_field_status = 3 #Received
        strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
        strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name         
        msg = "PO was received successfully." 
