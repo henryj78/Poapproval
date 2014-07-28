@@ -8,11 +8,11 @@
     <div id="notice"><%= flash[:notice] %></div>
 	
 	<tr>
-	 <%#= form_tag import_orders_path, multipart: true do %>
-	   <%#= file_field_tag :file %>
-	   <p> <%#= text_field_tag "subject" %></p>
-	   <%#= submit_tag "Import CSV" %>
-	 <%# end %>	
+	 <%= form_tag import_orders_path, multipart: true do %>
+	   <%= file_field_tag :file %>
+	   <p> <%= text_field_tag "subject" %></p>
+	   <%= submit_tag "Import CSV" %>
+	 <% end %>	
 	</tr>
 	
 	<p>
