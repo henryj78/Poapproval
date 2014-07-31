@@ -2,17 +2,11 @@
 <h1>Purchase Orders</h1>
     <%= link_to 'Logout', log_out_path %>
 	<%= link_to 'Approved', approved_orders_path %>
-	<%= link_to 'Received', received_orders_path %>
-	<%= link_to 'Declined', decline_rpt_orders_path %>
-	<%= link_to 'Buyer', buyers_path %>	
-    <div id="notice"><%= flash[:notice] %></div>
-	
-	<tr>
-	 <%#= form_tag import_orders_path, multipart: true do %>
-	   <%#= file_field_tag :file %>
-	   <p> <%#= text_field_tag "subject" %></p>
-	   <%#= submit_tag "Import CSV" %>
-	 <%# end %>	
+	<%= link_to 'Received', received_orders_path %>\
+		   <%= file_field_tag :file %>
+	   <p> <%= text_field_tag "subject" %></p>
+	   <%= submit_tag "Import CSV" %>
+	 <% end %>	
 	</tr>
 	
 	<p>
@@ -33,7 +27,7 @@
   </thead>
 
   <tbody>
-    <% @orders.each do |order| %>
+    <% @orders.desc.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
         <td><%= link_to order.vendor_name, details_orders_path(:id => order) if order.total_amount.to_f <= @current_user.amount.to_f  %></td>
