@@ -5,6 +5,9 @@
     <tr>
 	  <th bgcolor="#A9F5F2">Customer</th>	
       <th bgcolor="#A9F5F2">Description</th>
+	  <th bgcolor="#A9F5F2">Lead Time</th>
+	  <th bgcolor="#A9F5F2">Product</th>
+	  <th bgcolor="#A9F5F2">Product ID</th>
       <th bgcolor="#A9F5F2">Order Qty</th>
       <th bgcolor="#A9F5F2">Line amount</th>
       <th></th>
@@ -16,6 +19,9 @@
       <tr class="<%= cycle("even", "odd") %>">
 		<td><%= order.customer_name %></td>  
         <td><%= order.ord_line_desc %></td>
+		<td><%= order.lead_time %></td>
+		<td><%= order.product %></td>
+		<td><%= order.project_id %></td>
         <td><%= order.ord_line_qty %></td>
         <td><%= order.ord_line_amount %></td>
       </tr>

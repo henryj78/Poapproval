@@ -2,11 +2,18 @@
 <h1>Purchase Orders</h1>
     <%= link_to 'Logout', log_out_path %>
 	<%= link_to 'Approved', approved_orders_path %>
-	<%= link_to 'Received', received_orders_path %>\
-		   <%= file_field_tag :file %>
+	<%= link_to 'Received', received_orders_path %>
+	<%= link_to 'Declined', decline_rpt_orders_path %>
+	<%= link_to 'Buyers', buyers_path %>
+	
+	<div id="notice"><%=flash[:notice]%></div>
+	<tr>
+		<%= form_tag import_orders_path, multipart: true do %>
+		<%= file_field_tag :file %>
 	   <p> <%= text_field_tag "subject" %></p>
 	   <%= submit_tag "Import CSV" %>
 	 <% end %>	
+	 
 	</tr>
 	
 	<p>
@@ -30,12 +37,12 @@
     <% @orders.desc.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
-        <td><%= link_to order.vendor_name, details_orders_path(:id => order) if order.total_amount.to_f <= @current_user.amount.to_f  %></td>
+        <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
 		<td><%= order.total_amount %></td>
 		<td><%= order.expected_date %></td>
         <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
 		<td><%=link_to image_tag("thumbs_up.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
-				<td><%=link_to image_tag("thumbs_down.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
+				<td><%=link_to image_tag("thumbs_down.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f %></td>
       </tr>
     <% end %>
   </tbody>
