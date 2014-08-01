@@ -70,4 +70,12 @@ def self.to_csv(options = {})
     end
   end
  end #end to_csv
+ 
+ def self.search(search)
+   if search
+     find(:all, :conditions => ['ref_number LIKE ?', "%#{search}%"])
+   else
+     find(:all)
+   end
+ end# end of search 
 end
