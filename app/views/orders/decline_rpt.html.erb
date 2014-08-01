@@ -3,13 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th bgcolor="#A9F5F2">Ref number</th>
-      <th bgcolor="#A9F5F2">Duedate</th>
-      <th bgcolor="#A9F5F2">Expected</th>
-      <th bgcolor="#A9F5F2">Total amount</th>
-      <th bgcolor="#A9F5F2">Buyer</th>
-      <th bgcolor="#A9F5F2">Decline Date</th>
-      <th bgcolor="#A9F5F2">Declined By</th>
+      <th bgcolor="#A9F5F2"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Due Date", :sort =>  "date_due" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Expected Date", :sort =>  "expected_date" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Total Amount", :sort =>  "total_amount" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Buyer", :sort =>  "custom_field_authorized_buyer" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Decline Date", :sort =>  "decline_date" %></th>
+      <th bgcolor="#A9F5F2"><%= link_to "Declined By", :sort =>  "decline_by" %></th>
     </tr>
   </thead>
 

@@ -3,10 +3,13 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
   
+ helper_method :sort_column, :sort_direction
+  
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.where(:is_manually_closed => '0')
+    #@orders = Order.where(:is_manually_closed => '0')
+    @orders = Order.where(:is_manually_closed => '0').order( sort_column + " " + sort_direction ) 
   end
 
   # GET /orders/1
@@ -91,11 +94,11 @@ class OrdersController < ApplicationController
   end  
   
   def approved
-    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil )
+    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil ).order( sort_column + " " + sort_direction )
   end
   
   def received
-    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1')
+    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1').order( sort_column + " " + sort_direction )
   end
   
   def details
@@ -108,7 +111,7 @@ class OrdersController < ApplicationController
   end  
   
   def decline_rpt
-    @orders = Order.where(:decline => '1')
+    @orders = Order.where(:decline => '1').order(params[:sort])
   end
     
   def decline
@@ -132,5 +135,15 @@ class OrdersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
       params.require(:order).permit(:time_created, :time_modified, :ref_number, :duedate, :expected_date, :total_amount, :is_manually_closed, :is_fully_received, :custom_field_authorized_buyer, :custom_field_status)
+    end
+    
+    def sort_column
+      #params[:sort] || "ref_number"
+      Order.column_names.include?(params[:sort]) ? params[:sort] : "ref_number"
+    end
+    
+    def sort_direction
+      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
+      #params[:direction] || "asc"
     end
 end
