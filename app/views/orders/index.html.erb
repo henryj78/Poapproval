@@ -24,12 +24,12 @@
 	 <% end %>	
 	</tr>
 	
-
 <table>
   <thead>
     <tr>
       <th bgcolor="#A9F5F2"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
       <th bgcolor="#A9F5F2"><%= link_to "Vendor Name", :sort =>  "vendor_name" %></th>
+	  <th bgcolor="#A9F5F2"><%= link_to "Customer Name", :sort =>  "customer_name" %></th>
 	  <th bgcolor="#A9F5F2">Total amount</th>
 	  <th bgcolor="#A9F5F2"><%= link_to "Expected Date", :sort =>  "expected_date"  %></th>
       <th></th>
@@ -42,6 +42,7 @@
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
         <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
+		<td><%= order.customer_name %></td>
 		<td><%= order.total_amount %></td>
 		<td><%= order.expected_date %></td>
         <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->

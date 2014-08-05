@@ -105,8 +105,8 @@ class OrdersController < ApplicationController
   end
   
   def details
-    str_get_ref_id = Order.find(params[:id])
-    str_vendor_ref_id = str_get_ref_id.ref_number
+    @str_get_ref_id = Order.find(params[:id])
+    str_vendor_ref_id = @str_get_ref_id.ref_number
     @orderln = Ordln.where(:ref_number => str_vendor_ref_id)     #.group('ord_line_desc','ord_line_amount')
     # if @orderln == []
     #   @orderln = Order.where(:ref_number => str_vendor_ref_id) #.group('ord_line_desc','ord_line_amount')

@@ -13,6 +13,8 @@ Poapproval::Application.routes.draw do
          get "load_data"
          get "details"
          get "buyers"
+         get "auth"
+         get "submit_approval"
        end#end collection
      end #end resources
     end #end v1

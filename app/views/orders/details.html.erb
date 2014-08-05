@@ -1,5 +1,41 @@
 <h1>Purchase Order Detail Lines</h1>
-
+<table>
+	<tr>
+	  <td>Vendor : </td>	
+	  <td><%= @str_get_ref_id.vendor_name %></td>
+	  <td>Payment Terms : </td>
+	  <td></td>
+	</tr>	
+	
+	<tr>
+	  <td>Address : </td>	
+	  <td></td>
+	  <td>Date Submitted : </td>
+	  <td></td>
+	</tr>
+	
+	<tr>
+	  <td>City : </td>	
+	  <td></td>
+	  <td>Date Required : </td>
+	  <td></td>
+	</tr>
+	
+	<tr>
+	  <td>Phone : </td>	
+	  <td></td>
+	  <td>Date Promised : </td>
+	  <td></td>
+	</tr>
+	
+	<tr>
+	  <td>Contact : </td>	
+	  <td></td>
+	  <td>Buyer : </td>
+	  <td><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
+	</tr>
+</table>
+	 
 <table>
   <thead>
     <tr>
@@ -7,7 +43,7 @@
       <th bgcolor="#A9F5F2">Description</th>
 	  <th bgcolor="#A9F5F2">Lead Time</th>
 	  <th bgcolor="#A9F5F2">Product</th>
-	  <th bgcolor="#A9F5F2">Product ID</th>
+	  <th bgcolor="#A9F5F2">Assembles</th>
       <th bgcolor="#A9F5F2">Order Qty</th>
       <th bgcolor="#A9F5F2">Line amount</th>
       <th></th>
@@ -31,4 +67,4 @@
 
 <br>
 
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Approve', orders_path %>  <%= link_to 'Decline', orders_path %>  <%= link_to 'hold', orders_path %>  <%= link_to 'Back', orders_path %>
