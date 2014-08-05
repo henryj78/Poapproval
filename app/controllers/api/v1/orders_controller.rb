@@ -1,7 +1,6 @@
 module Api
   module V1
     class OrdersController < ApplicationController
-      
       #http_basic_authenticate_with name: "Admin", password: "secret"
       respond_to :json
 
