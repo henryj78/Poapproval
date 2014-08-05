@@ -15,6 +15,7 @@ Poapproval::Application.routes.draw do
          get "buyers"
          get "auth"
          get "submit_approval"
+         get "submit_decline"
        end#end collection
      end #end resources
     end #end v1

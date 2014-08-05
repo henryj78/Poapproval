@@ -1,7 +1,7 @@
 module Api
   module V1
     class OrdersController < ApplicationController
-      require 'pry'
+      
       #http_basic_authenticate_with name: "Admin", password: "secret"
       respond_to :json
 
@@ -16,15 +16,48 @@ module Api
       end
       
       def submit_approval
+        #/api/v1/orders/submit_approval?...&...&...&...
+        #send amount 
         params[:first_name]
         params[:last_name]
-        str_approve = Order.find_order(params[:id])
-        binding.pry
-        #strApproval.is_manually_closed = 1
-        #strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-        #strApproval.approve_by = params[:user_name]   
-        #strApproval.save        
+        params[:amount]
+        
+        str_approve = Order.find_by_ref_number(params[:id])
+        
+        if !str_approve.nil?
+          if str_approve.total_amount.to_f < params[:amount].to_f
+           str_approve.is_manually_closed = 1
+           str_approve.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+           str_approve.approve_by = params[:first_name] + " " + params[:last_name]   
+           str_approve.save  
+           respond_with "Approval has been completed"
+          else
+            respond_with "Permission has been Denied for this Approval"
+          end#amount
+        end#end of str_approve      
       end#submit_approval
+      
+      def submit_decline
+        #/api/v1/orders/submit_decline?...&...&...&...
+        #send amount 
+        params[:first_name]
+        params[:last_name]
+        params[:amount]
+        
+        str_decline = Order.find_by_ref_number(params[:id])
+        
+        if !str_decline.nil?
+          if str_decline.total_amount.to_f < params[:amount].to_f
+           str_decline.is_fully_received  = 1
+           str_decline.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+           str_decline.receive_by = params[:first_name] + " " + params[:last_name]   
+           str_decline.save  
+           respond_with "Decline request has been completed"
+          else
+            respond_with "Permission has been Denied for this request"
+          end#amount
+        end#end of str_approve      
+      end#submit_approval      
         
       def approved #report
         respond_with Order.where(:is_manually_closed => '1', :is_fully_received => nil )
@@ -39,7 +72,7 @@ module Api
       end
       
       def details #by po number
-        #/api/vi/orders/details?ref_number= ...
+        #/api/v1/orders/details?ref_number= ...
         strOrdln = Ordln.where(:ref_number => params[:ref_number])
         respond_with strOrdln
       end
