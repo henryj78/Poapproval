@@ -72,7 +72,14 @@ module Api
       
       def details #by po number
         #/api/v1/orders/details?ref_number= ...
-        strOrdln = Ordln.where(:ref_number => params[:ref_number])
+        load_orig = Array.new
+        remove_blank = Array.new
+        
+        load_orig = Ordln.where(:ref_number => params[:ref_number])
+        load_orig.each do |e|
+          remove_blank << e if !e.ord_line_desc.nil?  &&  !e.ord_line_amount.nil?
+        end
+        strOrdln = remove_blank 
         respond_with strOrdln
       end
       
