@@ -23,7 +23,7 @@
         <td><%= order.custom_field_authorized_buyer %></td>
 		<td><%= order.approve_date %></td>
 		<td><%= order.approve_by %></td>
-		<td><%= link_to 'Received', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></td>
+		<td><%= link_to 'Receive', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></td>
       </tr>
     <% end %>
   </tbody>

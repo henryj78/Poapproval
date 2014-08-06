@@ -1,38 +1,47 @@
 <h1>Purchase Order Detail Lines</h1>
-<table border = 1>
+<table  border = 0, cellpadding = "10">
 	<tr>
-	  <td>Vendor : </td>	
-	  <td><%= @str_get_ref_id.vendor_name %></td>
-	  <td>Payment Terms : </td>
+	  <td><font color= #6495ED>Vendor</font> : </td>	
+	  <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
 	  <td></td>
+	  
+	  <td><font color= #6495ED>Payment Terms</font> : </td>
+	  <td colspan = "4"></td>	  
 	</tr>	
 	
 	<tr>
-	  <td>Address : </td>	
+	  <td><font color= #6495ED>Address</font> : </td>	
+	  <td colspan = "4"></td>
 	  <td></td>
-	  <td>Date Submitted : </td>
-	  <td></td>
+	  
+	  <td><font color= #6495ED>Date Submitted</font> : </td>
+	  <td colspan = "4"></td>
 	</tr>
 	
 	<tr>
-	  <td>City : </td>	
+	  <td><font color= #6495ED>City</font> : </td>	
+	  <td colspan = "4"></td>
 	  <td></td>
-	  <td>Date Required : </td>
-	  <td></td>
+	  
+	  <td><font color= #6495ED>Date Required</font> : </td>
+	  <td colspan = "4"></td>	  
 	</tr>
 	
 	<tr>
-	  <td>Phone : </td>	
+	  <td><font color= #6495ED>Phone</font> : </td>	
+	  <td colspan = "4"></td>
 	  <td></td>
-	  <td>Date Promised : </td>
-	  <td></td>
+	  
+	  <td><font color= #6495ED>Date Promised</font> : </td>
+	  <td colspan = "4"></td>	  
 	</tr>
 	
 	<tr>
-	  <td>Contact : </td>	
+	  <td><font color= #6495ED>Contact</font> : </td>	
+	  <td colspan = "4"></td>
 	  <td></td>
-	  <td>Buyer : </td>
-	  <td><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
+	  <td><font color= #6495ED>Buyer</font> : </td>
+	  <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
 	</tr>
 </table>
 
@@ -69,4 +78,4 @@
 
 <br>
 
-<%= link_to image_tag("approved_icon.png"), orders_path %>  <%= link_to image_tag("dissapproved_icon.png"), orders_path %>   <%= link_to image_tag("backward_icon.png"), orders_path %>
+<%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %>  <%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %>   <%= link_to image_tag("backward_icon.png"), orders_path %>
