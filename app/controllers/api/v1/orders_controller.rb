@@ -90,6 +90,7 @@ module Api
       def auth
         #send email e.g. /api/orders/auth:email= ...
         #returns decline or recordset
+        x = Array.new
          str_auth = User.where( :email => params[:email])
          if str_auth == [] || str_auth.nil? 
            respond_with "Decline"
