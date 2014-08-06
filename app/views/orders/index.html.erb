@@ -46,8 +46,8 @@
 		<td><%= order.total_amount %></td>
 		<td><%= order.expected_date %></td>
         <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
-		<td><%=link_to image_tag("thumbs_up.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
-				<td><%=link_to image_tag("thumbs_down.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f %></td>
+		<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
+				<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,5 +1,5 @@
 <h1>Purchase Order Detail Lines</h1>
-<table>
+<table border = 1>
 	<tr>
 	  <td>Vendor : </td>	
 	  <td><%= @str_get_ref_id.vendor_name %></td>
@@ -35,6 +35,8 @@
 	  <td><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
 	</tr>
 </table>
+
+<br />
 	 
 <table>
   <thead>
@@ -67,4 +69,4 @@
 
 <br>
 
-<%= link_to 'Approve', orders_path %>  <%= link_to 'Decline', orders_path %>  <%= link_to 'hold', orders_path %>  <%= link_to 'Back', orders_path %>
+<%= link_to image_tag("approved_icon.png"), orders_path %>  <%= link_to image_tag("dissapproved_icon.png"), orders_path %>   <%= link_to image_tag("backward_icon.png"), orders_path %>
