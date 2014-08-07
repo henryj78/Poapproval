@@ -43,6 +43,9 @@ gem 'pry'
 # Reading csv files
 gem 'smarter_csv'
 
+#search
+gem 'ransack'
+
 #Setting up for Heroku
 group :production do
   gem 'rails_12factor'

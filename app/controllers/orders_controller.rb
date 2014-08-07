@@ -8,6 +8,9 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
+    @search = Order.search(params[:q])
+    @test = @search.result
+    
     if params[:search].nil?
       @orders = Order.where(:is_manually_closed => '0').order( sort_column + " " + sort_direction ) 
     else
