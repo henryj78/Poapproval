@@ -2,7 +2,6 @@ class OrdersController < ApplicationController
   before_filter :authenticate
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
-  require 'pry'
   helper_method :sort_column, :sort_direction
   
   # GET /orders

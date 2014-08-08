@@ -16,8 +16,8 @@
 	  <th bgcolor="#A9F5F2">Contact</th>
 	 </tr> 
 	 <tbody>
-		 <td colspan = "4"></td>
-		 <td></td>
+		 <td><%= @str_get_ref_id.address %></td>
+		 <td><%= @str_get_ref_id.city %></td>
 		 <td></td>
 		 <td></td>
 	 </tbody>	 
@@ -26,15 +26,13 @@
 <table>
     <tr>
 	  <th bgcolor="#A9F5F2">Payment Terms</th>
-	  <th bgcolor="#A9F5F2">Date Submitted</th>
 	  <th bgcolor="#A9F5F2">Date Required</th>
 	  <th bgcolor="#A9F5F2">Date Promised</th>
 	 </tr> 
 	 <tbody>
-		 <td></td>
-		 <td></td>
-		 <td></td>
-		 <td></td>
+		 <td><%= @str_get_ref_id.terms %></td>
+		 <td><%= @str_get_ref_id.date_due %></td>
+		 <td><%= @str_get_ref_id.expected_date %></td>
 	 </tbody>	 
 </table>
 

@@ -24,6 +24,10 @@ class Order < ActiveRecord::Base
         insert_row.custom_field_authorized_buyer = row[162]
         insert_row.vendor_name = row[6]
         insert_row.customer_name = row[106]
+        insert_row.address = row[19]
+        insert_row.city = row[23]
+        insert_row.terms = row[53]
+        insert_row.project_name = row[132]
         insert_row.save
         
         insert_row = Ordln.new
@@ -37,6 +41,11 @@ class Order < ActiveRecord::Base
         insert_row.lead_time = row[152]
         insert_row.product = row[155]
         insert_row.project_id = row[156]
+        insert_row.date_due = row[54]
+        insert_row.expected_date = row[55]
+        insert_row.address = row[19]
+        insert_row.city = row[23]
+        insert_row.terms = row[53]
         insert_row.save           
         
      else
@@ -50,7 +59,12 @@ class Order < ActiveRecord::Base
        insert_row.customer_name = row[106]
        insert_row.lead_time = row[152]
        insert_row.product = row[155]
-       insert_row.project_id = row[156]    
+       insert_row.project_id = row[156]  
+       insert_row.date_due = row[54]
+       insert_row.expected_date = row[55] 
+       insert_row.address = row[19]
+       insert_row.city = row[23]
+       insert_row.terms = row[53] 
        insert_row.save           
      end
     end
