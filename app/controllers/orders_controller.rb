@@ -2,8 +2,8 @@ class OrdersController < ApplicationController
   before_filter :authenticate
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_filter :protect
-  
- helper_method :sort_column, :sort_direction
+  require 'pry'
+  helper_method :sort_column, :sort_direction
   
   # GET /orders
   # GET /orders.json
@@ -12,10 +12,29 @@ class OrdersController < ApplicationController
     #@test = @search.result
     
     if params[:search].nil?
-      @orders = Order.where(:is_manually_closed => '0').order( sort_column + " " + sort_direction ) 
-    else
-      @orders = Order.search(params[:search])
-    end
+      if @current_user.first_check.to_i == 1
+        @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
+      else
+        @orders = Order.where(:is_manually_closed => '0').asc  
+      end  
+    else#nil
+      if params[:item][:itemx] == "PO Number"
+         @orders = Order.search(params[:search])
+      end#PO Number
+      
+      if params[:item][:itemx] == "Project"
+         @orders = Order.search_project(params[:search])
+      end#PO Number  
+      
+      if params[:item][:itemx] == "Vendor Name"
+         @orders = Order.search_vendor(params[:search])
+      end#Vendor Name  
+      
+      if params[:item][:itemx] == "Customer"
+         @orders = Order.search_customer(params[:search])
+      end#Customer Name  
+                
+    end#end nil check
   end
 
   # GET /orders/1
@@ -33,19 +52,24 @@ class OrdersController < ApplicationController
      str_approve = Order.find_order(params[:id])
      strApproval = str_approve[0]
      
-     if strApproval.is_manually_closed == 0.to_s
-      strApproval.is_manually_closed = 1
-      strApproval.custom_field_status = 1 #Approved
-      strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-      strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name      
-      msg = "PO approval  was successful."
-     else
-       strApproval.is_fully_received = 1
-       strApproval.custom_field_status = 3 #Received
-       strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-       strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name         
-       msg = "PO was received successfully." 
-     end     
+     if @current_user.first_check.to_i == 1
+       strApproval.sub_approval = 1
+     else # boss
+       if strApproval.is_manually_closed == 0.to_s
+        strApproval.is_manually_closed = 1
+        strApproval.custom_field_status = 1 #Approved
+        strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+        strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name      
+        msg = "PO approval  was successful."
+       else
+         strApproval.is_fully_received = 1
+         strApproval.custom_field_status = 3 #Received
+         strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name         
+         msg = "PO was received successfully." 
+       end      
+     end # current boss
+        
      
      strApproval.save
      redirect_to orders_path 

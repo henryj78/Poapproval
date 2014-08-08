@@ -1,49 +1,61 @@
 <h1>Purchase Order Detail Lines</h1>
-<table  border = 0, cellpadding = "10">
-	<tr>
-	  <td><font color= #6495ED>Vendor</font> : </td>	
-	  <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
-	  <td></td>
-	  
-	  <td><font color= #6495ED>Payment Terms</font> : </td>
-	  <td colspan = "4"></td>	  
-	</tr>	
-	
-	<tr>
-	  <td><font color= #6495ED>Address</font> : </td>	
-	  <td colspan = "4"></td>
-	  <td></td>
-	  
-	  <td><font color= #6495ED>Date Submitted</font> : </td>
-	  <td colspan = "4"></td>
-	</tr>
-	
-	<tr>
-	  <td><font color= #6495ED>City</font> : </td>	
-	  <td colspan = "4"></td>
-	  <td></td>
-	  
-	  <td><font color= #6495ED>Date Required</font> : </td>
-	  <td colspan = "4"></td>	  
-	</tr>
-	
-	<tr>
-	  <td><font color= #6495ED>Phone</font> : </td>	
-	  <td colspan = "4"></td>
-	  <td></td>
-	  
-	  <td><font color= #6495ED>Date Promised</font> : </td>
-	  <td colspan = "4"></td>	  
-	</tr>
-	
-	<tr>
-	  <td><font color= #6495ED>Contact</font> : </td>	
-	  <td colspan = "4"></td>
-	  <td></td>
-	  <td><font color= #6495ED>Buyer</font> : </td>
-	  <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
-	</tr>
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Vendor</th>
+	 </tr> 
+	 <tbody>
+		 <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
+	 </tbody>	 
 </table>
+	
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Address</th>
+	  <th bgcolor="#A9F5F2">City</th>
+	  <th bgcolor="#A9F5F2">Phone</th>
+	  <th bgcolor="#A9F5F2">Contact</th>
+	 </tr> 
+	 <tbody>
+		 <td colspan = "4"></td>
+		 <td></td>
+		 <td></td>
+		 <td></td>
+	 </tbody>	 
+</table>
+
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Payment Terms</th>
+	  <th bgcolor="#A9F5F2">Date Submitted</th>
+	  <th bgcolor="#A9F5F2">Date Required</th>
+	  <th bgcolor="#A9F5F2">Date Promised</th>
+	 </tr> 
+	 <tbody>
+		 <td></td>
+		 <td></td>
+		 <td></td>
+		 <td></td>
+	 </tbody>	 
+</table>
+
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Buyer</th>
+	 </tr> 
+	 <tbody>
+		 <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
+	 </tbody>	 
+</table>
+<br />
+
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Comment</th>
+	 </tr> 
+	 <tbody>
+		 <td><textarea cols="80" rows="8" id="" name=""></textarea></td>
+	 </tbody>
+<table>	
 
 <br />
 	 
@@ -55,6 +67,7 @@
 	  <th bgcolor="#A9F5F2">Lead Time</th>
 	  <th bgcolor="#A9F5F2">Product</th>
 	  <th bgcolor="#A9F5F2">Assemblies</th>
+	  <th bgcolor="#A9F5F2">KanBan</th>
       <th bgcolor="#A9F5F2">Order Qty</th>
       <th bgcolor="#A9F5F2">Line amount</th>
       <th></th>
@@ -69,6 +82,7 @@
 		<td><%= order.lead_time %></td>
 		<td><%= order.product %></td>
 		<td><%= order.project_id %></td>
+		<td><%= order.kanban %></td>
         <td><%= order.ord_line_qty %></td>
         <td><%= order.ord_line_amount %></td>
       </tr>
@@ -78,4 +92,15 @@
 
 <br>
 
-<%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %>  <%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %>   <%= link_to image_tag("backward_icon.png"), orders_path %>
+<table>
+	<tr>
+	 <td> Approve</td>	
+	 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
+
+	 <td> Decline</td>	
+	 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
+
+	 <td> Return</td>	
+	 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
+	</tr>
+</table>	

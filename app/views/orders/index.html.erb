@@ -18,7 +18,9 @@
 	<tr>
 	 <%= form_tag orders_path, :method => 'get' do %>
 	   <p>
-	     Search PO Number : <%= text_field_tag :search, params[:search] %>
+	     Search By : 
+ 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
+		 <%= text_field_tag :search, params[:search] %>
 	     <%= submit_tag "Search", :name => nil %>
 	   </p>
 	 <% end %>	
@@ -28,6 +30,7 @@
   <thead>
     <tr>
       <th bgcolor="#A9F5F2"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
+	  <th bgcolor="#A9F5F2"><%= link_to "Project", :sort =>  "project_name" %></th>
       <th bgcolor="#A9F5F2"><%= link_to "Vendor Name", :sort =>  "vendor_name" %></th>
 	  <th bgcolor="#A9F5F2"><%= link_to "Customer Name", :sort =>  "customer_name" %></th>
 	  <th bgcolor="#A9F5F2">Total amount</th>
@@ -41,13 +44,14 @@
     <% @orders.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
         <td><%= order.ref_number %></td>
+		<td><%= order.project_name %></td>
         <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
 		<td><%= order.customer_name %></td>
 		<td><%= order.total_amount %></td>
 		<td><%= order.expected_date %></td>
         <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
-		<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f%></td>
-				<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f %></td>
+		<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
+				<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
       </tr>
     <% end %>
   </tbody>

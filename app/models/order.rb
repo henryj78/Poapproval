@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   scope :find_order, lambda {|id| where(:id => id)}
   scope :red, -> { where(ref_number: '1063796') }
   scope :desc, -> { order('expected_date DESC') } 
+  scope :asc, -> { order('expected_date ASC') } 
   scope :ord_api_desc, -> { order('ref_number DESC') } 
   scope :ord_api_asc, -> { order('ref_number ASC') } 
   
@@ -75,9 +76,33 @@ def self.to_csv(options = {})
  
  def self.search(search)
    if search
-     find(:all, :conditions => ['ref_number LIKE ?', "%#{search}%"])
+      find(:all, :conditions => ['ref_number LIKE ?', "%#{search}%"])
    else
      find(:all)
    end
  end# end of search 
+ 
+ def self.search_project(search)
+   if search
+      find(:all, :conditions => ['project_name LIKE ?', "%#{search}%"])
+   else
+     find(:all)
+   end
+ end# end of search project
+ 
+ def self.search_vendor(search)
+   if search
+      find(:all, :conditions => ['vendor_name LIKE ?', "%#{search}%"])
+   else
+     find(:all)
+   end
+ end# end of vendor name
+ 
+ def self.search_customer(search)
+   if search
+      find(:all, :conditions => ['customer_name LIKE ?', "%#{search}%"])
+   else
+     find(:all)
+   end
+ end# end of Customer
 end
