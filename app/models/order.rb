@@ -3,6 +3,8 @@ class Order < ActiveRecord::Base
   scope :find_order, lambda {|id| where(:id => id)}
   scope :red, -> { where(ref_number: '1063796') }
   scope :desc, -> { order('expected_date DESC') } 
+  scope :ord_api_desc, -> { order('ref_number DESC') } 
+  scope :ord_api_asc, -> { order('ref_number ASC') } 
   
   
   def self.import(file, name)

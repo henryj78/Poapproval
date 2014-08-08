@@ -3,15 +3,23 @@ module Api
     class OrdersController < ApplicationController
       #http_basic_authenticate_with name: "Admin", password: "secret"
       respond_to :json
-
+      
+      
       def index
        #/api/v1/orders?amount= ...
        storage = Array.new  
        params[:amount]
-       Order.where(:is_manually_closed => '0').each do |z|
+       params[:sort]
+       
+        @get_ord = Order.where(:is_manually_closed => '0')
+       
+       @get_ord.each do |z|
          storage << z if z.total_amount.to_f <= params[:amount].to_f
        end#do loop
-        respond_with storage
+       
+          
+        respond_with storage.sort_by{|e| e[:ref_number]} if params[:sort].to_i == 0 || params[:sort].nil?
+        respond_with storage.sort_by{|e| e[:ref_number]}.reverse if params[:sort].to_i == 1
       end
       
       def submit_approval
@@ -59,15 +67,27 @@ module Api
       end#submit_approval      
         
       def approved #report
-        respond_with Order.where(:is_manually_closed => '1', :is_fully_received => nil )
+        storage = Array.new  
+        params[:sort]
+        storage =  Order.where(:is_manually_closed => '1', :is_fully_received => nil )
+        respond_with storage.sort_by{|e| e[:ref_number]} if params[:sort].to_i == 0 || params[:sort].nil?
+        respond_with storage.sort_by{|e| e[:ref_number]}.reverse if params[:sort].to_i == 1
       end
   
       def received #report
-        respond_with Order.where(:is_manually_closed => '1', :is_fully_received => '1')
+        storage = Array.new  
+        params[:sort]
+        storage = Order.where(:is_manually_closed => '1', :is_fully_received => '1')
+        respond_with storage.sort_by{|e| e[:ref_number]} if params[:sort].to_i == 0 || params[:sort].nil?
+        respond_with storage.sort_by{|e| e[:ref_number]}.reverse if params[:sort].to_i == 1
       end
       
       def declined #report
-        respond_with Order.where(:decline => '1')
+        storage = Array.new  
+        params[:sort]
+        storage =  Order.where(:decline => '1')
+        respond_with storage.sort_by{|e| e[:ref_number]} if params[:sort].to_i == 0 || params[:sort].nil?
+        respond_with storage.sort_by{|e| e[:ref_number]}.reverse if params[:sort].to_i == 1
       end
       
       def details #by po number
