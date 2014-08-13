@@ -30,6 +30,7 @@ Poapproval::Application.routes.draw do
       get "decline_rpt"
       get "load_data"
       get "details"
+      get "get_comments"
     end
   end
   

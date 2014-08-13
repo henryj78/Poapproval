@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140808224121) do
+ActiveRecord::Schema.define(version: 20140813134033) do
 
   create_table "buyers", force: true do |t|
     t.string   "phone"
@@ -47,6 +47,9 @@ ActiveRecord::Schema.define(version: 20140808224121) do
     t.string   "terms"
     t.string   "address"
     t.string   "city"
+    t.string   "user_comments"
+    t.string   "decliner_comments"
+    t.string   "memo"
   end
 
   create_table "ordlns", force: true do |t|
@@ -81,6 +84,9 @@ ActiveRecord::Schema.define(version: 20140808224121) do
     t.string   "terms"
     t.string   "address"
     t.string   "city"
+    t.string   "user_comments"
+    t.string   "decliner_comments"
+    t.string   "memo"
   end
 
   create_table "users", force: true do |t|

@@ -54,6 +54,17 @@
 		 <td><textarea cols="80" rows="8" id="" name=""></textarea></td>
 	 </tbody>
 <table>	
+	
+<table>
+    <tr>
+	  <th bgcolor="#A9F5F2">Decline Reason</th>
+	 </tr> 
+	 <tbody>
+		 <td><%= text_area_tag :message_body,@str_get_ref_id.decliner_comments, :size =>"25x10" %></td>
+		 <td>
+		 </td>	 
+	 </tbody>
+<table>		
 
 <br />
 	 
@@ -96,9 +107,10 @@
 	 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
 
 	 <td> Decline</td>	
+	 <!-- <td><%#= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td> -->
 	 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
 
-	 <td> Return</td>	
+	 <td> Back</td>	
 	 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 	</tr>
 </table>	

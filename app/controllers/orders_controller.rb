@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_filter :authenticate
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :destroy]
   before_filter :protect
   helper_method :sort_column, :sort_direction
   
@@ -50,7 +50,7 @@ class OrdersController < ApplicationController
   def edit
      str_approve = Order.find_order(params[:id])
      strApproval = str_approve[0]
-     
+
      if @current_user.first_check.to_i == 1
        strApproval.sub_approval = 1
      else # boss
@@ -58,15 +58,15 @@ class OrdersController < ApplicationController
         strApproval.is_manually_closed = 1
         strApproval.custom_field_status = 1 #Approved
         strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-        strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name      
+        strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name
         msg = "PO approval  was successful."
        else
          strApproval.is_fully_received = 1
          strApproval.custom_field_status = 3 #Received
          strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name         
-         msg = "PO was received successfully." 
-       end      
+         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
+         msg = "PO was received successfully."
+       end
      end # current boss
         
      
@@ -94,16 +94,20 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    respond_to do |format|
-      if @order.update(order_params)
-        UserMailer.poapproval_email('ihenryjackson@gmail.com').deliver
-        format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
-      end
-    end
+    cmt = Order.find(params[:id])
+    cmt.update!(order_profile_parameters)
+    get_comments
+    # respond_to do |format|
+    #   if @order.update(order_params)
+    #     UserMailer.poapproval_email('ihenryjackson@gmail.com').deliver
+    #     format.html { redirect_to @order, notice: 'Order was successfully updated.' }
+    #     format.json { head :no_content }
+    #   else
+    #     format.html { render action: 'edit' }
+    #     format.json { render json: @order.errors, status: :unprocessable_entity }
+    #   end
+    # end
+    redirect_to orders_path
   end
 
   # DELETE /orders/1
@@ -142,17 +146,31 @@ class OrdersController < ApplicationController
   def decline_rpt
     @orders = Order.where(:decline => '1').order(params[:sort])
   end
+  
+  def get_comments
+    @order_decline = Order.find(params[:id])
+    @order_decline.is_manually_closed = 3
+    @order_decline.is_fully_received = 3
+    @order_decline.decline = 1
+    @order_decline.custom_field_status = 2 #decline
+    @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+    @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
+    @order_decline.save
+  end  
+  
     
   def decline
-     @order_decline = Order.find(params[:id])
-     @order_decline.is_manually_closed = 3
-     @order_decline.is_fully_received = 3
-     @order_decline.decline = 1
-     @order_decline.custom_field_status = 2 #decline
-     @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-     @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
-     @order_decline.save
-     redirect_to orders_path
+     @order = Order.find(params[:id])
+     # @order_decline = Order.find(params[:id])
+     # @order_decline.is_manually_closed = 3
+     # @order_decline.is_fully_received = 3
+     # @order_decline.decline = 1
+     # @order_decline.custom_field_status = 2 #decline
+     # @order_decline.decliner_comments = params[:decline_comment]
+     # @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+     # @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
+     # @order_decline.save
+     # redirect_to orders_path
   end
   
   private
@@ -174,5 +192,9 @@ class OrdersController < ApplicationController
     def sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
       #params[:direction] || "asc"
+    end
+    
+    def order_profile_parameters
+      params.require(:order).permit(:date_due, :decliner_comments)
     end
 end
