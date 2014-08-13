@@ -21,7 +21,7 @@ class Order < ActiveRecord::Base
         insert_row.expected_date = row[55]
         insert_row.total_amount = row[59]
         insert_row.is_manually_closed = row[64]
-        insert_row.custom_field_authorized_buyer = row[80]
+        insert_row.custom_field_authorized_buyer = row[162]
         insert_row.vendor_name = row[6]
         insert_row.customer_name = row[106]
         insert_row.address = row[19]
@@ -34,7 +34,7 @@ class Order < ActiveRecord::Base
         
         insert_row = Ordln.new
         insert_row.ref_number = row[17]
-        insert_row.custom_field_authorized_buyer = row[80]
+        insert_row.custom_field_authorized_buyer = row[162]
         insert_row.ord_line_qty = row[96]
         insert_row.ord_line_desc = row[95]
         insert_row.ord_line_rate = row[100]
@@ -55,7 +55,7 @@ class Order < ActiveRecord::Base
      else
        insert_row = Ordln.new
        insert_row.ref_number = row[17]
-       insert_row.custom_field_authorized_buyer = row[80]
+       insert_row.custom_field_authorized_buyer = row[162]
        insert_row.ord_line_qty = row[96]
        insert_row.ord_line_desc = row[95]
        insert_row.ord_line_rate = row[100]
