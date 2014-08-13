@@ -1,80 +1,161 @@
-<h1>Purchase Order Detail Lines</h1>
-<table>
-    <tr>
-	  <th bgcolor="#A9F5F2">Vendor</th>
-	 </tr> 
-	 <tbody>
-		 <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
-	 </tbody>	 
-</table>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>WetDesign</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag    "casting", media: "all", "data-turbolinks-track" => true %>
+<link rel="icon" href="images/icon.ico" />
+</head>
+<body>
+<div id="headerbg">
+  <div id="headerblank">
+    <div id="header">
+      <div id="menu">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="contentbg">
+  <div id="contentblank">
+    <div id="content">
+      <div id="contentleft">
+        <div id="leftheading">
+          <h4>Menu</h4>
+        </div>
+        <div class="lefttxtblank">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Logout', log_out_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">Logs you completely out of application</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Approved', approved_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Approved Item and Receive Items</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Received', received_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Items that have been received</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Declined', decline_rpt_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Items that have been declined</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Buyers', buyers_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">Edit Buyer's phone numbers</div>
+        </div>
+        <div id="leftnav">
+        </div>
+      </div>
+      <div id="contentmid">
+        <div class="midheading">
+          <h2>Purchase Orders</h2>
+        </div>
+		<br />
+		<table>
+		    <tr>
+			  <th bgcolor="#A9F5F2">Vendor</th>
+			 </tr> 
+			 <tbody>
+				 <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
+			 </tbody>	 
+		</table>
 	
-<table>
-    <tr>
-	  <th bgcolor="#A9F5F2">Address</th>
-	  <th bgcolor="#A9F5F2">City</th>
-	  <th bgcolor="#A9F5F2">Phone</th>
-	  <th bgcolor="#A9F5F2">Contact</th>
-	 </tr> 
-	 <tbody>
-		 <td><%= @str_get_ref_id.address %></td>
-		 <td><%= @str_get_ref_id.city %></td>
-		 <td></td>
-		 <td></td>
-	 </tbody>	 
-</table>
+		<table>
+		    <tr>
+			  <th bgcolor="#A9F5F2">Address</th>
+			  <th bgcolor="#A9F5F2">City</th>
+			  <th bgcolor="#A9F5F2">Phone</th>
+			  <th bgcolor="#A9F5F2">Contact</th>
+			 </tr> 
+			 <tbody>
+				 <td><%= @str_get_ref_id.address %></td>
+				 <td><%= @str_get_ref_id.city %></td>
+				 <td></td>
+				 <td></td>
+			 </tbody>	 
+		</table>
 
-<table>
-    <tr>
-	  <th bgcolor="#A9F5F2">Payment Terms</th>
-	  <th bgcolor="#A9F5F2">Date Required</th>
-	  <th bgcolor="#A9F5F2">Date Promised</th>
-	 </tr> 
-	 <tbody>
-		 <td><%= @str_get_ref_id.terms %></td>
-		 <td><%= @str_get_ref_id.date_due %></td>
-		 <td><%= @str_get_ref_id.expected_date %></td>
-	 </tbody>	 
-</table>
+		<table>
+		    <tr>
+			  <th bgcolor="#A9F5F2">Payment Terms</th>
+			  <th bgcolor="#A9F5F2">Date Required</th>
+			  <th bgcolor="#A9F5F2">Date Promised</th>
+			 </tr> 
+			 <tbody>
+				 <td><%= @str_get_ref_id.terms %></td>
+				 <td><%= @str_get_ref_id.date_due %></td>
+				 <td><%= @str_get_ref_id.expected_date %></td>
+			 </tbody>	 
+		</table>
 
-<table>
-    <tr>
-	  <th bgcolor="#A9F5F2">Buyer</th>
-	 </tr> 
-	 <tbody>
-		 <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
-	 </tbody>	 
-</table>
-<br />
-
-<table>
-    <tr>
-	  <th bgcolor="#A9F5F2">Memo</th>
- 	  <th bgcolor="#A9F5F2">Vendor Msg</th>
-	  <th bgcolor="#A9F5F2">Decline Reason</th>
- 	 </tr>
-	 <tbody>
-		 <td><%= text_area_tag :message_memo,@str_get_ref_id.memo, :size =>"25x10" %></td>
- 		 <td><%= text_area_tag :message_memo,@str_get_ref_id.user_comments, :size =>"25x10" %></td>
-		 <td><%= text_area_tag :message_body,@str_get_ref_id.decliner_comments, :size =>"25x10" %></td>
- 	 </tbody>
-<table>	
-
-<br />
+		<table>
+		    <tr>
+			  <th bgcolor="#A9F5F2">Buyer</th>
+			 </tr> 
+			 <tbody>
+				 <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
+			 </tbody>	 
+		</table>
+		
+		<br />
+		<table>
+		    <tr>
+			  <th bgcolor="#A9F5F2">Memo</th>
+		 	  <th bgcolor="#A9F5F2">Vendor Msg</th>
+			  <th bgcolor="#A9F5F2">Decline Reason</th>
+		 	 </tr>
+			 <tbody>
+				 <td><%= text_area_tag :message_memo,@str_get_ref_id.memo, :size =>"25x10" %></td>
+		 		 <td><%= text_area_tag :message_memo,@str_get_ref_id.user_comments, :size =>"25x10" %></td>
+				 <td><%= text_area_tag :message_body,@str_get_ref_id.decliner_comments, :size =>"25x10" %></td>
+		 	 </tbody>
+		<table>
+			<br />
+		<table>
+			<tr>
+				<%#= form_tag import_orders_path, multipart: true do %>
+				<%#= file_field_tag :file %>
+			   <p> <%#= text_field_tag "subject" %></p>
+			   <%#= submit_tag "Import CSV" %>
+			 <%# end %>	
 	 
-<table>
-  <thead>
-    <tr>
-	  <th bgcolor="#A9F5F2">Customer</th>	
-      <th bgcolor="#A9F5F2">Description</th>
-	  <th bgcolor="#A9F5F2">Lead Time</th>
-	  <th bgcolor="#A9F5F2">Product</th>
-	  <th bgcolor="#A9F5F2">Assemblies</th>
-	  <th bgcolor="#A9F5F2">KanBan</th>
-      <th bgcolor="#A9F5F2">Order Qty</th>
-      <th bgcolor="#A9F5F2">Line amount</th>
-      <th></th>
-    </tr>
-  </thead>
+			</tr>
+		</table>	
+		
+		<table>
+		  <thead>
+		    <tr>
+			  <th bgcolor="#FFE87C">Customer</th>	
+		      <th bgcolor="#FFE87C">Description</th>
+			  <th bgcolor="#FFE87C">Lead Time</th>
+			  <th bgcolor="#FFE87C">Product</th>
+			  <th bgcolor="#FFE87C">Assemblies</th>
+			  <th bgcolor="#FFE87C">KanBan</th>
+		      <th bgcolor="#FFE87C">Order Qty</th>
+		      <th bgcolor="#FFE87C">Line amount</th>
+		      <th></th>
+		    </tr>
+		  </thead>
 
   <tbody>
     <% @orderln.each do |order| %>
@@ -90,21 +171,27 @@
       </tr>
     <% end %>
   </tbody>
-</table>
+		</table>
+		<br />
+		<table>
+			<tr>
+			 <%if @current_user.amount.to_f > 0 %>	
+			 <td> Approve</td>	
+			 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
 
-<br>
-
-<table>
-	<tr>
-	 <%if @current_user.amount.to_f > 0 %>	
-	 <td> Approve</td>	
-	 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
-
-	 <td> Decline</td>	
-	 <!-- <td><%#= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td> -->
-	 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
-     <% end %>
-	 <td> Back</td>	
-	 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
-	</tr>
-</table>	
+			 <td> Decline</td>	
+			 <!-- <td><%#= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td> -->
+			 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
+		     <% end %>
+			 <td> Back</td>	
+			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
+			</tr>
+		</table>
+      <div id="contentright">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
