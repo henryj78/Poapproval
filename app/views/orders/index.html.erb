@@ -1,61 +1,132 @@
-
-<h1>Purchase Orders</h1>
-    <%= link_to 'Logout', log_out_path %>
-	<%= link_to 'Approved', approved_orders_path %>
-	<%= link_to 'Received', received_orders_path %>
-	<%= link_to 'Declined', decline_rpt_orders_path %>
-	<%= link_to 'Buyers', buyers_path %>
-	
-	<div id="notice"><%=flash[:notice]%></div>
-	<tr>
-		<%= form_tag import_orders_path, multipart: true do %>
-		<%= file_field_tag :file %>
-	   <p> <%= text_field_tag "subject" %></p>
-	   <%= submit_tag "Import CSV" %>
-	 <% end %>	
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>WetDesign</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<%= stylesheet_link_tag    "casting", media: "all", "data-turbolinks-track" => true %>
+<link rel="icon" href="images/icon.ico" />
+</head>
+<body>
+<div id="headerbg">
+  <div id="headerblank">
+    <div id="header">
+      <div id="menu">
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="contentbg">
+  <div id="contentblank">
+    <div id="content">
+      <div id="contentleft">
+        <div id="leftheading">
+          <h4>Menu</h4>
+        </div>
+        <div class="lefttxtblank">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Logout', log_out_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">Logs you completely out of application</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Approved', approved_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Approved Item and Receive Items</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Received', received_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Items that have been received</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Declined', decline_rpt_orders_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">View Items that have been declined</div>
+        </div>
+        <div class="lefttxtblank02">
+          <div class="lefticon">16</div>
+          <div class="leftboldtxtblank">
+            <div class="leftboldtxt"><%= link_to 'Buyers', buyers_path %></div>
+            <div class="lefttxt">Wednesday August 6 2014</div>
+          </div>
+          <div class="leftnormaltxt">Edit Buyer's phone numbers</div>
+        </div>
+        <div id="leftnav">
+        </div>
+      </div>
+      <div id="contentmid">
+        <div class="midheading">
+          <h2>Purchase Orders</h2>
+        </div>
+		<br />
+		<table>
+			<tr>
+				<%#= form_tag import_orders_path, multipart: true do %>
+				<%#= file_field_tag :file %>
+			   <p> <%#= text_field_tag "subject" %></p>
+			   <%#= submit_tag "Import CSV" %>
+			 <%# end %>	
 	 
-	</tr>
-	<tr>
-	 <%= form_tag orders_path, :method => 'get' do %>
-	   <p>
-	     Search By : 
- 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
-		 <%= text_field_tag :search, params[:search] %>
-	     <%= submit_tag "Search", :name => nil %>
-	   </p>
-	 <% end %>	
-	</tr>
-	
-<table>
-  <thead>
-    <tr>
-      <th bgcolor="#A9F5F2"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
-	  <th bgcolor="#A9F5F2"><%= link_to "Project", :sort =>  "project_name" %></th>
-      <th bgcolor="#A9F5F2"><%= link_to "Vendor Name", :sort =>  "vendor_name" %></th>
-	  <th bgcolor="#A9F5F2"><%= link_to "Customer Name", :sort =>  "customer_name" %></th>
-	  <th bgcolor="#A9F5F2">Total amount</th>
-	  <th bgcolor="#A9F5F2"><%= link_to "Expected Date", :sort =>  "expected_date"  %></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+			</tr>
+			<tr>
+			 <%= form_tag orders_path, :method => 'get' do %>
+			   <p>
+			     Search By : 
+		 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
+				 <%= text_field_tag :search, params[:search] %>
+			     <%= submit_tag "Search", :name => nil %>
+			   </p>
+			 <% end %>	
+			</tr>
+		</table>	
+		
+		<table>
+		  <thead>
+		    <tr>
+		      <th bgcolor="#FFE87C"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
+			  <th bgcolor="#FFE87C"><%= link_to "Project", :sort =>  "project_name" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Vendor Name", :sort =>  "vendor_name" %></th>
+			  <th bgcolor="#FFE87C"><%= link_to "Customer Name", :sort =>  "customer_name" %></th>
+			  <th bgcolor="#FFE87C">Total amount</th>
+			  <th bgcolor="#FFE87C"><%= link_to "Expected Date", :sort =>  "expected_date"  %></th>
+		      <th></th>
+		      <th></th>
+		    </tr>
+		  </thead>
 
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr class="<%= cycle("even", "odd") %>">
-        <td><%= order.ref_number %></td>
-		<td><%= order.project_name %></td>
-        <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
-		<td><%= order.customer_name %></td>
-		<td><%= order.total_amount %></td>
-		<td><%= order.expected_date %></td>
-        <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
-		<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
-				<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<%#= link_to 'New Order', new_order_path %>
+		  <tbody>
+		    <% @orders.each do |order| %>
+		      <tr class="<%= cycle("even", "odd") %>">
+		        <td><%= order.ref_number %></td>
+				<td><%= order.project_name %></td>
+		        <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
+				<td><%= order.customer_name %></td>
+				<td><%= order.total_amount %></td>
+				<td><%= order.expected_date %></td>
+		        <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
+				<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
+						<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
+      <div id="contentright">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>
