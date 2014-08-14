@@ -95,7 +95,10 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     cmt = Order.find(params[:id])
+    strcmt = cmt.decliner_comments 
     cmt.update!(order_profile_parameters)
+    cmt.decliner_comments = strcmt + " - " + cmt.decliner_comments 
+    cmt.save
     get_comments
     # respond_to do |format|
     #   if @order.update(order_params)
