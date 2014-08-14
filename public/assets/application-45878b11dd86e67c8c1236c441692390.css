@@ -1,0 +1,2754 @@
+@charset "utf-8";/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+
+
+ */
+/*.flash-message {
+  &.error {
+    border: solid 4px #900;
+          background-color: #FF6565;
+        }
+  &.notice {
+    border: solid 4px #26722D;
+          background-color: #A4E7A0;
+        }
+  color: black;
+  z-index: 999;
+  position: fixed;
+  font-weight: bold;
+  width: 96%;
+  margin: 20px;
+        p {
+                font-size: 110%;
+                margin: 15px 0;
+        }
+}
+
+.odd{
+
+  background:#dedede;
+
+}
+
+a:link {
+	color: #6495ED;
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #FF0000;
+}
+a:hover {
+	text-decoration: none;
+	color: #6495ED;
+}
+a:active {
+	text-decoration: none;
+	color: #6495ED;
+
+}
+*/
+
+/**********************************************************************/
+
+
+
+
+/* CSS Document */
+
+.flash-message {
+  &.error {
+    border: solid 4px #900;
+          background-color: #FF6565;
+        }
+  &.notice {
+    border: solid 4px #26722D;
+          background-color: #A4E7A0;
+        }
+	}
+body
+	{
+		margin:0px;
+		padding:0px;
+		background-color:#f4e7bd;
+	}
+h1,h2,h3,h4,h5,h6,span
+	{
+		margin:0px;
+		padding:0px;
+	}
+#headerbg
+	{
+		width:100%;
+		height:309px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image: url(headerbg.jpg);
+		background-repeat:repeat-x;
+	}
+#headerblank
+	{
+		width:1004px;
+		height:309px;
+		float: none;
+		margin:0 auto;
+		padding:0px;
+	}
+#header
+	{
+		width:1004px;
+		height:309px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		background-image:url(HD.jpg);
+		background-repeat:no-repeat;
+	}
+#menu
+	{
+		width:385px;
+		height:33px;
+		float: right;
+		margin:133px 51px 0 0;
+		padding:0px;
+	}
+#menu ul
+	{
+		width:385px;
+		height:33px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		display:block;
+	}
+#menu ul li
+	{
+		width:76px;
+		height:33px;
+		float:left;
+		margin:0 1px 0 0;
+		padding:0px;
+		display:block;		
+	}
+#menu ul li a.menu
+	{
+		width:76px;
+		height:26px;
+		float:left;
+		margin:0px;
+		padding:7px 0 0 0;
+		font-family:Arial;
+		font-size:13px;
+		font-weight:bold;
+		color:#FFF;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(images/menu.jpg);
+		background-repeat:no-repeat;
+	}	
+#menu ul li a.menu:hover
+	{
+		width:76px;
+		height:26px;
+		float:left;
+		margin:0px;
+		padding:7px 0 0 0;
+		font-family:Arial;
+		font-size:13px;
+		font-weight:bold;
+		color:#FFF;
+		text-align:center;
+		text-decoration:none;
+		background-image: url(images/menuover.jpg);
+		background-repeat:no-repeat;		
+	}
+#login
+	{
+		width:649px;
+		height:106px;
+		float: right;
+		margin:35px 53px 0 0;
+		padding:0px;
+		background-image:url(loginbg.jpg);
+		background-repeat:no-repeat;
+	}
+#logintxtblank
+	{
+		width:622px;
+		height:89px;
+		float: left;
+		margin:0px;
+		padding:17px 0 0 27px;
+	}
+#loginheading
+	{
+		width:622px;
+		height:21px;
+		float: left;
+		margin:0 0 8px 0;
+		padding:0px;
+		font-family:Georgia;
+		font-size:20px;
+		color:#000;
+	}
+#loginheading h4
+	{
+		width:622px;
+		height:21px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:20px;
+		font-weight:normal;
+		color:#000;
+	}
+#username
+	{
+		width:65px;
+		height:14px;
+		float: left;
+		margin:0px;
+		padding:7px 0 0 0;
+		font-family:Arial;
+		font-size:10px;
+		color:#95844d;
+	}
+#input
+	{
+		width:197px;
+		height:21px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Arial;
+		font-size:10px;
+		color:#95844d;
+	}
+#password
+	{
+		width:52px;
+		height:14px;
+		float:left;
+		margin:0px;
+		padding:7px 0 0 23px;
+		font-family:Arial;
+		font-size:10px;
+		color:#95844d;
+	}
+#input02
+	{
+		width:197px;
+		height:21px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Arial;
+		font-size:10px;
+		color:#95844d;
+	}
+.input
+	{
+		width:181px;
+		height:17px;
+		float: left;
+		margin:0px;
+		padding:4px 0 0 16px;
+		font-family:Arial;
+		font-size:10px;
+		color:#95844d;
+		border:solid 1px #ead28b;
+		background-color:#ead28b;
+	}
+#loginbutton
+	{
+		width:50px;
+		height:23px;
+		float:left;
+		margin:0 0 0 20px;
+		padding:0px;
+	}
+.login
+	{
+		width:50px;
+		height:19px;
+		float:left;
+		margin:0px;
+		padding:4px 0 0 0;
+		font-family:Arial;
+		font-size:10px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(images/login.jpg);
+		background-repeat:no-repeat;
+	}
+.login:hover
+	{
+		width:50px;
+		height:19px;
+		float:left;
+		margin:0px;
+		padding:4px 0 0 0;
+		font-family:Arial;
+		font-size:10px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image: url(images/loginover.jpg);
+		background-repeat:no-repeat;
+	}
+#member
+	{
+		width:135px;
+		height:14px;
+		float: left;
+		margin:9px 0 0 0;
+		padding:0px;
+		font-family: Arial;
+		font-size:13px;
+		color:#ab8e4e;
+	}
+#register
+	{
+		width:200px;
+		height:14px;
+		float: left;
+		margin:9px 0 0 0;
+		padding:0px;
+		font-family: Arial;
+		font-size:13px;
+		color:#943415;
+	}
+.register
+	{
+		font-family: Arial;
+		font-size:13px;
+		color:#943415;
+		text-decoration:none;
+	}
+.register:hover
+	{
+		font-family: Arial;
+		font-size:13px;
+		color:#943415;
+		text-decoration: underline;
+	}	
+	
+#contentbg
+	{
+		width:100%;
+		float:left;
+		margin:0px;
+		padding:0px;
+	}
+#contentblank
+	{
+		width:1004px;
+		float: none;
+		margin:0 auto;
+		padding:0px;
+	}		
+#content
+	{
+		width:1004px;
+		float: left;
+		margin:0px;
+		padding:0px;
+	}
+#contentleft
+	{
+		width:215px;
+		float: left;
+		margin:0px;
+		padding:34px 0 33px 52px;
+	}
+#leftheading
+	{
+		width:216px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		color:#7e8901;
+	}
+#leftheading h4
+	{
+		width:216px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		font-weight:normal;
+		color:#7e8901;
+	}
+.lefttxtblank
+	{
+		width:195px;
+		height:77px;
+		float: left;
+		margin:20px 0 0 0;
+		padding:0px;
+	}
+.lefttxtblank02
+	{
+		width:195px;
+		height:77px;
+		float: left;
+		margin:33px 0 0 0;
+		padding:0px;
+	}
+.lefticon
+	{
+		width:36px;
+		height:28px;
+		float: left;
+		margin:0px;
+		padding:6px 0 0 0;
+		font-family:Arial;
+		font-size:11px;
+		color:#FFF;
+		text-align:center;
+		background-image:url(lefticon.jpg);
+		background-repeat:no-repeat;
+	}
+.leftboldtxtblank
+	{
+		width:150px;
+		height:34px;
+		float: left;
+		margin:0px;
+		padding:0 0 0 9px;
+	}
+.leftboldtxt
+	{
+		width:147px;
+		height:13px;
+		float: left;
+		margin:0px;
+		padding:0 0 0 3px;
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#b22d00;
+	}
+.lefttxt
+	{
+		width:132px;
+		height:13px;
+		float:left;
+		margin:0px;
+		padding:0 0 0 18px;
+		font-family:Arial;
+		font-size:9px;
+		font-weight: normal;
+		color:#464646;
+		background-image:url(images/lefttxtbg.jpg);
+		background-repeat:no-repeat;
+	}
+.leftnormaltxt
+	{
+		width:194px;
+		float:left;
+		margin:4px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		font-weight: normal;
+		color:#464646;
+	}
+.morebutton
+	{
+		width:194px;
+		float:left;
+		margin:7px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		font-weight: normal;
+		color:#464646;
+	}
+.more
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight: normal;
+		color:#a5122a;
+		text-decoration:none;
+	}
+.more:hover
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight: normal;
+		color:#a5122a;
+		text-decoration: underline;
+	}
+#leftnavheading
+	{
+		width:216px;
+		float: left;
+		margin:35px 0 0 0;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		color:#7e8901;
+	}
+#leftnavheading h4
+	{
+		width:216px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		font-weight:normal;
+		color:#7e8901;
+	}
+#leftnav
+	{
+		width:194px;
+		float: left;
+		margin:0px;
+		padding:0px;
+	}
+#leftnav ul
+	{
+		width:194px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		display:block;
+	}
+#leftnav ul li
+	{
+		width:194px;
+		height:21px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		display:block;		
+	}
+#leftnav ul li a.leftnav
+	{
+		width:175px;
+		height:18px;
+		float: left;
+		margin:0px;
+		padding:3px 0 0 19px;
+		font-family:Arial;
+		font-size:12px;
+		font-weight: normal;
+		color:#464646;
+		text-decoration:none;
+		background-image:url(images/leftnavactive.jpg);
+		background-repeat:no-repeat;
+	}
+#leftnav ul li a.leftnav:hover
+	{
+		width:175px;
+		height:18px;
+		float: left;
+		margin:0px;
+		padding:3px 0 0 19px;
+		font-family:Arial;
+		font-size:12px;
+		font-weight: bold;
+		color:#b22d00;
+		text-decoration:none;		
+		background-image:url(images/leftnavactive.jpg);
+		background-repeat:no-repeat;
+	}
+#leftnav ul li a.leftnavbot
+	{
+		width:175px;
+		height:18px;
+		float: left;
+		margin:0px;
+		padding:3px 0 0 19px;
+		font-family:Arial;
+		font-size:12px;
+		font-weight: normal;
+		color:#464646;
+		text-decoration:none;		
+		background-image:url(images/leftnavbot.jpg);
+		background-repeat:no-repeat;
+	}
+#leftnav ul li a.leftnavbot:hover
+	{
+		width:175px;
+		height:18px;
+		float: left;
+		margin:0px;
+		padding:3px 0 0 19px;
+		font-family:Arial;
+		font-size:12px;
+		font-weight: bold;
+		color:#b22d00;
+		text-decoration:none;		
+		background-image:url(images/leftnavbot.jpg);
+		background-repeat:no-repeat;
+	}
+	
+#contentmid
+	{
+		width:435px;
+		float:left;
+		margin:0px;
+		padding:34px 0 33px 34px;
+		background-image:url(images/vline.jpg);
+		background-repeat:repeat-y;
+	}
+.midheading
+	{
+		width:435px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:28px;
+		color:#7e8901;
+	}
+.midheading h2
+	{
+		width:435px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:28px;
+		font-weight:normal;
+		color:#7e8901;
+	}
+.midtxt
+	{
+		width:400px;
+		float: left;
+		margin:22px 0 0 0;
+		padding:0px;
+		font-family: Arial;
+		font-size:12px;
+		color:#464646;
+	}
+.midboldtxt
+	{
+		font-family: Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#b22d00;
+	}
+#comments
+	{
+		width:400px;
+		height:25px;
+		float: left;
+		margin:22px 0 44px 0;
+		padding:0px;
+		background-image:url(images/commentsbg.jpg);
+		background-repeat:no-repeat;
+	}
+#addcomments
+	{
+		width:82px;
+		height:17px;
+		float: left;
+		margin:0px;
+		padding:7px 0 0 34px;
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+	}
+.addcomments
+	{
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+		text-decoration:none;
+	}
+.addcomments:hover
+	{
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+		text-decoration: underline;
+	}
+#morecomments
+	{
+		width:72px;
+		height:17px;
+		float: left;
+		margin:0px;
+		padding:7px 0 0 28px;
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+	}
+.morecomments
+	{
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+		text-decoration:none;
+	}
+.morecomments:hover
+	{
+		font-family: Arial;
+		font-size:11px;
+		color:#8b2c00;
+		text-decoration: underline;
+	}
+.projectheading
+	{
+		font-family:Georgia;
+		font-size:12px;
+		color:#c0943c;
+		padding:0 0 0 14px;
+	}
+#projectbg
+	{
+		width:401px;
+		height:158px;
+		float:left;
+		margin:18px 0 34px 0;
+		padding:0px;
+		background-image:url(projectbg.jpg);
+		background-repeat:no-repeat;
+	}
+#projectthumnail
+	{
+		width:130px;
+		height:117px;
+		float:left;
+		margin:15px 0 0 15px;
+		padding:0px;
+		border:solid 3px #ebd693;
+		background-image: url(projectthumnail.jpg);
+		background-repeat:no-repeat;
+	}
+#projecttxtblank
+	{
+		width:219px;
+		float:left;
+		margin:15px 0 0 0;
+		padding:20px 0 0 0;
+	}
+#projecttxt
+	{
+		width:206px;
+		float:left;
+		margin:0px;
+		padding:0 0 0 13px;
+		font-family:Arial;
+		font-size:12px;
+		color:#464646;
+	}
+.projectboldtxt
+	{
+		font-family:Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#853008;
+	}
+#moreproject
+	{
+		width:194px;
+		float:left;
+		margin:0px;
+		padding:5px 0 0 25px;
+	}
+.moreproject
+	{
+		font-family:Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#464646;
+		text-decoration:none;
+	}
+.moreproject:hover
+	{
+		font-family:Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#464646;
+		text-decoration: underline;
+	}
+#purposetxt
+	{
+		width:399px;
+		float:left;
+		margin:20px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:12px;
+		color:#464646;
+	}
+#purposenav
+	{
+		width:435px;
+		float:left;
+		margin:0px;
+		padding:14px 0 0 0;
+	}
+#purposenav ul
+	{
+		width:188px;
+		float:left;
+		margin:0 24px 0 0;
+		padding:0px;
+		display:block;		
+	}
+#purposenav ul li
+	{
+		width:188px;
+		height:21px;
+		float:left;
+		margin:8px 0 0 0;
+		padding:0px;
+		display:block;
+	}
+#purposenav ul li a.purposenav
+	{
+		width:168px;
+		height:18px;
+		float:left;
+		margin:0px;
+		padding:3px 0 0 20px;
+		font-family:Arial;
+		font-size:11px;
+		color:#c17305;
+		text-decoration:none;
+		background-image:url(purposeactive.jpg);
+		background-repeat:no-repeat;
+	}
+#purposenav ul li a.purposenav:hover
+	{
+		width:168px;
+		height:18px;
+		float:left;
+		margin:0px;
+		padding:3px 0 0 20px;
+		font-family:Arial;
+		font-size:11px;
+		color:#c17305;
+		text-decoration:none;
+		background-image: url(purposeover.jpg);
+		background-repeat:no-repeat;
+	}
+	
+#contentright
+	{
+		width:180px;
+		float: left;
+		margin:0px;
+		padding:34px 0 40px 34px;
+		background-image:url(vline.jpg);
+		background-repeat:repeat-y;
+	}
+.rightheading
+	{
+		width:180px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		color:#7e8901;
+	}
+.rightheading h4
+	{
+		width:180px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family:Georgia;
+		font-size:22px;
+		font-weight:normal;
+		color:#7e8901;
+	}
+#galleryblank
+	{
+		width:180px;
+		float:left;
+		margin:21px 0 0 0;
+		padding:0px;
+	}
+#rightpic
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+	}
+.rightpic
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic.jpg);
+		background-repeat:no-repeat;
+	}
+.rightpic:hover
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic.jpg);
+		background-repeat:no-repeat;
+	}
+#rightpic02
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:13px 0 0 0;
+		padding:0px;
+	}
+.rightpic02
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic02.jpg);
+		background-repeat:no-repeat;
+	}
+.rightpic02:hover
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic02.jpg);
+		background-repeat:no-repeat;
+	}
+
+#rightpic03
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:13px 0 0 0;
+		padding:0px;
+	}
+.rightpic03
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic03.jpg);
+		background-repeat:no-repeat;
+	}
+.rightpic03:hover
+	{
+		width:180px;
+		height:68px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(rightpic03.jpg);
+		background-repeat:no-repeat;
+	}
+.viewbutton
+	{
+		width:68px;
+		height:19px;
+		float:left;
+		margin:16px 0 36px 0;
+		padding:0px;
+	}
+.viewbuttonbot
+	{
+		width:68px;
+		height:19px;
+		float:left;
+		margin:16px 0 0 0;
+		padding:0px;
+	}	
+.view
+	{
+		width:68px;
+		height:16px;
+		float:left;
+		margin:0px;
+		padding:3px 0 0 0;
+		font-family: Arial;
+		font-size:9px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(viewmore.jpg);
+		background-repeat:no-repeat;
+	}
+.view:hover
+	{
+		width:68px;
+		height:16px;
+		float:left;
+		margin:0px;
+		padding:3px 0 0 0;
+		font-family: Arial;
+		font-size:9px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image: url(viewmoreover.jpg);
+		background-repeat:no-repeat;
+	}
+.righttxt
+	{
+		width:177px;
+		float:left;
+		margin:21px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:12px;
+		color:#464646;
+	}
+.rightboldtxt
+	{
+		font-family:Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#b22d00;
+	}
+	
+#footerbg
+	{
+		width:100%;
+		height:354px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(footerbg.jpg);
+		background-repeat:repeat-x;
+	}
+#footerblank
+	{
+		width:1004px;
+		height:354px;
+		float:none;
+		margin:0 auto;
+		padding:0px;
+	}
+#footer
+	{
+		width:858px;
+		height:313px;
+		float:left;
+		margin:0px;
+		padding:41px 0 0 146px;
+		background-image:url(footer.jpg);
+		background-repeat:no-repeat;
+	}
+#footerbox
+	{
+		width:215px;
+		height:168px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(footerbox.jpg);
+		background-repeat:no-repeat;
+	}
+#footermid
+	{
+		width:215px;
+		height:168px;
+		float:left;
+		margin:0 35px 0 35px;
+		padding:0px;
+		background-image:url(footerbox.jpg);
+		background-repeat:no-repeat;
+	}
+#footerlast
+	{
+		width:215px;
+		height:168px;
+		float:left;
+		margin:0px;
+		padding:0px;
+		background-image:url(footerbox.jpg);
+		background-repeat:no-repeat;
+	}
+.footerheading
+	{
+		width:215px;
+		height:21px;
+		float: left;
+		margin:28px 0 0 0;
+		padding:0px;
+		font-family: Arial;
+		font-size:24px;
+		color:#f4e7bd;
+	}
+.footerheading h4
+	{
+		width:215px;
+		height:21px;
+		float: left;
+		margin:0px;
+		padding:0px;
+		font-family: Arial;
+		font-size:24px;
+		font-weight:normal;
+		color:#f4e7bd;
+		text-align:center;
+	}
+.footertxt
+	{
+		width:184px;
+		float: left;
+		margin:17px 0 0 16px;
+		padding:0px;
+		font-family:Arial;
+		font-size:12px;
+		font-weight:bold;
+		color:#FFF;
+		text-align:center;
+	}
+.footerbutton
+	{
+		width:68px;
+		height:19px;
+		float: left;
+		margin:15px 0 0 73px;
+		padding:0px;
+	}
+.button
+	{
+		width:68px;
+		height:15px;
+		float: left;
+		margin:0px;
+		padding:4px 0 0 0;
+		font-family:Arial;
+		font-size:9px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(footerbutton.jpg);
+		background-repeat:no-repeat;
+	}
+.button:hover
+	{
+		width:68px;
+		height:15px;
+		float: left;
+		margin:0px;
+		padding:4px 0 0 0;
+		font-family:Arial;
+		font-size:9px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image: url(footerover.jpg);
+		background-repeat:no-repeat;
+	}
+#footerlinks
+	{
+		width:715px;
+		float:left;
+		margin:25px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#ee7e1f;
+		text-align:center;
+		text-decoration:none;
+	}
+.footerlinks
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#ee7e1f;
+		text-align:center;
+		text-decoration:none;
+		padding:0 3px 0 3px;
+	}
+.footerlinks:hover
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#ee7e1f;
+		text-align:center;
+		text-decoration: underline;
+		padding:0 3px 0 3px;		
+	}
+#copyrights
+	{
+		width:715px;
+		float:left;
+		margin:5px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		color:#401400;
+		text-align:center;
+	}
+#designedby
+	{
+		width:715px;
+		float:left;
+		margin:5px 0 0 0;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#401400;
+		text-align:center;
+	}
+.designedby
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#ee7e1f;
+		text-align:center;
+		text-decoration:none;
+	}
+.designedby:hover
+	{
+		font-family:Arial;
+		font-size:11px;
+		font-weight:bold;
+		color:#ee7e1f;
+		text-align:center;
+		text-decoration:underline;
+		}
+
+#validation
+	{
+		width:422px;
+		float:left;
+		margin:5px 0 0 0;
+		padding:0 0 0 293px;
+	}
+.xhtml
+	{
+		width:66px;
+		height:17px;
+		float: left;
+		margin:0px;
+		padding:1px 0 0 0;
+		font-family:Arial;
+		font-size:11px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(xhtml.jpg);
+		background-repeat:no-repeat;
+	}
+.xhtml:hover
+	{
+		width:66px;
+		height:17px;
+		float: left;
+		margin:0px;
+		padding:1px 0 0 0;
+		font-family:Arial;
+		font-size:11px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(xhtml.jpg);
+		background-repeat:no-repeat;
+	}
+.css
+	{
+		width:66px;
+		height:18px;
+		float: left;
+		margin:0 0 0 5px;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(xhtml.jpg);
+		background-repeat:no-repeat;
+	}
+.css:hover
+	{
+		width:66px;
+		height:18px;
+		float: left;
+		margin:0 0 0 5px;
+		padding:0px;
+		font-family:Arial;
+		font-size:11px;
+		color:#000;
+		text-align:center;
+		text-decoration:none;
+		background-image:url(xhtml.jpg);
+		background-repeat:no-repeat;
+	}
+	
+	.odd{
+	  background:#FBFBEF;
+	}
+/* CSS Document */
+/* line 6, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.flash-message.error {
+  border: solid 4px #900;
+  background-color: #FF6565;
+}
+/* line 10, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.flash-message.notice {
+  border: solid 4px #26722D;
+  background-color: #A4E7A0;
+}
+
+/* line 16, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+body {
+  margin: 0px;
+  padding: 0px;
+  background-color: #f4e7bd;
+}
+
+/* line 22, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+h1, h2, h3, h4, h5, h6, span {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 27, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#headerbg {
+  width: 100%;
+  height: 309px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(headerbg.jpg);
+  background-repeat: repeat-x;
+}
+
+/* line 37, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#headerblank {
+  width: 1004px;
+  height: 309px;
+  float: none;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* line 45, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#header {
+  width: 1004px;
+  height: 309px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(HD.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 55, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#menu {
+  width: 385px;
+  height: 33px;
+  float: right;
+  margin: 133px 51px 0 0;
+  padding: 0px;
+}
+
+/* line 63, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#menu ul {
+  width: 385px;
+  height: 33px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+/* line 72, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#menu ul li {
+  width: 76px;
+  height: 33px;
+  float: left;
+  margin: 0 1px 0 0;
+  padding: 0px;
+  display: block;
+}
+
+/* line 81, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#menu ul li a.menu {
+  width: 76px;
+  height: 26px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 0;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(images/menu.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 97, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#menu ul li a.menu:hover {
+  width: 76px;
+  height: 26px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 0;
+  font-family: Arial;
+  font-size: 13px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(images/menuover.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 113, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#login {
+  width: 649px;
+  height: 106px;
+  float: right;
+  margin: 35px 53px 0 0;
+  padding: 0px;
+  background-image: url(loginbg.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 123, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#logintxtblank {
+  width: 622px;
+  height: 89px;
+  float: left;
+  margin: 0px;
+  padding: 17px 0 0 27px;
+}
+
+/* line 131, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#loginheading {
+  width: 622px;
+  height: 21px;
+  float: left;
+  margin: 0 0 8px 0;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 20px;
+  color: #000;
+}
+
+/* line 142, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#loginheading h4 {
+  width: 622px;
+  height: 21px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 20px;
+  font-weight: normal;
+  color: #000;
+}
+
+/* line 154, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#username {
+  width: 65px;
+  height: 14px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 0;
+  font-family: Arial;
+  font-size: 10px;
+  color: #95844d;
+}
+
+/* line 165, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#input {
+  width: 197px;
+  height: 21px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 10px;
+  color: #95844d;
+}
+
+/* line 176, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#password {
+  width: 52px;
+  height: 14px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 23px;
+  font-family: Arial;
+  font-size: 10px;
+  color: #95844d;
+}
+
+/* line 187, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#input02 {
+  width: 197px;
+  height: 21px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 10px;
+  color: #95844d;
+}
+
+/* line 198, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.input {
+  width: 181px;
+  height: 17px;
+  float: left;
+  margin: 0px;
+  padding: 4px 0 0 16px;
+  font-family: Arial;
+  font-size: 10px;
+  color: #95844d;
+  border: solid 1px #ead28b;
+  background-color: #ead28b;
+}
+
+/* line 211, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#loginbutton {
+  width: 50px;
+  height: 23px;
+  float: left;
+  margin: 0 0 0 20px;
+  padding: 0px;
+}
+
+/* line 219, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.login {
+  width: 50px;
+  height: 19px;
+  float: left;
+  margin: 0px;
+  padding: 4px 0 0 0;
+  font-family: Arial;
+  font-size: 10px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(images/login.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 234, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.login:hover {
+  width: 50px;
+  height: 19px;
+  float: left;
+  margin: 0px;
+  padding: 4px 0 0 0;
+  font-family: Arial;
+  font-size: 10px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(images/loginover.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 249, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#member {
+  width: 135px;
+  height: 14px;
+  float: left;
+  margin: 9px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 13px;
+  color: #ab8e4e;
+}
+
+/* line 260, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#register {
+  width: 200px;
+  height: 14px;
+  float: left;
+  margin: 9px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 13px;
+  color: #943415;
+}
+
+/* line 271, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.register {
+  font-family: Arial;
+  font-size: 13px;
+  color: #943415;
+  text-decoration: none;
+}
+
+/* line 278, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.register:hover {
+  font-family: Arial;
+  font-size: 13px;
+  color: #943415;
+  text-decoration: underline;
+}
+
+/* line 286, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#contentbg {
+  width: 100%;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 293, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#contentblank {
+  width: 1004px;
+  float: none;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* line 300, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#content {
+  width: 1004px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 307, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#contentleft {
+  width: 215px;
+  float: left;
+  margin: 0px;
+  padding: 34px 0 33px 52px;
+}
+
+/* line 314, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftheading {
+  width: 216px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  color: #7e8901;
+}
+
+/* line 324, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftheading h4 {
+  width: 216px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  font-weight: normal;
+  color: #7e8901;
+}
+
+/* line 335, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.lefttxtblank {
+  width: 195px;
+  height: 77px;
+  float: left;
+  margin: 20px 0 0 0;
+  padding: 0px;
+}
+
+/* line 343, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.lefttxtblank02 {
+  width: 195px;
+  height: 77px;
+  float: left;
+  margin: 33px 0 0 0;
+  padding: 0px;
+}
+
+/* line 351, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.lefticon {
+  width: 36px;
+  height: 28px;
+  float: left;
+  margin: 0px;
+  padding: 6px 0 0 0;
+  font-family: Arial;
+  font-size: 11px;
+  color: #FFF;
+  text-align: center;
+  background-image: url(lefticon.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 365, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.leftboldtxtblank {
+  width: 150px;
+  height: 34px;
+  float: left;
+  margin: 0px;
+  padding: 0 0 0 9px;
+}
+
+/* line 373, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.leftboldtxt {
+  width: 147px;
+  height: 13px;
+  float: left;
+  margin: 0px;
+  padding: 0 0 0 3px;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #b22d00;
+}
+
+/* line 385, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.lefttxt {
+  width: 132px;
+  height: 13px;
+  float: left;
+  margin: 0px;
+  padding: 0 0 0 18px;
+  font-family: Arial;
+  font-size: 9px;
+  font-weight: normal;
+  color: #464646;
+  background-image: url(images/lefttxtbg.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 399, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.leftnormaltxt {
+  width: 194px;
+  float: left;
+  margin: 4px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: normal;
+  color: #464646;
+}
+
+/* line 410, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.morebutton {
+  width: 194px;
+  float: left;
+  margin: 7px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: normal;
+  color: #464646;
+}
+
+/* line 421, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.more {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: normal;
+  color: #a5122a;
+  text-decoration: none;
+}
+
+/* line 429, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.more:hover {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: normal;
+  color: #a5122a;
+  text-decoration: underline;
+}
+
+/* line 437, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnavheading {
+  width: 216px;
+  float: left;
+  margin: 35px 0 0 0;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  color: #7e8901;
+}
+
+/* line 447, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnavheading h4 {
+  width: 216px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  font-weight: normal;
+  color: #7e8901;
+}
+
+/* line 458, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav {
+  width: 194px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 465, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul {
+  width: 194px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+/* line 473, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul li {
+  width: 194px;
+  height: 21px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+
+/* line 482, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul li a.leftnav {
+  width: 175px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 19px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: normal;
+  color: #464646;
+  text-decoration: none;
+  background-image: url(images/leftnavactive.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 497, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul li a.leftnav:hover {
+  width: 175px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 19px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #b22d00;
+  text-decoration: none;
+  background-image: url(images/leftnavactive.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 512, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul li a.leftnavbot {
+  width: 175px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 19px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: normal;
+  color: #464646;
+  text-decoration: none;
+  background-image: url(images/leftnavbot.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 527, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#leftnav ul li a.leftnavbot:hover {
+  width: 175px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 19px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #b22d00;
+  text-decoration: none;
+  background-image: url(images/leftnavbot.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 543, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#contentmid {
+  width: 435px;
+  float: left;
+  margin: 0px;
+  padding: 34px 0 33px 34px;
+  background-image: url(images/vline.jpg);
+  background-repeat: repeat-y;
+}
+
+/* line 552, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.midheading {
+  width: 435px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 28px;
+  color: #7e8901;
+}
+
+/* line 562, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.midheading h2 {
+  width: 435px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 28px;
+  font-weight: normal;
+  color: #7e8901;
+}
+
+/* line 573, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.midtxt {
+  width: 400px;
+  float: left;
+  margin: 22px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #464646;
+}
+
+/* line 583, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.midboldtxt {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #b22d00;
+}
+
+/* line 590, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#comments {
+  width: 400px;
+  height: 25px;
+  float: left;
+  margin: 22px 0 44px 0;
+  padding: 0px;
+  background-image: url(images/commentsbg.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 600, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#addcomments {
+  width: 82px;
+  height: 17px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 34px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+}
+
+/* line 611, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.addcomments {
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+  text-decoration: none;
+}
+
+/* line 618, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.addcomments:hover {
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+  text-decoration: underline;
+}
+
+/* line 625, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#morecomments {
+  width: 72px;
+  height: 17px;
+  float: left;
+  margin: 0px;
+  padding: 7px 0 0 28px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+}
+
+/* line 636, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.morecomments {
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+  text-decoration: none;
+}
+
+/* line 643, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.morecomments:hover {
+  font-family: Arial;
+  font-size: 11px;
+  color: #8b2c00;
+  text-decoration: underline;
+}
+
+/* line 650, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.projectheading {
+  font-family: Georgia;
+  font-size: 12px;
+  color: #c0943c;
+  padding: 0 0 0 14px;
+}
+
+/* line 657, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#projectbg {
+  width: 401px;
+  height: 158px;
+  float: left;
+  margin: 18px 0 34px 0;
+  padding: 0px;
+  background-image: url(projectbg.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 667, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#projectthumnail {
+  width: 130px;
+  height: 117px;
+  float: left;
+  margin: 15px 0 0 15px;
+  padding: 0px;
+  border: solid 3px #ebd693;
+  background-image: url(projectthumnail.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 678, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#projecttxtblank {
+  width: 219px;
+  float: left;
+  margin: 15px 0 0 0;
+  padding: 20px 0 0 0;
+}
+
+/* line 685, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#projecttxt {
+  width: 206px;
+  float: left;
+  margin: 0px;
+  padding: 0 0 0 13px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #464646;
+}
+
+/* line 695, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.projectboldtxt {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #853008;
+}
+
+/* line 702, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#moreproject {
+  width: 194px;
+  float: left;
+  margin: 0px;
+  padding: 5px 0 0 25px;
+}
+
+/* line 709, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.moreproject {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #464646;
+  text-decoration: none;
+}
+
+/* line 717, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.moreproject:hover {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #464646;
+  text-decoration: underline;
+}
+
+/* line 725, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposetxt {
+  width: 399px;
+  float: left;
+  margin: 20px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #464646;
+}
+
+/* line 735, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposenav {
+  width: 435px;
+  float: left;
+  margin: 0px;
+  padding: 14px 0 0 0;
+}
+
+/* line 742, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposenav ul {
+  width: 188px;
+  float: left;
+  margin: 0 24px 0 0;
+  padding: 0px;
+  display: block;
+}
+
+/* line 750, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposenav ul li {
+  width: 188px;
+  height: 21px;
+  float: left;
+  margin: 8px 0 0 0;
+  padding: 0px;
+  display: block;
+}
+
+/* line 759, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposenav ul li a.purposenav {
+  width: 168px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 20px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #c17305;
+  text-decoration: none;
+  background-image: url(purposeactive.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 773, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#purposenav ul li a.purposenav:hover {
+  width: 168px;
+  height: 18px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 20px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #c17305;
+  text-decoration: none;
+  background-image: url(purposeover.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 788, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#contentright {
+  width: 180px;
+  float: left;
+  margin: 0px;
+  padding: 34px 0 40px 34px;
+  background-image: url(vline.jpg);
+  background-repeat: repeat-y;
+}
+
+/* line 797, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightheading {
+  width: 180px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  color: #7e8901;
+}
+
+/* line 807, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightheading h4 {
+  width: 180px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Georgia;
+  font-size: 22px;
+  font-weight: normal;
+  color: #7e8901;
+}
+
+/* line 818, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#galleryblank {
+  width: 180px;
+  float: left;
+  margin: 21px 0 0 0;
+  padding: 0px;
+}
+
+/* line 825, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#rightpic {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+}
+
+/* line 833, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 843, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic:hover {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 853, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#rightpic02 {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 13px 0 0 0;
+  padding: 0px;
+}
+
+/* line 861, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic02 {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic02.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 871, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic02:hover {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic02.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 882, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#rightpic03 {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 13px 0 0 0;
+  padding: 0px;
+}
+
+/* line 890, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic03 {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic03.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 900, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightpic03:hover {
+  width: 180px;
+  height: 68px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(rightpic03.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 910, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.viewbutton {
+  width: 68px;
+  height: 19px;
+  float: left;
+  margin: 16px 0 36px 0;
+  padding: 0px;
+}
+
+/* line 918, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.viewbuttonbot {
+  width: 68px;
+  height: 19px;
+  float: left;
+  margin: 16px 0 0 0;
+  padding: 0px;
+}
+
+/* line 926, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.view {
+  width: 68px;
+  height: 16px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 0;
+  font-family: Arial;
+  font-size: 9px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(viewmore.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 941, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.view:hover {
+  width: 68px;
+  height: 16px;
+  float: left;
+  margin: 0px;
+  padding: 3px 0 0 0;
+  font-family: Arial;
+  font-size: 9px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(viewmoreover.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 956, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.righttxt {
+  width: 177px;
+  float: left;
+  margin: 21px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 12px;
+  color: #464646;
+}
+
+/* line 966, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.rightboldtxt {
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #b22d00;
+}
+
+/* line 974, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footerbg {
+  width: 100%;
+  height: 354px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(footerbg.jpg);
+  background-repeat: repeat-x;
+}
+
+/* line 984, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footerblank {
+  width: 1004px;
+  height: 354px;
+  float: none;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* line 992, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footer {
+  width: 858px;
+  height: 313px;
+  float: left;
+  margin: 0px;
+  padding: 41px 0 0 146px;
+  background-image: url(footer.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1002, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footerbox {
+  width: 215px;
+  height: 168px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(footerbox.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1012, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footermid {
+  width: 215px;
+  height: 168px;
+  float: left;
+  margin: 0 35px 0 35px;
+  padding: 0px;
+  background-image: url(footerbox.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1022, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footerlast {
+  width: 215px;
+  height: 168px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  background-image: url(footerbox.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1032, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footerheading {
+  width: 215px;
+  height: 21px;
+  float: left;
+  margin: 28px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 24px;
+  color: #f4e7bd;
+}
+
+/* line 1043, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footerheading h4 {
+  width: 215px;
+  height: 21px;
+  float: left;
+  margin: 0px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 24px;
+  font-weight: normal;
+  color: #f4e7bd;
+  text-align: center;
+}
+
+/* line 1056, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footertxt {
+  width: 184px;
+  float: left;
+  margin: 17px 0 0 16px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 12px;
+  font-weight: bold;
+  color: #FFF;
+  text-align: center;
+}
+
+/* line 1068, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footerbutton {
+  width: 68px;
+  height: 19px;
+  float: left;
+  margin: 15px 0 0 73px;
+  padding: 0px;
+}
+
+/* line 1076, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.button {
+  width: 68px;
+  height: 15px;
+  float: left;
+  margin: 0px;
+  padding: 4px 0 0 0;
+  font-family: Arial;
+  font-size: 9px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(footerbutton.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1091, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.button:hover {
+  width: 68px;
+  height: 15px;
+  float: left;
+  margin: 0px;
+  padding: 4px 0 0 0;
+  font-family: Arial;
+  font-size: 9px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(footerover.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1106, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#footerlinks {
+  width: 715px;
+  float: left;
+  margin: 25px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ee7e1f;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* line 1119, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footerlinks {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ee7e1f;
+  text-align: center;
+  text-decoration: none;
+  padding: 0 3px 0 3px;
+}
+
+/* line 1129, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.footerlinks:hover {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ee7e1f;
+  text-align: center;
+  text-decoration: underline;
+  padding: 0 3px 0 3px;
+}
+
+/* line 1139, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#copyrights {
+  width: 715px;
+  float: left;
+  margin: 5px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #401400;
+  text-align: center;
+}
+
+/* line 1150, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#designedby {
+  width: 715px;
+  float: left;
+  margin: 5px 0 0 0;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #401400;
+  text-align: center;
+}
+
+/* line 1162, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.designedby {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ee7e1f;
+  text-align: center;
+  text-decoration: none;
+}
+
+/* line 1171, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.designedby:hover {
+  font-family: Arial;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ee7e1f;
+  text-align: center;
+  text-decoration: underline;
+}
+
+/* line 1181, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+#validation {
+  width: 422px;
+  float: left;
+  margin: 5px 0 0 0;
+  padding: 0 0 0 293px;
+}
+
+/* line 1188, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.xhtml {
+  width: 66px;
+  height: 17px;
+  float: left;
+  margin: 0px;
+  padding: 1px 0 0 0;
+  font-family: Arial;
+  font-size: 11px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(xhtml.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1203, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.xhtml:hover {
+  width: 66px;
+  height: 17px;
+  float: left;
+  margin: 0px;
+  padding: 1px 0 0 0;
+  font-family: Arial;
+  font-size: 11px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(xhtml.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1218, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.css {
+  width: 66px;
+  height: 18px;
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(xhtml.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1233, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.css:hover {
+  width: 66px;
+  height: 18px;
+  float: left;
+  margin: 0 0 0 5px;
+  padding: 0px;
+  font-family: Arial;
+  font-size: 11px;
+  color: #000;
+  text-align: center;
+  text-decoration: none;
+  background-image: url(xhtml.jpg);
+  background-repeat: no-repeat;
+}
+
+/* line 1248, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/casting.css.scss */
+.odd {
+  background: #FBFBEF;
+}
+/* line 1, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 9, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+}
+
+/* line 15, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+/* line 21, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+a {
+  color: #000;
+}
+/* line 23, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+a:visited {
+  color: #666;
+}
+/* line 26, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+a:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+/* line 33, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+div.field, div.actions {
+  margin-bottom: 10px;
+}
+
+/* line 38, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+#notice {
+  color: green;
+}
+
+/* line 42, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+/* line 48, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+/* line 55, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  margin-bottom: 0px;
+  background-color: #c00;
+  color: #fff;
+}
+/* line 65, /Users/hjackson/projects/accountant_projects/poapproval/app/assets/stylesheets/scaffolds.css.scss */
+#error_explanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
