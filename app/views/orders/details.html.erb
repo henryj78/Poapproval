@@ -145,14 +145,16 @@
 		<table>
 		  <thead>
 		    <tr>
-			  <th bgcolor="#FFE87C">Customer</th>	
-		      <th bgcolor="#FFE87C">Description</th>
-			  <th bgcolor="#FFE87C">Lead Time</th>
+			  <th bgcolor="#FFE87C">Item</th>	
+			  <th bgcolor="#FFE87C">MPN</th>
+			  <th bgcolor="#FFE87C">WC</th>
+			  <th bgcolor="#FFE87C">Description</th>
+			  <th bgcolor="#FFE87C">ProjectID</th>
 			  <th bgcolor="#FFE87C">Product</th>
-			  <th bgcolor="#FFE87C">Assemblies</th>
-			  <th bgcolor="#FFE87C">KanBan</th>
-		      <th bgcolor="#FFE87C">Order Qty</th>
-		      <th bgcolor="#FFE87C">Line amount</th>
+			  <th bgcolor="#FFE87C">Class</th>
+			  <th bgcolor="#FFE87C">Qty</th>
+			  <th bgcolor="#FFE87C">Lead</th>
+			  <th bgcolor="#FFE87C">Amt</th>
 		      <th></th>
 		    </tr>
 		  </thead>
@@ -160,14 +162,16 @@
   <tbody>
     <% @orderln.each do |order| %>
       <tr class="<%= cycle("even", "odd") %>">
-		<td><%= order.customer_name %></td>  
-        <td><%= order.ord_line_desc %></td>
-		<td><%= order.lead_time %></td>
-		<td><%= order.product %></td>
+	    <td><%= order.item %></td> 	  
+		<td><%= order.mpn %></td> 
+		<td><%= order.wc %></td> 
+		<td><%= order.ord_line_desc %></td>
 		<td><%= order.project_id %></td>
-		<td><%= order.kanban %></td>
-        <td><%= order.ord_line_qty %></td>
-        <td><%= order.ord_line_amount %></td>
+		<td><%= order.product %></td>
+		<td><%= order.classz %></td>
+		<td><%= order.ord_line_qty %></td>
+		<td><%= order.lead_time %></td>  
+		<td><%= order.ord_line_amount %></td>
       </tr>
     <% end %>
   </tbody>
@@ -182,6 +186,10 @@
 			 <td> Decline</td>	
 			 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
 		     <% end %>
+			 <%if @current_user.amount.to_f == 0 %>	
+			  <td> Un-Decline</td>	
+			  <td><%= link_to image_tag("dissapproved_icon.png"), undecline_orders_path(:id => params[:id]) %> </td>
+			 <% end %>
 			 <td> Back</td>	
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>

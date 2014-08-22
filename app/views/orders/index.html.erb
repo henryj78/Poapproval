@@ -95,12 +95,14 @@
 		<table>
 		  <thead>
 		    <tr>
-		      <th bgcolor="#FFE87C"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "PO", :sort =>  "ref_number" %></th>
 			  <th bgcolor="#FFE87C"><%= link_to "Project", :sort =>  "project_name" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Vendor Name", :sort =>  "vendor_name" %></th>
-			  <th bgcolor="#FFE87C"><%= link_to "Customer Name", :sort =>  "customer_name" %></th>
-			  <th bgcolor="#FFE87C">Total amount</th>
-			  <th bgcolor="#FFE87C"><%= link_to "Expected Date", :sort =>  "expected_date"  %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Vendor", :sort =>  "vendor_name" %></th>
+			  <th bgcolor="#FFE87C"><%= link_to "Customer", :sort =>  "customer_name" %></th>
+			  <th bgcolor="#FFE87C">Total</th>
+			  <th bgcolor="#FFE87C"><%= link_to "Expected", :sort =>  "expected_date"  %></th>
+			  <th bgcolor="#FFE87C">Approved</th>
+			  <th bgcolor="#FFE87C">Status</th>
 		      <th></th>
 		      <th></th>
 		    </tr>
@@ -115,6 +117,8 @@
 				<td><%= order.customer_name %></td>
 				<td><%= order.total_amount %></td>
 				<td><%= order.expected_date %></td>
+				<td></td>
+				<td></td>
 		        <!-- <td><%#= order.custom_field_authorized_buyer %></td> -->
 				
 				<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 %></td>

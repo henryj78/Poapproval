@@ -30,6 +30,10 @@ class Order < ActiveRecord::Base
         insert_row.project_name = row[132]
         insert_row.memo = row[66]
         insert_row.user_comments = row[67]
+        insert_row.item = row[92]
+        insert_row.mpn = row[93]
+        insert_row.wc  =  row[137]
+        insert_row.classz = row[8]
         insert_row.save
         
         insert_row = Ordln.new
@@ -40,9 +44,9 @@ class Order < ActiveRecord::Base
         insert_row.ord_line_rate = row[100]
         insert_row.ord_line_amount= row[103]
         insert_row.customer_name = row[106]
-        insert_row.lead_time = row[152]
+        insert_row.lead_time = row[129]
         insert_row.product = row[155]
-        insert_row.project_id = row[156]
+        insert_row.project_id = row[132]
         insert_row.date_due = row[54]
         insert_row.expected_date = row[55]
         insert_row.address = row[19]
@@ -50,6 +54,10 @@ class Order < ActiveRecord::Base
         insert_row.terms = row[53]
         insert_row.memo = row[66]
         insert_row.user_comments = row[67]
+        insert_row.item = row[92]
+        insert_row.mpn = row[93]
+        insert_row.wc  =  row[137]
+        insert_row.classz = row[8]        
         insert_row.save           
         
      else
@@ -63,7 +71,7 @@ class Order < ActiveRecord::Base
        insert_row.customer_name = row[106]
        insert_row.lead_time = row[152]
        insert_row.product = row[155]
-       insert_row.project_id = row[156]  
+       insert_row.project_id = row[132]  
        insert_row.date_due = row[54]
        insert_row.expected_date = row[55] 
        insert_row.address = row[19]
@@ -71,6 +79,10 @@ class Order < ActiveRecord::Base
        insert_row.terms = row[53] 
        insert_row.memo = row[66]
        insert_row.user_comments = row[67]
+       insert_row.item = row[92]
+       insert_row.mpn = row[93]
+       insert_row.wc  =  row[137]
+       insert_row.classz = row[8]       
        insert_row.save           
      end
     end

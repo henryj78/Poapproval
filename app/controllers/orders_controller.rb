@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :destroy]
   before_filter :protect
   helper_method :sort_column, :sort_direction
-  
+
   # GET /orders
   # GET /orders.json
   def index
@@ -95,7 +95,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     cmt = Order.find(params[:id])
-    strcmt = cmt.decliner_comments 
+    strcmt = cmt.decliner_comments if !cmt.decliner_comments.nil?
+    strcmt = "" if cmt.decliner_comments.nil?
     cmt.update!(order_profile_parameters)
     cmt.decliner_comments = strcmt + " - " + cmt.decliner_comments 
     cmt.save
@@ -130,11 +131,19 @@ class OrdersController < ApplicationController
   end  
   
   def approved
-    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil ).order( sort_column + " " + sort_direction )
+    if @current_user.amount.to_i == 0
+      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil,:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
+    else
+      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil ).order( sort_column + " " + sort_direction )
+    end#end if loop  
   end
   
   def received
-    @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1').order( sort_column + " " + sort_direction )
+    if @current_user.amount.to_i == 0
+      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1',:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
+    else
+      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1').order( sort_column + " " + sort_direction )
+    end#end if loop     
   end
   
   def details
@@ -147,7 +156,11 @@ class OrdersController < ApplicationController
   end  
   
   def decline_rpt
-    @orders = Order.where(:decline => '1').order(params[:sort])
+    if @current_user.amount.to_i == 0
+      @orders = Order.where(:decline => '1',:custom_field_authorized_buyer => @current_user.buyer ).order(params[:sort])
+    else
+      @orders = Order.where(:decline => '1').order(params[:sort])
+    end#end if loop  
   end
   
   def get_comments
@@ -174,6 +187,13 @@ class OrdersController < ApplicationController
      # @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
      # @order_decline.save
      # redirect_to orders_path
+  end
+  
+  def undecline
+    @order = Order.find(params[:id])
+    und = Order.find(params[:id])
+    und.decline = 0
+    und.save
   end
   
   private

@@ -96,10 +96,10 @@
 			
 	    <thead>
 	      <tr>
-	        <th bgcolor="#FFE87C"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
-	        <th bgcolor="#FFE87C"><%= link_to "Due Date", :sort =>  "date_due" %></th>
-	        <th bgcolor="#FFE87C"><%= link_to "Expected Date", :sort =>  "expected_date" %></th>
-	        <th bgcolor="#FFE87C"><%= link_to "Total Amount", :sort =>  "total_amount" %></th>
+	        <th bgcolor="#FFE87C"><%= link_to "PO", :sort =>  "ref_number" %></th>
+	        <th bgcolor="#FFE87C"><%= link_to "Due", :sort =>  "date_due" %></th>
+	        <th bgcolor="#FFE87C"><%= link_to "Expected", :sort =>  "expected_date" %></th>
+	        <th bgcolor="#FFE87C"><%= link_to "Total", :sort =>  "total_amount" %></th>
 	        <th bgcolor="#FFE87C"><%= link_to "Buyer", :sort =>  "custom_field_authorized_buyer" %></th>
 	        <th bgcolor="#FFE87C"><%= link_to "Approved Date", :sort =>  "approve_date" %></th>
 	        <th bgcolor="#FFE87C"><%= link_to "Approved By", :sort =>  "approve_by" %></th>
@@ -115,7 +115,7 @@
         <td><%= order.expected_date %></td>
         <td><%= order.total_amount %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
-		<td><%= order.approve_date %></td>
+		<td ><%= order.approve_date[0...10] %></td>
 		<td><%= order.approve_by %></td>
 		<td><%= link_to 'Receive', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></td>
       </tr>

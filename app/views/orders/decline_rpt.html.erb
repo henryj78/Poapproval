@@ -85,13 +85,13 @@
 		<table>
 		  <thead>
 		    <tr>
-		      <th bgcolor="#FFE87C"><%= link_to "Ref number", :sort =>  "ref_number" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Due Date", :sort =>  "date_due" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Expected Date", :sort =>  "expected_date" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Total Amount", :sort =>  "total_amount" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "PO", :sort =>  "ref_number" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Due", :sort =>  "date_due" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Expected", :sort =>  "expected_date" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Total", :sort =>  "total_amount" %></th>
 		      <th bgcolor="#FFE87C"><%= link_to "Buyer", :sort =>  "custom_field_authorized_buyer" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Decline Date", :sort =>  "decline_date" %></th>
-		      <th bgcolor="#FFE87C"><%= link_to "Declined By", :sort =>  "decline_by" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Decline ", :sort =>  "decline_date" %></th>
+		      <th bgcolor="#FFE87C"><%= link_to "Dec By", :sort =>  "decline_by" %></th>
 		    </tr>
 		  </thead>
 		  
@@ -104,7 +104,7 @@
         <td><%= order.expected_date %></td>
         <td><%= order.total_amount %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
-		<td><%= order.decline_date %></td>
+		<td><%= order.decline_date[0...10] %></td>
 		<td><%= order.decline_by %></td>
       </tr>
     <% end %>

@@ -31,6 +31,7 @@ Poapproval::Application.routes.draw do
       get "load_data"
       get "details"
       get "get_comments"
+      get "undecline"
     end
   end
   
