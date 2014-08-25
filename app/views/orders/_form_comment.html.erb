@@ -70,17 +70,6 @@
         <div class="midheading">
           <h2>Comment Message</h2>
         </div>
-		<br />
-		<table>
-			<tr>
-				<%#= form_tag import_orders_path, multipart: true do %>
-				<%#= file_field_tag :file %>
-			   <p> <%#= text_field_tag "subject" %></p>
-			   <%#= submit_tag "Import CSV" %>
-			 <%# end %>	
-	 
-			</tr>
-		</table>	
 		
 		<%= form_for(@order) do |f| %>
 		  <% if @order.errors.any? %>

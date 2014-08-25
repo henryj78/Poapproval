@@ -32,6 +32,7 @@ Poapproval::Application.routes.draw do
       get "details"
       get "get_comments"
       get "undecline"
+      get "importz"
     end
   end
   

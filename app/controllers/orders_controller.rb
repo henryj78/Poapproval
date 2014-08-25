@@ -103,7 +103,11 @@ class OrdersController < ApplicationController
     cmt.update!(order_profile_parameters)
     cmt.decliner_comments = strcmt + " - " + cmt.decliner_comments 
     cmt.save
-    get_comments
+    if cmt.po_status == "Declined"
+      recommit
+    else  
+     get_comments 
+    end #status
     redirect_to orders_path
   end
 
@@ -165,6 +169,15 @@ class OrdersController < ApplicationController
     @order_decline.save
   end  
   
+  def recommit
+    @order = Order.find(params[:id])
+    @order.decline = '0'
+    @order.is_manually_closed = '0'
+    @order.is_fully_received = nil
+    @order.po_status = 'Recommited'
+    @order.save
+  end  
+  
     
   def decline
      @order = Order.find(params[:id])
@@ -172,13 +185,6 @@ class OrdersController < ApplicationController
   
   def undecline
     @order = Order.find(params[:id])
-    und = Order.find(params[:id])
-    und.decline = 0
-    und.is_manually_closed = 0
-    und.is_fully_received = 0
-    und.save
-    @stall = und
-    redirect_to orders_path
   end
   
   private
