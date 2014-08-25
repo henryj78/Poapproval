@@ -7,9 +7,7 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    #@search = Order.search(params[:q])
-    #@test = @search.result
-    
+       
     if params[:search].nil?
       if @current_user.first_check.to_i == 1
         @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
@@ -53,12 +51,15 @@ class OrdersController < ApplicationController
 
      if @current_user.first_check.to_i == 1
        strApproval.sub_approval = 1
+       strApproval.track = 1
      else # boss
        if strApproval.is_manually_closed == 0.to_s
         strApproval.is_manually_closed = 1
         strApproval.custom_field_status = 1 #Approved
         strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
         strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name
+        strApproval.track = 2
+        strApproval.po_status = 'Approved'
         msg = "PO approval  was successful."
        else
          strApproval.is_fully_received = 1
@@ -95,22 +96,14 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1.json
   def update
     cmt = Order.find(params[:id])
+    
     strcmt = cmt.decliner_comments if !cmt.decliner_comments.nil?
     strcmt = "" if cmt.decliner_comments.nil?
+    
     cmt.update!(order_profile_parameters)
     cmt.decliner_comments = strcmt + " - " + cmt.decliner_comments 
     cmt.save
     get_comments
-    # respond_to do |format|
-    #   if @order.update(order_params)
-    #     UserMailer.poapproval_email('ihenryjackson@gmail.com').deliver
-    #     format.html { redirect_to @order, notice: 'Order was successfully updated.' }
-    #     format.json { head :no_content }
-    #   else
-    #     format.html { render action: 'edit' }
-    #     format.json { render json: @order.errors, status: :unprocessable_entity }
-    #   end
-    # end
     redirect_to orders_path
   end
 
@@ -149,10 +142,7 @@ class OrdersController < ApplicationController
   def details
     @str_get_ref_id = Order.find(params[:id])
     str_vendor_ref_id = @str_get_ref_id.ref_number
-    @orderln = Ordln.where(:ref_number => str_vendor_ref_id)     #.group('ord_line_desc','ord_line_amount')
-    # if @orderln == []
-    #   @orderln = Order.where(:ref_number => str_vendor_ref_id) #.group('ord_line_desc','ord_line_amount')
-    # end
+    @orderln = Ordln.where(:ref_number => str_vendor_ref_id)  
   end  
   
   def decline_rpt
@@ -171,29 +161,24 @@ class OrdersController < ApplicationController
     @order_decline.custom_field_status = 2 #decline
     @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
     @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
+    @order_decline.po_status = 'Declined'
     @order_decline.save
   end  
   
     
   def decline
      @order = Order.find(params[:id])
-     # @order_decline = Order.find(params[:id])
-     # @order_decline.is_manually_closed = 3
-     # @order_decline.is_fully_received = 3
-     # @order_decline.decline = 1
-     # @order_decline.custom_field_status = 2 #decline
-     # @order_decline.decliner_comments = params[:decline_comment]
-     # @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-     # @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
-     # @order_decline.save
-     # redirect_to orders_path
   end
   
   def undecline
     @order = Order.find(params[:id])
     und = Order.find(params[:id])
     und.decline = 0
+    und.is_manually_closed = 0
+    und.is_fully_received = 0
     und.save
+    @stall = und
+    redirect_to orders_path
   end
   
   private
