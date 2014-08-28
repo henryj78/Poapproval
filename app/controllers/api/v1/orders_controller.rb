@@ -17,7 +17,7 @@ module Api
          storage << z if z.total_amount.to_f <= params[:amount].to_f
        end#do loop
        
-          
+        #respond_with @get_ord Test
         respond_with storage.sort_by{|e| e[:ref_number]} if params[:sort].to_i == 0 || params[:sort].nil?
         respond_with storage.sort_by{|e| e[:ref_number]}.reverse if params[:sort].to_i == 1
       end
@@ -108,7 +108,7 @@ module Api
       end  
       
       def auth
-        #send email e.g. /api/orders/auth:email= ...
+        #send email e.g. /api/orders/auth?email= ...
         #returns decline or recordset
         x = Array.new
          str_auth = User.where( :email => params[:email])
