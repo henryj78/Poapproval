@@ -47,8 +47,8 @@ gem 'smarter_csv'
 gem 'ransack'
 
 #ability to connect to ms sql db
-gem 'tiny_tds'
-gem 'activerecord-sqlserver-adapter'
+#gem 'tiny_tds'
+#gem 'activerecord-sqlserver-adapter'
 
 #Setting up for Heroku
 group :production do
