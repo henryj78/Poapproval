@@ -13,6 +13,8 @@ class Order < ActiveRecord::Base
     cus_name_new = ""
     
     CSV.foreach(file.path, :encoding => 'ISO-8859-1', :quote_char => '"', headers: true) do |row|
+     dups = Order.where(:ref_number => row[17])
+     if dups.size == 0  
       if row[106] != cus_name
         cus_name = row[106]
         insert_row = Order.new
@@ -34,6 +36,12 @@ class Order < ActiveRecord::Base
         insert_row.mpn = row[93]
         insert_row.wc  =  row[137]
         insert_row.classz = row[8]
+        
+        #Items not  for production
+        if row[8] != 'Production'
+          insert_row.sub_approval = 1
+          insert_row.track = 1
+        end  
         insert_row.save
         
         insert_row = Ordln.new
@@ -84,8 +92,9 @@ class Order < ActiveRecord::Base
        insert_row.wc  =  row[137]
        insert_row.classz = row[8]       
        insert_row.save           
-     end
-    end
+      end #end of if loop
+     end #end of dups 
+    end #end csv each statement
   end #end import
 
 def self.open_spreadsheet(file)
