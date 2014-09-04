@@ -11,6 +11,13 @@
   <div id="headerblank">
     <div id="header">
       <div id="menu">
+        <ul>
+          <li><a href="<%= log_out_path %>" class="menu">Logout</a></li>
+          <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
+          <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
+          <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
+          <li><a href="<%= buyers_path %>" class="menu">Buyers</a></li>
+        </ul>  		  
       </div>
       </div>
     </div>
@@ -111,13 +118,19 @@
 		<table>
 		    <tr>
 			  <th>Status</th>
+			  <th></th>
+			  <th>PO Number</th>
+			  <th></th>
 			  <th>Approved</th>
 			 </tr> 
 			 <tbody>
 				 <td><%= @str_get_ref_id.po_status %></td>
+				 <td></td>
+				 <td><center><%= @str_get_ref_id.ref_number %></center></td>
+				 <td></td>
 				 <td><center><%= @str_get_ref_id.track %></center></td>
 			 </tbody>	 
-		</table>		
+		</table>	
 
 		<table>
 		    <tr>
