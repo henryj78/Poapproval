@@ -80,65 +80,46 @@
 		<br />
 		<table>
 		    <tr style="font-size:12px" >
-			  <th>Vendor</th>
+			  <td><b>Vendor :</b></td>
+			  <td> <%= @str_get_ref_id.vendor_name %></td>
 			 </tr> 
-			 <tbody>
-				 <tr style="font-size:12px" >
-				 <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
-			    </tr>
-			 </tbody>	 
+ 		    <tr style="font-size:12px" >
+ 			  <td><b>Address :</b></td>
+ 			  <td> <%= @str_get_ref_id.address %></td>
+ 			 </tr>
+  		    <tr style="font-size:12px" >
+  			  <td><b>City :</b></td>
+  			  <td> <%= @str_get_ref_id.city %></td>
+  			 </tr>
+   		    <tr style="font-size:12px" >
+   			  <td><b>Phone :</b></td>
+   			  <td></td>
+   			 </tr>
+    		    <tr style="font-size:12px" >
+    			  <td><b>Contact :</b></td>
+    			  <td></td>
+    			 </tr>
 		</table>
-	
+        <br />
 		<table>
 		    <tr style="font-size:12px" >
-			  <th>Address</th>
-			  <th>City</th>
-			  <th>Phone</th>
-			  <th>Contact</th>
-			 </tr> 
-			 <tbody>
-				 <tr style="font-size:12px" >
-				 <td><%= @str_get_ref_id.address %></td>
-				 <td><%= @str_get_ref_id.city %></td>
-				 <td></td>
-				 <td></td>
-			     </tr>
-			 </tbody>	 
-		</table>
-
-		<table>
-		    <tr style="font-size:12px" >
-			  <th>Payment Terms</th>
-			  <th>Date Required</th>
-			  <th>Date Promised</th>
-			 </tr> 
-			 <tbody>
-				 <tr style="font-size:12px" >
-				 <td><%= @str_get_ref_id.terms %></td>
-				 <td><%= @str_get_ref_id.date_due %></td>
-				 <td><%= @str_get_ref_id.expected_date %></td>
-			     </tr>
-			 </tbody>	 
+			  <td><b>Payment Terms :</b></td>
+			  <td> <%= @str_get_ref_id.terms %></td>
+			  <td><b>Date Required :</b></td>
+			  <td> <%= @str_get_ref_id.date_due %></td>
+			  <td><b>Date Promised :</b></td>
+			  <td> <%= @str_get_ref_id.expected_date %></td>
+			 </tr>
+ 		    <tr style="font-size:12px" >
+ 			  <td><b>Status :</b></td>
+ 			  <td> <%= @str_get_ref_id.po_status  %></td>
+ 			  <td><b>PO Number:</b></td>
+ 			  <td> <%= @str_get_ref_id.ref_number %></td>
+ 			  <td><b>Approved :</b></td>
+ 			  <td> <%= @str_get_ref_id.track %></td>
+ 			 </tr>
 		</table>
 		
-		<table>
-		    <tr style="font-size:12px" >
-			  <th>Status</th>
-			  <th></th>
-			  <th>PO Number</th>
-			  <th></th>
-			  <th>Approved</th>
-			 </tr> 
-			 <tbody>
-				 <tr style="font-size:12px" >
-				 <td><%= @str_get_ref_id.po_status %></td>
-				 <td></td>
-				 <td><center><%= @str_get_ref_id.ref_number %></center></td>
-				 <td></td>
-				 <td><center><%= @str_get_ref_id.track %></center></td>
-			     </tr>
-			 </tbody>	 
-		</table>	
 
 		<table>
 		    <tr style="font-size:12px" >
