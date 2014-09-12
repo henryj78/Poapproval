@@ -1,3 +1,4 @@
+	
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -16,8 +17,8 @@
           <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
           <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
           <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
-          <li><a href="<%= searchz_orders_path %>" class="menu">Search</a></li>
-        </ul>  
+          <li><a href="<%=  searchz_orders_path %>" class="menu">Search</a></li>
+        </ul>
       </div>
       </div>
     </div>
@@ -65,7 +66,7 @@
         <div class="lefttxtblank02">
           <div class="lefticon">16</div>
           <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Search', searchz_orders_path %></div>
+            <div class="leftboldtxt"><%= link_to 'Search',  searchz_orders_path %></div>
             <div class="lefttxt">Wednesday August 6 2014</div>
           </div>
           <div class="leftnormaltxt">Search Purchase Orders</div>
@@ -75,57 +76,31 @@
       </div>
       <div id="contentmid">
         <div class="midheading">
-          <h2>Received Orders</h2>
+          <h2>Purchase Orders</h2>
         </div>
 		<br />
+
 		<table>
 			<tr>
-				<%#= form_tag import_orders_path, multipart: true do %>
-				<%#= file_field_tag :file %>
-			   <p> <%#= text_field_tag "subject" %></p>
-			   <%#= submit_tag "Import CSV" %>
-			 <%# end %>	
-	 
+			 <%= form_tag orders_path, :method => 'get' do %>
+			   <p style="font-size:11px"> 
+			     Search By :
+		 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
+				 <%= text_field_tag :search, params[:search] %>
+			     <%= submit_tag "Search", :name => nil %>
+			   </p>
+			 <% end %>	
 			</tr>
-
-		</table>	
-		
-		<table>
-		  
-		  <thead>
-		     <tr style="font-size:12px" >
-		       <th bgcolor="#FFE87C">PO</th>
-		       <th bgcolor="#FFE87C">Due</th>
-		       <th bgcolor="#FFE87C">Expected</th>
-		       <th bgcolor="#FFE87C">Total</th>
-		       <th bgcolor="#FFE87C">Buyer</th>
-		       <th bgcolor="#FFE87C">Rec Date</th>
-		       <th bgcolor="#FFE87C">Rec By</th>
-		     </tr>
-		   </thead>
-		  
-
-  <tbody>
-    <% @orders.each do |order| %>
-      <tr class="<%= cycle("even", "odd") %>">
-        <td><%= order.ref_number %></td>
-        <td><%= order.date_due %></td>
-        <td><%= order.expected_date %></td>
-        <td><%= order.total_amount %></td>
-        <td><%= order.custom_field_authorized_buyer %></td>
-		<td><%= order.receive_date %></td>
-		<td><%= order.receive_by %></td>
-      </tr>
-    <% end %>
-  </tbody>
 		</table>
+		
 		<br />
 		<table>
 			<tr style="font-size:12px" >
-			 <td> Return</td>	
+			 <td> Return </td>	
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>
+
       <div id="contentright">
         </div>
       </div>
@@ -134,3 +109,4 @@
 </div>
 </body>
 </html>
+		

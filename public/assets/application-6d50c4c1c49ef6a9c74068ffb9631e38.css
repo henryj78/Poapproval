@@ -134,7 +134,7 @@ a:active {
 			margin:0px;
 			padding:7px 0 0 0;
 			font-family:Arial;
-			font-size:13px;
+			font-size:11px;
 			font-weight:bold;
 			color:#FFF;
 			text-align:center;
@@ -150,7 +150,7 @@ a:active {
 			margin:0px;
 			padding:7px 0 0 0;
 			font-family:Arial;
-			font-size:13px;
+			font-size:11px;
 			font-weight:bold;
 			color:#FFF;
 			text-align:center;
@@ -302,7 +302,7 @@ a:active {
 			margin:9px 0 0 0;
 			padding:0px;
 			font-family: Arial;
-			font-size:13px;
+			font-size:11px;
 			color:#ab8e4e;
 		}
 	#register
@@ -313,20 +313,20 @@ a:active {
 			margin:9px 0 0 0;
 			padding:0px;
 			font-family: Arial;
-			font-size:13px;
+			font-size:11px;
 			color:#943415;
 		}
 	.register
 		{
 			font-family: Arial;
-			font-size:13px;
+			font-size:11px;
 			color:#943415;
 			text-decoration:none;
 		}
 	.register:hover
 		{
 			font-family: Arial;
-			font-size:13px;
+			font-size:11px;
 			color:#943415;
 			text-decoration: underline;
 		}	
@@ -438,7 +438,7 @@ a:active {
 			margin:0px;
 			padding:0 0 0 18px;
 			font-family:Arial;
-			font-size:9px;
+			font-size:11px;
 			font-weight: normal;
 			color:#464646;
 			background-image:url(images/lefttxtbg.jpg);
@@ -979,7 +979,7 @@ a:active {
 			margin:0px;
 			padding:3px 0 0 0;
 			font-family: Arial;
-			font-size:9px;
+			font-size:11px;
 			color:#000;
 			text-align:center;
 			text-decoration:none;
@@ -994,7 +994,7 @@ a:active {
 			margin:0px;
 			padding:3px 0 0 0;
 			font-family: Arial;
-			font-size:9px;
+			font-size:11px;
 			color:#000;
 			text-align:center;
 			text-decoration:none;
@@ -1129,7 +1129,7 @@ a:active {
 			margin:0px;
 			padding:4px 0 0 0;
 			font-family:Arial;
-			font-size:9px;
+			font-size:11px;
 			color:#000;
 			text-align:center;
 			text-decoration:none;
@@ -1144,7 +1144,7 @@ a:active {
 			margin:0px;
 			padding:4px 0 0 0;
 			font-family:Arial;
-			font-size:9px;
+			font-size:11px;
 			color:#000;
 			text-align:center;
 			text-decoration:none;

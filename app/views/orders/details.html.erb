@@ -16,7 +16,7 @@
           <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
           <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
           <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
-          <li><a href="<%= buyers_path %>" class="menu">Buyers</a></li>
+          <li><a href="<%=  searchz_orders_path %>" class="menu">Search</a></li>
         </ul>  		  
       </div>
       </div>
@@ -65,10 +65,10 @@
         <div class="lefttxtblank02">
           <div class="lefticon">16</div>
           <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Buyers', buyers_path %></div>
+            <div class="leftboldtxt"><%= link_to 'Search', searchz_orders_path %></div>
             <div class="lefttxt">Wednesday August 6 2014</div>
           </div>
-          <div class="leftnormaltxt">Edit Buyer's phone numbers</div>
+          <div class="leftnormaltxt">Search Purchase Orders</div>
         </div>
         <div id="leftnav">
         </div>
@@ -79,44 +79,50 @@
         </div>
 		<br />
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th>Vendor</th>
 			 </tr> 
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td colspan = "4"><%= @str_get_ref_id.vendor_name %></td>
+			    </tr>
 			 </tbody>	 
 		</table>
 	
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th>Address</th>
 			  <th>City</th>
 			  <th>Phone</th>
 			  <th>Contact</th>
 			 </tr> 
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td><%= @str_get_ref_id.address %></td>
 				 <td><%= @str_get_ref_id.city %></td>
 				 <td></td>
 				 <td></td>
+			     </tr>
 			 </tbody>	 
 		</table>
 
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th>Payment Terms</th>
 			  <th>Date Required</th>
 			  <th>Date Promised</th>
 			 </tr> 
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td><%= @str_get_ref_id.terms %></td>
 				 <td><%= @str_get_ref_id.date_due %></td>
 				 <td><%= @str_get_ref_id.expected_date %></td>
+			     </tr>
 			 </tbody>	 
 		</table>
 		
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th>Status</th>
 			  <th></th>
 			  <th>PO Number</th>
@@ -124,34 +130,40 @@
 			  <th>Approved</th>
 			 </tr> 
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td><%= @str_get_ref_id.po_status %></td>
 				 <td></td>
 				 <td><center><%= @str_get_ref_id.ref_number %></center></td>
 				 <td></td>
 				 <td><center><%= @str_get_ref_id.track %></center></td>
+			     </tr>
 			 </tbody>	 
 		</table>	
 
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th>Buyer</th>
 			 </tr> 
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td colspan = "4"><%= @str_get_ref_id.custom_field_authorized_buyer %></td>
+			     </tr>
 			 </tbody>	 
 		</table>
 		
 		<br />
 		<table>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th bgcolor="#E8FFE8">Memo</th>
 		 	  <th bgcolor="#E8FFE8">Vendor Msg</th>
 			  <th bgcolor="#E8FFE8">Decline Reason</th>
 		 	 </tr>
 			 <tbody>
+				 <tr style="font-size:12px" >
 				 <td><%= text_area_tag :message_memo,@str_get_ref_id.memo, :size =>"25x10" %></td>
 		 		 <td><%= text_area_tag :message_memo,@str_get_ref_id.user_comments, :size =>"25x10" %></td>
 				 <td><%= text_area_tag :message_body,@str_get_ref_id.decliner_comments, :size =>"25x10" %></td>
+			     </tr>
 		 	 </tbody>
 		<table>
 			<br />
@@ -168,7 +180,7 @@
 		
 		<table>
 		  <thead>
-		    <tr>
+		    <tr style="font-size:12px" >
 			  <th bgcolor="#FFE87C">Item</th>	
 			  <th bgcolor="#FFE87C">MPN</th>
 			  <th bgcolor="#FFE87C">WC</th>
@@ -185,7 +197,7 @@
 
   <tbody>
     <% @orderln.each do |order| %>
-      <tr class="<%= cycle("even", "odd") %>">
+      <tr style="font-size:12px", class="<%= cycle("even", "odd") %>">
 	    <td><%= order.item %></td> 	  
 		<td><%= order.mpn %></td> 
 		<td><%= order.wc %></td> 
@@ -202,7 +214,7 @@
 		</table>
 		<br />
 		<table>
-			<tr>
+			<tr style="font-size:12px" >
 			 <%if @current_user.amount.to_f > 0 %>	
 			 <td> Approve</td>	
 			 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
@@ -214,7 +226,7 @@
 			  <td> Recommit</td>	
 			  <td><%= link_to image_tag("dissapproved_icon.png"), undecline_orders_path(:id => params[:id]) %> </td>
 			 <% end %>
-			 <td> Back</td>	
+			 <td> Return</td>	
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>

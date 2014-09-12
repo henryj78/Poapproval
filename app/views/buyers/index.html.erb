@@ -75,7 +75,7 @@
       </div>
       <div id="contentmid">
         <div class="midheading">
-          <h2>Purchase Orders</h2>
+          <h2>Buyers</h2>
         </div>
 		<br />
 		<table>
@@ -91,7 +91,7 @@
 		
 		<table>
 		  <thead>
-		    <tr>
+		    <tr style="font-size:12px">
 			 <th bgcolor="#FFE87C">Name</th>	
 		      <th bgcolor="#FFE87C">Phone</th>
 		      <th bgcolor="#FFE87C">Cell</th>
@@ -105,7 +105,7 @@
 
   <tbody>
     <% @buyers.each do |buyer| %>
-       <tr class="<%= cycle("even", "odd") %>">
+       <tr style="font-size:12px", class="<%= cycle("even", "odd") %>">
 		<td><%= buyer.name %></td>  
         <td><%= buyer.phone %></td>
         <td><%= buyer.cell %></td>
@@ -118,8 +118,8 @@
 </table>
 <br />
 <table>
-	<tr>
-	 <td> Back</td>	
+	<tr style="font-size:12px" >
+	 <td> Return</td>	
 	 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 	</tr>
 </table>	

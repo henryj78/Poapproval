@@ -12,7 +12,7 @@ class OrdersController < ApplicationController
       if @current_user.first_check.to_i == 1
         @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
       else
-        @orders = Order.where(:is_manually_closed => '0').asc  
+        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '1').asc  
       end  
     else#nil
       if params[:item][:itemx] == "PO Number"
@@ -126,6 +126,9 @@ class OrdersController < ApplicationController
     redirect_to  log_in_path
     flash[:notice] = "File Uploaded"   
   end  
+  
+  def searchz
+  end
   
   def approved
     if @current_user.amount.to_i == 0

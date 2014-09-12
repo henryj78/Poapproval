@@ -16,7 +16,7 @@
         <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
         <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
         <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
-        <li><a href="<%= buyers_path %>" class="menu">Buyers</a></li>
+        <li><a href="<%= searchz_orders_path %>" class="menu">Search</a></li>
       </ul>	  
       </div>
       </div>
@@ -65,10 +65,10 @@
         <div class="lefttxtblank02">
           <div class="lefticon">16</div>
           <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Buyers', buyers_path %></div>
+            <div class="leftboldtxt"><%= link_to 'Search', searchz_orders_path %></div>
             <div class="lefttxt">Wednesday August 6 2014</div>
           </div>
-          <div class="leftnormaltxt">Edit Buyer's phone numbers</div>
+          <div class="leftnormaltxt">Search Purchase Orders</div>
         </div>
         <div id="leftnav">
         </div>
@@ -78,31 +78,11 @@
           <h2>Approved Orders</h2>
         </div>
 		<br />
-		<table>
-			<tr>
-				<%#= form_tag import_orders_path, multipart: true do %>
-				<%#= file_field_tag :file %>
-			   <p> <%#= text_field_tag "subject" %></p>
-			   <%#= submit_tag "Import CSV" %>
-			 <%# end %>	
-	 
-			</tr>
-			<tr>
-			 <%= form_tag orders_path, :method => 'get' do %>
-			   <p>
-			     Search By : 
-		 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
-				 <%= text_field_tag :search, params[:search] %>
-			     <%= submit_tag "Search", :name => nil %>
-			   </p>
-			 <% end %>	
-			</tr>
-		</table>	
 		
 		<table>
 			
 	    <thead>
-	      <tr>
+	      <tr style="font-size:11px" >
 	        <th bgcolor="#FFE87C">PO</th>
 	        <th bgcolor="#FFE87C">Due</th>
 	        <th bgcolor="#FFE87C">Expected</th>
@@ -132,7 +112,7 @@
 
 <br />
 <table>
-	<tr>
+	<tr style="font-size:12px" >
 	 <td> Return</td>	
 	 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 	</tr>
