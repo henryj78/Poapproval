@@ -13,36 +13,36 @@ class Order < ActiveRecord::Base
     cus_name_new = ""
     
     CSV.foreach(file.path, :encoding => 'ISO-8859-1', :quote_char => '"', headers: true) do |row|
-     dups = Order.where(:ref_number => row[17])
-     if dups.size == 0  
-      if row[106] != cus_name
-        cus_name = row[106]
-        insert_row = Order.new
-        insert_row.ref_number = row[17]
-        insert_row.date_due = row[54]
-        insert_row.expected_date = row[55]
-        insert_row.total_amount = row[59]
-        insert_row.is_manually_closed = row[64]
-        insert_row.custom_field_authorized_buyer = row[162]
-        insert_row.vendor_name = row[6]
-        insert_row.customer_name = row[106]
-        insert_row.address = row[19]
-        insert_row.city = row[23]
-        insert_row.terms = row[53]
-        insert_row.project_name = row[132]
-        insert_row.memo = row[66]
-        insert_row.user_comments = row[67]
-        insert_row.item = row[92]
-        insert_row.mpn = row[93]
-        insert_row.wc  =  row[137]
-        insert_row.classz = row[8]
-        
-        #Items not  for production
-        if row[8] != 'Production'
-          insert_row.sub_approval = 1
-          insert_row.track = 1
-        end  
-        insert_row.save
+     # dups = Order.where(:ref_number => row[17])
+    #  if dups.size == 0
+    #   if row[106] != cus_name
+    #     cus_name = row[106]
+    #     insert_row = Order.new
+    #     insert_row.ref_number = row[17]
+    #     insert_row.date_due = row[54]
+    #     insert_row.expected_date = row[55]
+    #     insert_row.total_amount = row[59]
+    #     insert_row.is_manually_closed = row[64]
+    #     insert_row.custom_field_authorized_buyer = row[162]
+    #     insert_row.vendor_name = row[6]
+    #     insert_row.customer_name = row[106]
+    #     insert_row.address = row[19]
+    #     insert_row.city = row[23]
+    #     insert_row.terms = row[53]
+    #     insert_row.project_name = row[132]
+    #     insert_row.memo = row[66]
+    #     insert_row.user_comments = row[67]
+    #     insert_row.item = row[92]
+    #     insert_row.mpn = row[93]
+    #     insert_row.wc  =  row[137]
+    #     insert_row.classz = row[8]
+    #
+    #     #Items not  for production
+    #     if row[8] != 'Production'
+    #       insert_row.sub_approval = 1
+    #       insert_row.track = 1
+    #     end
+    #     insert_row.save
         
         insert_row = Ordln.new
         insert_row.ref_number = row[17]
@@ -68,32 +68,32 @@ class Order < ActiveRecord::Base
         insert_row.classz = row[8]        
         insert_row.save           
         
-     else
-       insert_row = Ordln.new
-       insert_row.ref_number = row[17]
-       insert_row.custom_field_authorized_buyer = row[162]
-       insert_row.ord_line_qty = row[96]
-       insert_row.ord_line_desc = row[95]
-       insert_row.ord_line_rate = row[100]
-       insert_row.ord_line_amount= row[103]
-       insert_row.customer_name = row[106]
-       insert_row.lead_time = row[152]
-       insert_row.product = row[155]
-       insert_row.project_id = row[132]  
-       insert_row.date_due = row[54]
-       insert_row.expected_date = row[55] 
-       insert_row.address = row[19]
-       insert_row.city = row[23]
-       insert_row.terms = row[53] 
-       insert_row.memo = row[66]
-       insert_row.user_comments = row[67]
-       insert_row.item = row[92]
-       insert_row.mpn = row[93]
-       insert_row.wc  =  row[137]
-       insert_row.classz = row[8]       
-       insert_row.save           
-      end #end of if loop
-     end #end of dups 
+     # else
+     #   insert_row = Ordln.new
+     #   insert_row.ref_number = row[17]
+     #   insert_row.custom_field_authorized_buyer = row[162]
+     #   insert_row.ord_line_qty = row[96]
+     #   insert_row.ord_line_desc = row[95]
+     #   insert_row.ord_line_rate = row[100]
+     #   insert_row.ord_line_amount= row[103]
+     #   insert_row.customer_name = row[106]
+     #   insert_row.lead_time = row[152]
+     #   insert_row.product = row[155]
+     #   insert_row.project_id = row[132]
+     #   insert_row.date_due = row[54]
+     #   insert_row.expected_date = row[55]
+     #   insert_row.address = row[19]
+     #   insert_row.city = row[23]
+     #   insert_row.terms = row[53]
+     #   insert_row.memo = row[66]
+     #   insert_row.user_comments = row[67]
+     #   insert_row.item = row[92]
+     #   insert_row.mpn = row[93]
+     #   insert_row.wc  =  row[137]
+     #   insert_row.classz = row[8]
+     #   insert_row.save
+     #  end #end of if loop
+     # end #end of dups
     end #end csv each statement
   end #end import
 
