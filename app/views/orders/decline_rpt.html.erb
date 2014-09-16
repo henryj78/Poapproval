@@ -109,7 +109,7 @@
         <td><%= link_to order.ref_number, details_orders_path(:id => order) %></td>
         <td><%= order.date_due %></td>
         <td><%= order.expected_date %></td>
-        <td><%= order.total_amount %></td>
+        <td>$<%= order.total_amount %></td>
         <td><%= order.custom_field_authorized_buyer %></td>
 		<td><%= order.decline_date[0...10] %></td>
 		<td><%= order.decline_by %></td>
