@@ -69,7 +69,6 @@ class Order < ActiveRecord::Base
         insert_row.save
       end #end of if loop
     else
-      
       insert_row = Ordln.new
       insert_row.ref_number = row[17]
       insert_row.custom_field_authorized_buyer = row[162]
