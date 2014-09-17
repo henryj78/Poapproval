@@ -101,8 +101,16 @@ class OrdersController < ApplicationController
     strcmt = "" if cmt.decliner_comments.nil?
     
     cmt.update!(order_profile_parameters)
-    cmt.decliner_comments = strcmt + " - " + cmt.decliner_comments 
+    strshort = cmt.decliner_comments 
+    cmt.decliner_comments =  strshort[0..242]
     cmt.save
+    
+    # move to History 
+    cmhistory =  Commenth.new
+    cmhistory.ref_number = cmt.ref_number
+    cmhistory.comment = strcmt
+    cmhistory.save
+    
     if cmt.po_status == "Declined"
       recommit
     else  

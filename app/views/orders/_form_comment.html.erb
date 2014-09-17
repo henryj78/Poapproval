@@ -1,71 +1,4 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>WetDesign</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%= stylesheet_link_tag    "casting", media: "all", "data-turbolinks-track" => true %>
-<link rel="icon" href="images/icon.ico" />
-</head>
-<body>
-<div id="headerbg">
-  <div id="headerblank">
-    <div id="header">
-      <div id="menu">
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="contentbg">
-  <div id="contentblank">
-    <div id="content">
-      <div id="contentleft">
-        <div id="leftheading">
-          <h4>Menu</h4>
-        </div>
-        <div class="lefttxtblank">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Logout', log_out_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Logs you completely out of application</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Approved', approved_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Approved Item and Receive Items</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Received', received_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been received</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Declined', decline_rpt_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been declined</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Buyers', buyers_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Edit Buyer's phone numbers</div>
-        </div>
-        <div id="leftnav">
-        </div>
-      </div>
+
       <div id="contentmid">
         <div class="midheading">
           <h2>Comment Message</h2>
@@ -101,12 +34,3 @@
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>
-
-      <div id="contentright">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
