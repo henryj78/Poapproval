@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140917194754) do
+ActiveRecord::Schema.define(version: 20140917223933) do
 
   create_table "buyers", force: true do |t|
     t.string   "phone"
@@ -104,6 +104,7 @@ ActiveRecord::Schema.define(version: 20140917194754) do
     t.string   "mpn"
     t.string   "wc"
     t.string   "classz"
+    t.string   "unitm"
   end
 
   create_table "users", force: true do |t|
