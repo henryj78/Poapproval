@@ -1,111 +1,26 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>WetDesign</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%= stylesheet_link_tag    "casting", media: "all", "data-turbolinks-track" => true %>
-<link rel="icon" href="images/icon.ico" />
-</head>
-<body>
-<div id="headerbg">
-  <div id="headerblank">
-    <div id="header">
-      <div id="menu">
-        <ul>
-          <li><a href="<%= log_out_path %>" class="menu">Logout</a></li>
-          <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
-          <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
-          <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
-          <li><a href="<%= searchz_orders_path %>" class="menu">Search</a></li>
-        </ul>  
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="contentbg">
-  <div id="contentblank">
-    <div id="content">
-      <div id="contentleft">
-        <div id="leftheading">
-          <h4>Menu</h4>
-        </div>
-        <div class="lefttxtblank">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Logout', log_out_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Logs you completely out of application</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Approved', approved_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Approved Item and Receive Items</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Received', received_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been received</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Declined', decline_rpt_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been declined</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Search', searchz_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Search Purchase Orders</div>
-        </div>
-        <div id="leftnav">
-        </div>
-      </div>
+
       <div id="contentmid">
         <div class="midheading">
           <h2>Decline orders</h2>
         </div>
-		<br />
-		<table>
-			<tr>
-				<%#= form_tag import_orders_path, multipart: true do %>
-				<%#= file_field_tag :file %>
-			   <p> <%#= text_field_tag "subject" %></p>
-			   <%#= submit_tag "Import CSV" %>
-			 <%# end %>	
-	 
-			</tr>
-		</table>	
-		
-		<table>
-		  <thead>
-		    <tr style="font-size:12px" >
-		      <th bgcolor="#000000"><font color="FFFFFF">PO</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">DUE</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">EXPECTED</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">TOTAL</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">BUYER</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">DECLINE</font></th>
-		      <th bgcolor="#000000"><font color="FFFFFF">DEC BY</font></th>
+		<table style="width:1000px; height:auto;">
+		  <thead style="width:1000px; height:20%;">
+		    <tr style="height:auto !important; font-size:12px; line-height:17px;" >
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PO</font></th>
+			  <th style="margin:2px; width:15%;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">DUE</font></th>
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">EXPECTED</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">TOTAL</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">BUYER</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">DECLINE</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">DECLINE BY</font></th>
 		    </tr>
 		  </thead>
+		
 		  
 
-  <tbody>
+  <tbody style="width:1000px; height:80%;">
     <% @orders.each do |order| %>
-      <tr class="<%= cycle("even", "odd") %>">
+      <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
         <td><%= link_to order.ref_number, details_orders_path(:id => order) %></td>
         <td><%= order.date_due %></td>
         <td><%= order.expected_date %></td>
@@ -124,11 +39,3 @@
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>
-      <div id="contentright">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>

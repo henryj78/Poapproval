@@ -1,104 +1,28 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-<title>WetDesign</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<%= stylesheet_link_tag    "casting", media: "all", "data-turbolinks-track" => true %>
-<link rel="icon" href="images/icon.ico" />
-</head>
-<body>
-<div id="headerbg">
-  <div id="headerblank">
-    <div id="header">
-      <div id="menu">
-        <ul>
-          <li><a href="<%= log_out_path %>" class="menu">Logout</a></li>
-          <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
-          <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
-          <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
-          <li><a href="<%=  searchz_orders_path %>" class="menu">Search</a></li>
-        </ul>
-      </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="contentbg">
-  <div id="contentblank">
-    <div id="content">
-      <div id="contentleft">
-        <div id="leftheading">
-          <h4>Menu</h4>
-        </div>
-        <div class="lefttxtblank">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Logout', log_out_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Logs you completely out of application</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Approved', approved_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Approved Item and Receive Items</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Received', received_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been received</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Declined', decline_rpt_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">View Items that have been declined</div>
-        </div>
-        <div class="lefttxtblank02">
-          <div class="lefticon">16</div>
-          <div class="leftboldtxtblank">
-            <div class="leftboldtxt"><%= link_to 'Search',  searchz_orders_path %></div>
-            <div class="lefttxt">Wednesday August 6 2014</div>
-          </div>
-          <div class="leftnormaltxt">Search Purchase Orders</div>
-        </div>
-        <div id="leftnav">
-        </div>
-      </div>
+
+
       <div id="contentmid">
         <div class="midheading">
           <h2>Purchase Orders</h2>
         </div>
-		<br />
-
-		
-		<table>
-		  <thead>
-		    <tr style="font-size:12px" >
-		      <th bgcolor="#000000"><font color="#FFFFFF">PO</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">PROJECT</font></th>
-		      <th bgcolor="#000000"><font color="#FFFFFF">VENDOR</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">CUSTOMER</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">TOTAL</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">EXPECTED</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">APPROVED</font></th>
-			  <th bgcolor="#000000"><font color="#FFFFFF">STATUS</font></th>
-		      <th></th>
-		      <th></th>
+		<table style="width:1000px; height:auto;">
+		  <thead style="width:1000px; height:20%;">
+		    <tr style="height:auto !important; font-size:12px; line-height:17px;" >
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PO</font></th>
+			  <th style="margin:2px; width:15%;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PROJECT</font></th>
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">VENDOR</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">CUSTOMER</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">TOTAL</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">EXPECTED</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">APPROVED</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">STATUS</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="0" bgcolor="#FFFFFF"><font face="Arial" color="#FFFFFF"></font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="0" bgcolor="#FFFFFF"><font face="Arial" color="#FFFFFF"></font></th>
 		    </tr>
 		  </thead>
 
-		  <tbody>
+		  <tbody style="width:1000px; height:80%;">
 		    <% @orders.each do |order| %>
-		      <tr style="font-size:12px", class="<%= cycle("even", "odd") %>">
+		      <tr style="font:Arial; font-size:9px"  class="<%= cycle("even", "odd") %>">
 		        <td><%= order.ref_number %></td>
 				<td><%= order.project_name %></td>
 		        <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
@@ -107,19 +31,10 @@
 				<td><%= order.expected_date %></td>
 				<td><%= order.track %></td>
 				<td><%= order.po_status %></td>
-				<td></td>
-				
-				<td><%=link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
+				<td><%= link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
 						<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
 		      </tr>
 		    <% end %>
 		  </tbody>
 		</table>
-      <div id="contentright">
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</body>
-</html>
+ 
