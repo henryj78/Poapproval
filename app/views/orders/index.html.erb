@@ -23,16 +23,16 @@
 		  <tbody style="width:1000px; height:80%;">
 		    <% @orders.each do |order| %>
 		      <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
-		        <td><%= order.ref_number %></td>
-				<td><%= order.project_name %></td>
-		        <td><%= link_to order.vendor_name, details_orders_path(:id => order)  %></td>
-				<td><%= order.customer_name %></td>
-				<td>$<%= order.total_amount %></td>
-				<td><%= order.expected_date %></td>
-				<td><%= order.track %></td>
-				<td><%= order.po_status %></td>
-				<td><%= link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
-						<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
+		        <td><font face="Arial"><%= order.ref_number %></font></td>
+				<td><font face="Arial"><%= order.project_name %></font></td>
+		        <td><font face="Arial"><%= link_to order.vendor_name, details_orders_path(:id => order)  %></font></td>
+				<td><font face="Arial"><%= order.customer_name %></font></td>
+				<td>$<font face="Arial"><%= order.total_amount %></font></td>
+				<td><font face="Arial"><%= order.expected_date %></font></td>
+				<td><font face="Arial"><%= order.track %></font></td>
+				<td><font face="Arial"><%= order.po_status %></font></td>
+				<td><font face="Arial"><%= link_to image_tag("thumbs_up_icon.png"), edit_order_path(order), :confirm => 'Approve - Are you sure? ' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></td>
+						<td><%=link_to image_tag("thumbs_down_icon.png"), decline_orders_path(:id => order), :confirm => 'Decline -  Are you sure?' if order.total_amount.to_f <= @current_user.amount.to_f && @current_user.first_check.to_i == 1 || order.sub_approval.to_i == 1 && @current_user.amount.to_f > 0 %></font></td>
 		      </tr>
 		    <% end %>
 		  </tbody>
