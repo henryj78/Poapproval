@@ -8,7 +8,7 @@
 			<tr>
 			 <%= form_tag orders_path, :method => 'get' do %>
 			   <p style="font-size:11px"> 
-			     Search By :
+			     <font face="Arial">Search By :</font>
 		 	   	<%= select  :item, :itemx , ["PO Number", "Project", "Vendor Name","Customer" ] %>
 				 <%= text_field_tag :search, params[:search] %>
 			     <%= submit_tag "Search", :name => nil %>
@@ -20,7 +20,7 @@
 		<br />
 		<table>
 			<tr style="font-size:12px" >
-			 <td> Return </td>	
+			 <td><font face="Arial">Return</font></td>	
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>

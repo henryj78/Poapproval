@@ -21,13 +21,13 @@
   <tbody style="width:1000px; height:80%;">
     <% @orders.each do |order| %>
       <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
-        <td><%= order.ref_number %></td>
-        <td><%= order.date_due %></td>
-        <td><%= order.expected_date %></td>
-        <td>$<%= order.total_amount %></td>
-        <td><%= order.custom_field_authorized_buyer %></td>
-		<td><%= order.receive_date %></td>
-		<td><%= order.receive_by %></td>
+        <td><font face="Arial"><%= order.ref_number %></font></td>
+        <td><font face="Arial"><%= order.date_due %></font></td>
+        <td><font face="Arial"><%= order.expected_date %></font></td>
+        <td>$<font face="Arial"><%= order.total_amount %></font></td>
+        <td><font face="Arial"><%= order.custom_field_authorized_buyer %></font></td>
+		<td><font face="Arial"><%= order.receive_date %></font></td>
+		<td><font face="Arial"><%= order.receive_by %></font></td>
       </tr>
     <% end %>
   </tbody>
@@ -35,7 +35,7 @@
 		<br />
 		<table>
 			<tr style="font-size:12px" >
-			 <td> Return</td>	
+			 <td><font face="Arial">Return</font></td>	
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>
