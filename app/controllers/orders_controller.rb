@@ -97,19 +97,19 @@ class OrdersController < ApplicationController
   def update
     cmt = Order.find(params[:id])
     
-    strcmt = cmt.decliner_comments if !cmt.decliner_comments.nil?
-    strcmt = "" if cmt.decliner_comments.nil?
+    strcmt = cmt.dcomments if !cmt.dcomments.nil?
+    strcmt = "" if cmt.dcomments.nil?
     
     cmt.update!(order_profile_parameters)
-    strshort = cmt.decliner_comments 
-    cmt.decliner_comments =  strshort[0..242]
+    #strshort = cmt.decliner_comments 
+    #cmt.decliner_comments =  strshort[0..242]
     cmt.save
     
-    # move to History 
-    cmhistory =  Commenth.new
-    cmhistory.ref_number = cmt.ref_number
-    cmhistory.comment = strcmt
-    cmhistory.save
+    # # move to History
+    # cmhistory =  Commenth.new
+    # cmhistory.ref_number = cmt.ref_number
+    # cmhistory.comment = strcmt
+    # cmhistory.save
     
     if cmt.po_status == "Declined"
       recommit
@@ -156,6 +156,15 @@ class OrdersController < ApplicationController
   
   def details
     @str_get_ref_id = Order.find(params[:id])
+    # move old comments into larger field
+    if !@str_get_ref_id.decliner_comments.nil? 
+     if !@str_get_ref_id.dcomments.nil?  
+       if @str_get_ref_id.dcomments.size == 0
+        @str_get_ref_id.dcomments = @str_get_ref_id.decliner_comments
+       end # end size
+      end # nil 
+      #@str_get_ref_id.save
+    end #move comments
     str_vendor_ref_id = @str_get_ref_id.ref_number
     @orderln = Ordln.where(:ref_number => str_vendor_ref_id)  
   end  
@@ -220,6 +229,6 @@ class OrdersController < ApplicationController
     end
     
     def order_profile_parameters
-      params.require(:order).permit(:date_due, :decliner_comments)
+      params.require(:order).permit(:date_due, :decliner_comments, :dcomments)
     end
 end
