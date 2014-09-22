@@ -157,17 +157,15 @@ class OrdersController < ApplicationController
   def details
     @str_get_ref_id = Order.find(params[:id])
     # move old comments into larger field
-    if !@str_get_ref_id.decliner_comments.nil? 
-     if !@str_get_ref_id.dcomments.nil?  
-       if @str_get_ref_id.dcomments.size == 0
+    if !@str_get_ref_id.decliner_comments.nil?  
+       if @str_get_ref_id.dcomments.nil? || @str_get_ref_id.docomments.size == 0
         @str_get_ref_id.dcomments = @str_get_ref_id.decliner_comments
        end # end size
-      end # nil 
       #@str_get_ref_id.save
     end #move comments
     str_vendor_ref_id = @str_get_ref_id.ref_number
     @orderln = Ordln.where(:ref_number => str_vendor_ref_id)  
-  end  
+  end # end of details
   
   def decline_rpt
     if @current_user.amount.to_i == 0
