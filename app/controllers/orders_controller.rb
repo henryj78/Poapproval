@@ -9,12 +9,20 @@ class OrdersController < ApplicationController
   def index
        
     if params[:search].nil?
+      # Order of Individual for approval
       if @current_user.first_check.to_i == 1
         @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
-      else
-        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '1').asc  
+      end
+      
+      if @current_user.first_check.to_i == 2
+        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '2').asc  
       end  
-    else#nil
+    
+      if @current_user.first_check.nil?
+        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '1').asc 
+      end
+      
+    else#nil - Search
       if params[:item][:itemx] == "PO Number"
          @orders = Order.search(params[:search])
       end#PO Number
@@ -31,8 +39,8 @@ class OrdersController < ApplicationController
          @orders = Order.search_customer(params[:search])
       end#Customer Name  
                 
-    end#end nil check
-  end
+    end #end nil check
+  end #end of index
 
   # GET /orders/1
   # GET /orders/1.json
@@ -50,25 +58,32 @@ class OrdersController < ApplicationController
      strApproval = str_approve[0]
 
      if @current_user.first_check.to_i == 1
+       strApproval.sub_approval = 2
+       strApproval.track = 0
+     end # Commodity Manger - Stephen Morrish
+     
+     if @current_user.first_check.to_i == 2
        strApproval.sub_approval = 1
        strApproval.track = 1
-     else # boss
+     end # Production Manger - Jason Hall
+     
+     if @current_user.first_check.nil?
        if strApproval.is_manually_closed == 0.to_s
-        strApproval.is_manually_closed = 1
-        strApproval.custom_field_status = 1 #Approved
-        strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-        strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name
-        strApproval.track = 2
-        strApproval.po_status = 'Approved'
-        msg = "PO approval  was successful."
+         strApproval.is_manually_closed = 1
+         strApproval.custom_field_status = 1 #Approved
+         strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+         strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name
+         strApproval.track = 2
+         strApproval.po_status = 'Approved'
+         msg = "PO approval  was successful."
        else
          strApproval.is_fully_received = 1
          strApproval.custom_field_status = 3 #Received
          strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
          strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
          msg = "PO was received successfully."
-       end
-     end # current boss
+       end # loop
+     end # Regular User    
         
      
      strApproval.save
