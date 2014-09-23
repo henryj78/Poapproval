@@ -158,7 +158,7 @@ class OrdersController < ApplicationController
     @str_get_ref_id = Order.find(params[:id])
     # move old comments into larger field
     if !@str_get_ref_id.decliner_comments.nil?  
-       if @str_get_ref_id.dcomments.nil? || @str_get_ref_id.docomments.size == 0
+       if @str_get_ref_id.dcomments.nil? || @str_get_ref_id.dcomments.size == 0
         @str_get_ref_id.dcomments = @str_get_ref_id.decliner_comments
        end # end size
       #@str_get_ref_id.save
