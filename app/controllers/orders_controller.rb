@@ -221,6 +221,8 @@ class OrdersController < ApplicationController
     @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
     @order_decline.po_status = 'Declined'
     @order_decline.save
+    task = 'Declined'
+    spy( @order_decline,task)
   end  
   
   def recommit
@@ -230,6 +232,8 @@ class OrdersController < ApplicationController
     @order.is_fully_received = nil
     @order.po_status = 'Recommited'
     @order.save
+    task = 'Recommited'
+    spy(@order,task)
   end  
   
     
