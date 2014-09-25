@@ -30,8 +30,11 @@ class Order < ActiveRecord::Base
         insert_row.city = row[23]
         insert_row.terms = row[53]
         insert_row.project_name = row[132]
-        insert_row.memo = row[66]
-        insert_row.user_comments = row[67]
+        
+        #Change memo and comments datatype text
+        insert_row.memot = row[66]
+        insert_row.ucommentst = row[67]
+        
         insert_row.item = row[92]
         insert_row.mpn = row[93]
         insert_row.wc  =  row[137]
@@ -48,7 +51,10 @@ class Order < ActiveRecord::Base
         insert_row.ref_number = row[17]
         insert_row.custom_field_authorized_buyer = row[162]
         insert_row.ord_line_qty = row[96]
-        insert_row.ord_line_desc = row[95]
+      
+        #old load : ord_line_desc
+        insert_row.desctext = row[95] 
+        
         insert_row.unitm = row[97]
         insert_row.ord_line_rate = row[100]
         insert_row.ord_line_amount= row[103]
@@ -61,8 +67,11 @@ class Order < ActiveRecord::Base
         insert_row.address = row[19]
         insert_row.city = row[23]
         insert_row.terms = row[53]
-        insert_row.memo = row[66]
-        insert_row.user_comments = row[67]
+        
+        #Change memo and comments datatype text
+        insert_row.memot = row[66]
+        insert_row.ucommentst = row[67]
+        
         insert_row.item = row[92]
         insert_row.mpn = row[93]
         insert_row.wc  =  row[137]
@@ -74,7 +83,10 @@ class Order < ActiveRecord::Base
       insert_row.ref_number = row[17]
       insert_row.custom_field_authorized_buyer = row[162]
       insert_row.ord_line_qty = row[96]
-      insert_row.ord_line_desc = row[95]
+      
+      #old load : ord_line_desc
+      insert_row.desctext = row[95] 
+      
       insert_row.unitm = row[97]
       insert_row.ord_line_rate = row[100]
       insert_row.ord_line_amount= row[103]
@@ -87,8 +99,11 @@ class Order < ActiveRecord::Base
       insert_row.address = row[19]
       insert_row.city = row[23]
       insert_row.terms = row[53]
-      insert_row.memo = row[66]
-      insert_row.user_comments = row[67]
+      
+      #Change memo and comments datatype text
+      insert_row.memot = row[66]
+      insert_row.ucommentst = row[67]
+      
       insert_row.item = row[92]
       insert_row.mpn = row[93]
       insert_row.wc  =  row[137]

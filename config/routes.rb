@@ -34,6 +34,7 @@ Poapproval::Application.routes.draw do
       get "undecline"
       get "importz"
       get "searchz"
+      get "watcherz"
     end
   end
   

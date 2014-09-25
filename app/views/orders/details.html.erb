@@ -71,8 +71,8 @@
 		 	 </tr>
 			 <tbody style="width:1000px; height:80%;">
 				 <tr style="font:Arial; font-size:9px" >
-				 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.memo, :size =>"25x10" %></font></td>
-		 		 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.user_comments, :size =>"25x10" %></font></td>
+				 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.memot, :size =>"25x10" %></font></td>
+		 		 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.ucommentst, :size =>"25x10" %></font></td>
 				 <td><font face="Arial"><%= text_area_tag :message_body,@str_get_ref_id.dcomments, :size =>"25x10" %></font></td>
 			     </tr>
 		 	 </tbody>
@@ -103,7 +103,11 @@
 	    <td><font face="Arial"><%= order.item %></font></td> 	  
 		<td><font face="Arial"><%= order.mpn %></font></td> 
 		<td><font face="Arial"><%= order.wc %></font></td> 
-		<td><font face="Arial"><%= order.ord_line_desc %></font></td>
+		<!--#refactor this: -->
+		<% if !order.ord_line_desc.nil? %>
+		 <% order.desctext = order.ord_line_desc%>
+		<% end %>
+		<td><font face="Arial"><%= order.desctext  %></font></td>
 		<td><font face="Arial"><%= order.project_id %></font></td>
 		<td><font face="Arial"><%= order.product %></font></td>
 		<td><font face="Arial"><%= order.classz %></font></td>

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  po: MyString
+  project: MyString
+  customer: MyString
+  approver: MyString
+  task: MyString
+
+two:
+  po: MyString
+  project: MyString
+  customer: MyString
+  approver: MyString
+  task: MyString

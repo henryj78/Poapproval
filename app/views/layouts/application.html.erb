@@ -14,8 +14,18 @@
         <ul>
           <li><a href="<%= log_out_path %>" class="menu">Logout</a></li>
           <li><a href="<%= approved_orders_path %>" class="menu">Approved</a></li>
-          <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
           <li><a href="<%= decline_rpt_orders_path %>" class="menu">Declined</a></li>
+		  
+		  <% if @current_user.nil?  %>
+           <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
+		   <% end %>
+		   
+		 <% if !@current_user.nil? && @current_user.email == 'mfuller' %>
+		   <li><a href="<%= watcherz_orders_path %>" class="menu">Log</a></li>
+		 <% else %>  
+		   <li><a href="<%= received_orders_path %>" class="menu">Received</a></li>
+		 <% end %>
+		  
           <li><a href="<%=  searchz_orders_path %>" class="menu">Search</a></li>
         </ul>
       </div>

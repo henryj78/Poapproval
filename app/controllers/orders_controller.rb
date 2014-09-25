@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-       
     if params[:search].nil?
       # Order of Individual for approval
       if @current_user.first_check.to_i == 1
@@ -58,11 +57,15 @@ class OrdersController < ApplicationController
      strApproval = str_approve[0]
 
      if @current_user.first_check.to_i == 1
+       task = 'Approved'
+       spy(strApproval,task)
        strApproval.sub_approval = 2
        strApproval.track = 0
      end # Commodity Manger - Stephen Morrish
      
      if @current_user.first_check.to_i == 2
+       task = 'Approved'
+       spy(strApproval,task)
        strApproval.sub_approval = 1
        strApproval.track = 1
      end # Production Manger - Jason Hall
@@ -76,12 +79,16 @@ class OrdersController < ApplicationController
          strApproval.track = 2
          strApproval.po_status = 'Approved'
          msg = "PO approval  was successful."
-       else
-         strApproval.is_fully_received = 1
-         strApproval.custom_field_status = 3 #Received
-         strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
-         msg = "PO was received successfully."
+         
+         #record who approved
+         task = 'Approved'
+         spy(strApproval,task)
+       # else
+       #   strApproval.is_fully_received = 1
+       #   strApproval.custom_field_status = 3 #Received
+       #   strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+       #   strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
+       #   msg = "PO was received successfully."
        end # loop
      end # Regular User    
         
@@ -153,6 +160,10 @@ class OrdersController < ApplicationController
   def searchz
   end
   
+  def watcherz
+   @spy = Watcher.all
+  end
+  
   def approved
     if @current_user.amount.to_i == 0
       @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil,:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
@@ -171,13 +182,23 @@ class OrdersController < ApplicationController
   
   def details
     @str_get_ref_id = Order.find(params[:id])
-    # move old comments into larger field
+    # move old comments into larger field  
     if !@str_get_ref_id.decliner_comments.nil?  
        if @str_get_ref_id.dcomments.nil? || @str_get_ref_id.dcomments.size == 0
         @str_get_ref_id.dcomments = @str_get_ref_id.decliner_comments
        end # end size
       #@str_get_ref_id.save
     end #move comments
+    
+    # move memo and customer comments 
+    if !@str_get_ref_id.memo.nil?
+      @str_get_ref_id.memot = @str_get_ref_id.memo
+    end #end of memo
+    
+    if !@str_get_ref_id.user_comments.nil?
+      @str_get_ref_id.ucommentst = @str_get_ref_id.user_comments
+    end #end of comments
+    
     str_vendor_ref_id = @str_get_ref_id.ref_number
     @orderln = Ordln.where(:ref_number => str_vendor_ref_id)  
   end # end of details
@@ -244,4 +265,14 @@ class OrdersController < ApplicationController
     def order_profile_parameters
       params.require(:order).permit(:date_due, :decliner_comments, :dcomments)
     end
+    
+    def spy(suspect, task)
+      @spy = Watcher.new
+      @spy.po = suspect.ref_number
+      @spy.project = suspect.project_name
+      @spy.customer = suspect.vendor_name  
+      @spy.approver = @current_user.first_name + " " + @current_user.last_name
+      @spy.task = task
+      @spy.save
+    end  
 end

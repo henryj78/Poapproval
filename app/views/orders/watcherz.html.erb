@@ -1,0 +1,29 @@
+      <div id="contentmid">
+        <div class="midheading">
+          <h2></h2>
+        </div>
+		<table style="width:1000px; height:auto;">
+		  <thead style="width:1000px; height:20%;">
+		    <tr style="height:auto !important; font-size:12px; line-height:17px;" >
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PO</font></th>
+			  <th style="margin:2px; width:15%;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PROJECT</font></th>
+		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">VENDOR</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">APPROVER</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">Date / Time</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">TASK</font></th>
+		    </tr>
+		  </thead>
+
+		  <tbody style="width:1000px; height:80%;">
+		    <% @spy.each do |sapp| %>
+		      <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
+		        <td><font face="Arial"><%= sapp.po %></font></td>
+				<td><font face="Arial"><%= sapp.project %></font></td>
+		        <td><font face="Arial"><%= sapp.customer %></font></td>
+				<td><font face="Arial"><%= sapp.approver %></font></td>
+				<td><font face="Arial"><%= sapp.created_at %></font></td>
+				<td><font face="Arial"><%= sapp.task %></font></td>
+		      </tr>
+		    <% end %>
+		  </tbody>
+		</table>
