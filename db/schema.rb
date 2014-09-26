@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140924205341) do
+ActiveRecord::Schema.define(version: 20140925213505) do
 
   create_table "buyers", force: true do |t|
     t.string   "phone"
@@ -66,6 +66,7 @@ ActiveRecord::Schema.define(version: 20140924205341) do
     t.text     "dcomments"
     t.text     "memot"
     t.text     "ucommentst"
+    t.text     "acomments"
   end
 
   create_table "ordlns", force: true do |t|

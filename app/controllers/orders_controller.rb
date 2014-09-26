@@ -51,6 +51,7 @@ class OrdersController < ApplicationController
     @order = Order.new
   end
 
+  
   # GET /orders/1/edit
   def edit
      str_approve = Order.find_order(params[:id])
@@ -59,16 +60,16 @@ class OrdersController < ApplicationController
      if @current_user.first_check.to_i == 1
        task = 'Approved'
        spy(strApproval,task)
-       strApproval.sub_approval = 2
-       strApproval.track = 0
-     end # Commodity Manger - Stephen Morrish
-     
-     if @current_user.first_check.to_i == 2
-       task = 'Approved'
-       spy(strApproval,task)
        strApproval.sub_approval = 1
        strApproval.track = 1
-     end # Production Manger - Jason Hall
+     end # Commodity Manger - Stephen Morrish
+     
+     # if @current_user.first_check.to_i == 2
+     #   task = 'Approved'
+     #   spy(strApproval,task)
+     #   strApproval.sub_approval = 1
+     #   strApproval.track = 1
+     # end # Production Manger - Jason Hall
      
      if @current_user.first_check.nil?
        if strApproval.is_manually_closed == 0.to_s
@@ -83,12 +84,12 @@ class OrdersController < ApplicationController
          #record who approved
          task = 'Approved'
          spy(strApproval,task)
-       # else
-       #   strApproval.is_fully_received = 1
-       #   strApproval.custom_field_status = 3 #Received
-       #   strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-       #   strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
-       #   msg = "PO was received successfully."
+       else
+         strApproval.is_fully_received = 1
+         strApproval.custom_field_status = 3 #Received
+         strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
+         msg = "PO was received successfully."
        end # loop
      end # Regular User    
         
@@ -117,27 +118,40 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    cmt = Order.find(params[:id])
+    #need to be made dry...
+    if !params[:order][:acomments].nil?
+
+      cmt = Order.find(params[:id])
+      cmt.acomments = params[:order][:acomments]
+      cmt.save
+      
+      str_approve = Order.find_order(params[:id])
+      strApproval = str_approve[0]
+      if @current_user.first_check.to_i == 1
+        task = 'Approved'
+        spy(strApproval,task)
+        strApproval.sub_approval = 1
+        strApproval.track = 1
+        strApproval.save
+      end # Commodity Manger - Stephen Morrish
+      
+      
+    end #end check for acomments  
     
-    strcmt = cmt.dcomments if !cmt.dcomments.nil?
-    strcmt = "" if cmt.dcomments.nil?
+    if !params[:order][:dcomments].nil?
+      cmt = Order.find(params[:id])
+      strcmt = cmt.dcomments if !cmt.dcomments.nil?
+      strcmt = "" if cmt.dcomments.nil?
+      cmt.update!(order_profile_parameters)
+      cmt.save
     
-    cmt.update!(order_profile_parameters)
-    #strshort = cmt.decliner_comments 
-    #cmt.decliner_comments =  strshort[0..242]
-    cmt.save
+      if cmt.po_status == "Declined"
+        recommit
+      else  
+       get_comments 
+      end #status
+    end #end check for dcomments  
     
-    # # move to History
-    # cmhistory =  Commenth.new
-    # cmhistory.ref_number = cmt.ref_number
-    # cmhistory.comment = strcmt
-    # cmhistory.save
-    
-    if cmt.po_status == "Declined"
-      recommit
-    else  
-     get_comments 
-    end #status
     redirect_to orders_path
   end
 

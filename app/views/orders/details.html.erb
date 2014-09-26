@@ -68,12 +68,14 @@
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font color="#FFFFFF"><font face="Arial">MEMO</font></font></th>
 		 	  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font color="#FFFFFF"><font face="Arial">VENDOR MSG</font></font></th>
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font color="#FFFFFF"><font face="Arial">DECLINE REASON</font></font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font color="#FFFFFF"><font face="Arial">APPROVER COMMENTS</font></font></th>
 		 	 </tr>
 			 <tbody style="width:1000px; height:80%;">
 				 <tr style="font:Arial; font-size:9px" >
 				 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.memot, :size =>"25x10" %></font></td>
 		 		 <td><font face="Arial"><%= text_area_tag :message_memo,@str_get_ref_id.ucommentst, :size =>"25x10" %></font></td>
 				 <td><font face="Arial"><%= text_area_tag :message_body,@str_get_ref_id.dcomments, :size =>"25x10" %></font></td>
+				 <td><font face="Arial"><%= text_area_tag :message_body,@str_get_ref_id.acomments, :size =>"25x10" %></font></td>
 			     </tr>
 		 	 </tbody>
 		</table>
@@ -117,6 +119,19 @@
 		<td>$<font face="Arial"><%= order.ord_line_amount %></font></td>
       </tr>
     <% end %>
+
+  <% if @current_user.first_check.to_i == 1 %>
+   <%= form_for(@str_get_ref_id, :multipart => true) do |f| %>
+    <font face="Arial">
+     <%= f.label :comment %> 
+     <%= f.text_area :acomments  %>
+     <%#= f.text_area_tag :message_body,@str_get_ref_id.dcomments, :size =>"25x10" %>
+     <%= f.submit %>
+    </font>
+   <% end %>
+  <% end %> 
+   <br />
+
   </tbody>
 		</table>
 		<br />
