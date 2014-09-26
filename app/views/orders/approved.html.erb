@@ -25,7 +25,7 @@
             <td><font face="Arial"><%= order.custom_field_authorized_buyer %></font></td>
 		    <td><font face="Arial"><%= order.approve_date %></font></td>
 		    <td><font face="Arial"><%= order.approve_by %></font></td>
-		<td><font face="Arial"><%= link_to 'Receive', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></font></td>
+		<td><font face="Arial"><%= link_to 'Read  ', details_orders_path(:id => order) if !order.acomments.nil? %><%= link_to '  Receive', edit_order_path(order),:confirm => 'Are you sure?' if order.custom_field_authorized_buyer == @current_user.buyer %></font></td>
       </tr>
     <% end %>
 		  </tbody>
