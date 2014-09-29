@@ -7,6 +7,7 @@
 		  <thead style="width:1000px; height:20%;">
 		    <tr style="height:auto !important; font-size:12px; line-height:17px;" >
 		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">PO</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">VENDOR</font></th>
 			  <th style="margin:2px; width:15%;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">DUE</font></th>
 		      <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">EXPECTED</font></th>
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">TOTAL</font></th>
@@ -22,6 +23,7 @@
     <% @orders.each do |order| %>
       <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
         <td><font face="Arial"><%= link_to order.ref_number, details_orders_path(:id => order) %></font></td>
+		<td><font face="Arial"><%= order.vendor_name  %></font></td>
         <td><font face="Arial"><%= order.date_due %></font></td>
         <td><font face="Arial"><%= order.expected_date %></font></td>
         <td>$<font face="Arial"><%= order.total_amount %></font></td>
