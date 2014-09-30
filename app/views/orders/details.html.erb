@@ -98,7 +98,7 @@
 		    </tr>
 		  </thead>
 		
-
+ 
   <tbody style="width:1000px; height:80%;">
     <% @orderln.each do |order| %>
       <tr style="font:Arial; font-size:9px" class="<%= cycle("even", "odd") %>">
@@ -119,22 +119,29 @@
 		<td>$<font face="Arial"><%= order.ord_line_amount %></font></td>
       </tr>
     <% end %>
+	
 
-  <% if @current_user.first_check.to_i == 1 %>
-   <%= form_for(@str_get_ref_id, :multipart => true) do |f| %>
-    <font face="Arial">
-     <%= f.label :comment %> 
-     <%= f.text_area :acomments  %>
-     <%#= f.text_area_tag :message_body,@str_get_ref_id.dcomments, :size =>"25x10" %>
-     <%= f.submit %>
-    </font>
-   <% end %>
-  <% end %> 
-   <br />
 
   </tbody>
 		</table>
 		<br />
+		
+		<table>
+			<tr style="font:Arial; font-size:9px">
+	     <% if @current_user.first_check.to_i == 1 %>
+	      <%= form_for(@str_get_ref_id, :multipart => true) do |f| %>
+	        <td><%= f.label :Approved_Comment %> <%= f.text_area :acomments  %></td>
+	        <td><%= f.label :Decline_Comment %>  <%= f.text_area :dcomments  %></td>
+	        <td><%= f.submit %></td>
+		    <td><font face="Arial"> Return</font></td>	
+		    <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
+	      <% end %>
+	     <% end %> 
+		  </tr>
+        </table>
+		
+	    <br />
+		<% if @current_user.first_check.to_i != 1 %>
 		<table>
 			<tr style="font-size:12px" >
 			 <%if @current_user.amount.to_f > 0 %>	
@@ -152,3 +159,4 @@
 			 <td><%= link_to image_tag("backward_icon.png"), orders_path %></td>
 			</tr>
 		</table>
+       <% end %>

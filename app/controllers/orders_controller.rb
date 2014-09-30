@@ -118,12 +118,14 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
+    @flowchk = 0
     #need to be made dry...
     if !params[:order][:acomments].nil?
-
-      cmt = Order.find(params[:id])
-      cmt.acomments = params[:order][:acomments]
-      cmt.save
+      if params[:order][:acomments].size != 0
+       @flowchk = 1  
+       cmt = Order.find(params[:id])
+       cmt.acomments = params[:order][:acomments]
+       cmt.save
       
       str_approve = Order.find_order(params[:id])
       strApproval = str_approve[0]
@@ -134,23 +136,25 @@ class OrdersController < ApplicationController
         strApproval.track = 1
         strApproval.save
       end # Commodity Manger - Stephen Morrish
-      
-      
+     end #end of size check 
     end #end check for acomments  
     
-    if !params[:order][:dcomments].nil?
-      cmt = Order.find(params[:id])
-      strcmt = cmt.dcomments if !cmt.dcomments.nil?
-      strcmt = "" if cmt.dcomments.nil?
-      cmt.update!(order_profile_parameters)
-      cmt.save
+  
+    if !params[:order][:dcomments].nil? && @flowchk == 0
+      if params[:order][:dcomments].size != 0
+        cmt = Order.find(params[:id])
+        strcmt = cmt.dcomments if !cmt.dcomments.nil?
+        strcmt = "" if cmt.dcomments.nil?
+        cmt.update!(order_profile_parameters)
+        cmt.save
+         if cmt.po_status == "Declined"
+          recommit
+         else  
+          get_comments 
+         end #status
+        end # end of size
+       end #end check for dcomments  
     
-      if cmt.po_status == "Declined"
-        recommit
-      else  
-       get_comments 
-      end #status
-    end #end check for dcomments  
     
     redirect_to orders_path
   end
