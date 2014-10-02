@@ -120,7 +120,14 @@ class OrdersController < ApplicationController
   def update
     @flowchk = 0
     #need to be made dry...
-    if !params[:order][:acomments].nil?
+    if @current_user.first_check.to_i != 1
+          cmt = Order.find(params[:id])
+          cmt.acomments = nil
+          cmt.save
+          params[:order][:acomments] = nil 
+    end #end decline for nil user
+    
+    if !params[:order][:acomments].nil? 
       if params[:order][:acomments].size != 0
        @flowchk = 1  
        cmt = Order.find(params[:id])
@@ -231,13 +238,22 @@ class OrdersController < ApplicationController
   
   def get_comments
     @order_decline = Order.find(params[:id])
-    @order_decline.is_manually_closed = 3
-    @order_decline.is_fully_received = 3
-    @order_decline.decline = 1
-    @order_decline.custom_field_status = 2 #decline
-    @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-    @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
-    @order_decline.po_status = 'Declined'
+    if @current_user.first_check.nil? && @order_decline.classz =='Production'
+      @order_decline.decline = '0'
+      @order_decline.is_manually_closed = '0'
+      @order_decline.is_fully_received = nil
+      @order_decline.po_status = 'mDeclined'
+      @order_decline.sub_approval = nil
+    else
+      @order_decline.is_manually_closed = 3
+      @order_decline.is_fully_received = 3
+      @order_decline.decline = 1
+      @order_decline.custom_field_status = 2 #decline
+      @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+      @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
+      @order_decline.po_status = 'Declined'  
+    end # check whom declined
+      
     @order_decline.save
     task = 'Declined'
     spy( @order_decline,task)
