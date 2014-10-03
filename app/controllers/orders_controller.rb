@@ -238,11 +238,11 @@ class OrdersController < ApplicationController
   
   def get_comments
     @order_decline = Order.find(params[:id])
-    if @current_user.first_check.nil? && @order_decline.classz =='Production'
+    if @current_user.first_check.nil? && @order_decline.classz !='Overhead:Facilities'
       @order_decline.decline = '0'
       @order_decline.is_manually_closed = '0'
       @order_decline.is_fully_received = nil
-      @order_decline.po_status = 'mDeclined'
+      @order_decline.po_status = '01Declined'
       @order_decline.sub_approval = nil
     else
       @order_decline.is_manually_closed = 3

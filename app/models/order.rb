@@ -41,7 +41,7 @@ class Order < ActiveRecord::Base
         insert_row.classz = row[8]
 
         #Items not  for production
-        if row[8] != 'Production'
+        if row[8] == 'Overhead:Facilities'
           insert_row.sub_approval = 1
           insert_row.track = 1
         end
