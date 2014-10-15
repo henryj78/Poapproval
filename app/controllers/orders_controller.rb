@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  include ActionView::Helpers::NumberHelper
+  
   before_filter :authenticate
   before_action :set_order, only: [:show, :edit, :destroy]
   before_filter :protect

@@ -93,7 +93,8 @@
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">CLASS</font></th>
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">QTY</font></th>
 			  <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">U/M</font></th>
-			  <th style="margin:2px; width:auto;" cellspacing="0" bgcolor="#000000"><font face="Arial" color="#FFFFFF">LEAD TIME</font></th>
+			   <th style="margin:2px; width:auto;" cellspacing="2" bgcolor="#000000"><font face="Arial" color="#FFFFFF">COST</font></th>
+			  <th style="margin:2px; width:auto;" cellspacing="0" bgcolor="#000000"><font face="Arial" color="#FFFFFF">LEAD</font></th>
 			  <th style="margin:2px; width:auto;" cellspacing="0" bgcolor="#000000"><font face="Arial" color="#FFFFFF">AMOUNT</font></th>
 		    </tr>
 		  </thead>
@@ -115,8 +116,9 @@
 		<td><font face="Arial"><%= order.classz %></font></td>
 		<td><font face="Arial"><%= order.ord_line_qty %></font></td>
 		<td><font face="Arial"><%= order.unitm %></font></td>
+		<td><font face="Arial"><%= number_to_currency(order.unit_cost) if !order.unit_cost.nil? %></font></td>
 		<td><font face="Arial"><%= order.lead_time %></font></td>  
-		<td>$<font face="Arial"><%= order.ord_line_amount %></font></td>
+		<td><font face="Arial"><%= number_to_currency(order.ord_line_amount) if !order.ord_line_amount.nil? %></font></td>
       </tr>
     <% end %>
 	

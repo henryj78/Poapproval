@@ -39,7 +39,8 @@ class Order < ActiveRecord::Base
         insert_row.mpn = row[93]
         insert_row.wc  =  row[137]
         insert_row.classz = row[8]
-
+        insert_row.unit_cost = row[100]
+        
         #Items not  for production
         if row[8] == 'Overhead:Facilities'
           insert_row.sub_approval = 1
@@ -76,6 +77,7 @@ class Order < ActiveRecord::Base
         insert_row.mpn = row[93]
         insert_row.wc  =  row[137]
         insert_row.classz = row[8]
+        insert_row.unit_cost = row[100]
         insert_row.save
       end #end of if loop
     else
@@ -108,6 +110,7 @@ class Order < ActiveRecord::Base
       insert_row.mpn = row[93]
       insert_row.wc  =  row[137]
       insert_row.classz = row[8]
+      insert_row.unit_cost = row[100]
       insert_row.save
      end #end of dups
     end #end csv each statement

@@ -26,7 +26,7 @@
 		<td><font face="Arial"><%= order.vendor_name  %></font></td>
         <td><font face="Arial"><%= order.date_due %></font></td>
         <td><font face="Arial"><%= order.expected_date %></font></td>
-        <td>$<font face="Arial"><%= order.total_amount %></font></td>
+        <td><font face="Arial"><%= number_to_currency(order.total_amount)  if !order.total_amount.nil? %></font></td>
         <td><font face="Arial"><%= order.custom_field_authorized_buyer %></font></td>
 		<td><font face="Arial"><%= order.decline_date[0...10] %></font></td>
 		<td><font face="Arial"><%= order.decline_by %></font></td>
