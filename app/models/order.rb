@@ -15,7 +15,7 @@ class Order < ActiveRecord::Base
     CSV.foreach(file.path, :encoding => 'ISO-8859-1', :quote_char => '"', headers: true) do |row|
     dups = Order.where(:ref_number => row[17])
      if dups.size == 0
-      if row[106] != cus_name
+     # if row[106] != cus_name
         cus_name = row[106]
         insert_row = Order.new
         insert_row.ref_number = row[17]
@@ -79,7 +79,7 @@ class Order < ActiveRecord::Base
         insert_row.classz = row[8]
         insert_row.unit_cost = row[100]
         insert_row.save
-      end #end of if loop
+        #end #end of if cus_name
     else
       insert_row = Ordln.new
       insert_row.ref_number = row[17]
