@@ -52,6 +52,7 @@ class Order < ActiveRecord::Base
         insert_row.ref_number = row[17]
         insert_row.custom_field_authorized_buyer = row[162]
         insert_row.ord_line_qty = row[96]
+        insert_row.device = row[126]
       
         #old load : ord_line_desc
         insert_row.desctext = row[95] 
@@ -85,6 +86,7 @@ class Order < ActiveRecord::Base
       insert_row.ref_number = row[17]
       insert_row.custom_field_authorized_buyer = row[162]
       insert_row.ord_line_qty = row[96]
+      insert_row.device = row[126]
       
       #old load : ord_line_desc
       insert_row.desctext = row[95] 
