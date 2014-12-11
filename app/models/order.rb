@@ -41,11 +41,15 @@ class Order < ActiveRecord::Base
         insert_row.classz = row[8]
         insert_row.unit_cost = row[100]
         
-        #Items not  for production
-        if row[8] == 'Overhead:Facilities'
-          insert_row.sub_approval = 1
-          insert_row.track = 1
-        end
+        #This Section was to allow certain item to be approved
+        #by the Purchasing manager and others to be approved by Mark Fuller
+        #Now all item go to the Purchsing Manager first.
+        
+        #if row[8] == 'Overhead:Facilities'
+          #insert_row.sub_approval = 1
+          #insert_row.track = 1
+          #end
+          
         insert_row.save
 
         insert_row = Ordln.new
