@@ -58,7 +58,7 @@ class OrdersController < ApplicationController
   def edit
      str_approve = Order.find_order(params[:id])
      strApproval = str_approve[0]
-
+     
      if @current_user.first_check.to_i == 1
        task = 'Approved'
        spy(strApproval,task)
@@ -66,12 +66,14 @@ class OrdersController < ApplicationController
        strApproval.track = 1
      end # Commodity Manger - Stephen Morrish
      
-     # if @current_user.first_check.to_i == 2
-     #   task = 'Approved'
-     #   spy(strApproval,task)
-     #   strApproval.sub_approval = 1
-     #   strApproval.track = 1
-     # end # Production Manger - Jason Hall
+     #Use for Purchasing Manger to receive Item
+     if @current_user.first_check.to_i == 1  
+        strApproval.is_fully_received = 1
+        strApproval.custom_field_status = 3 #Received
+        strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
+        strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
+        msg = "PO was received successfully."  
+     end # Production Manger - Rich Malone
      
      if @current_user.first_check.nil?
        if strApproval.is_manually_closed == 0.to_s
@@ -82,17 +84,16 @@ class OrdersController < ApplicationController
          strApproval.track = 2
          strApproval.po_status = 'Approved'
          msg = "PO approval  was successful."
-         
-         #record who approved
-         task = 'Approved'
-         spy(strApproval,task)
        else
          strApproval.is_fully_received = 1
          strApproval.custom_field_status = 3 #Received
          strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
          strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
          msg = "PO was received successfully."
-       end # loop
+         #record who approved
+         task = 'Approved'
+         spy(strApproval,task)
+       end # strApproval
      end # Regular User    
         
      
@@ -192,7 +193,7 @@ class OrdersController < ApplicationController
   end
   
   def approved
-    if @current_user.amount.to_i == 0
+    if @current_user.amount.to_i == 0 || @current_user.first_check.to_i == 1 
       @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil,:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
     else
       @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil ).order( sort_column + " " + sort_direction )
