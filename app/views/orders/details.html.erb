@@ -148,14 +148,14 @@
 		<% if @current_user.first_check.to_i != 1 %>
 		<table>
 			<tr style="font-size:12px" >
-			 <%if @current_user.amount.to_f > 0 %>	
+			 <%if @current_user.amount.to_f > 0 && @str_get_ref_id.track.to_i < 2  && @str_get_ref_id.decline.to_i <= 0 %>	
 			 <td> <font face="Arial">Approve</font></td>	
 			 <td><%= link_to image_tag("approved_icon.png"), edit_order_path(params[:id]) %></td>
 
 			 <td><font face="Arial"> Decline</font></td>	
 			 <td><%= link_to image_tag("dissapproved_icon.png"), decline_orders_path(:id => params[:id]) %> </td>
 		     <% end %>
-			 <%if @current_user.amount.to_f == 0 %>	
+			 <%if @current_user.amount.to_f == 0 && @str_get_ref_id.track.to_i < 2 %>	
 			  <td><font face="Arial"> Recommit</font></td>	
 			  <td><%= link_to image_tag("dissapproved_icon.png"), undecline_orders_path(:id => params[:id]) %> </td>
 			 <% end %>
