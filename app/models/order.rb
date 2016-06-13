@@ -7,6 +7,9 @@ class Order < ActiveRecord::Base
   scope :ord_api_desc, -> { order('ref_number DESC') } 
   scope :ord_api_asc, -> { order('ref_number ASC') } 
   
+  def i_can_has_cheezburger?
+    "OHAI!"
+  end
   
   def self.import(file, name)
     cus_name = ""

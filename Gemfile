@@ -6,6 +6,22 @@ gem 'rails', '4.0.3'
 # Use sqlite3 as the database for Active Record
 group :development do 
   gem 'sqlite3'
+  gem "guard", ">= 2.2.2", :require => false
+  gem "guard-minitest", :require => false
+  gem "rb-fsevent", :require => false
+  gem "terminal-notifier-guard", :require => false
+end
+
+group :test do
+  gem "capybara"
+  gem "connection_pool"
+  gem "launchy"
+  gem "minitest-reporters"
+  gem "mocha"
+  gem "poltergeist"
+  gem "shoulda-context"
+  gem "shoulda-matchers", ">= 3.0.1"
+  gem "test_after_commit"
 end
 
 # Use SCSS for stylesheets

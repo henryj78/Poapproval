@@ -11,36 +11,28 @@ class OrdersController < ApplicationController
   def index
     if params[:search].nil?
       # Order of Individual for approval
-      if @current_user.first_check.to_i == 1
-        @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
-      end
-      
-      if @current_user.first_check.to_i == 2
-        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '2').asc  
-      end  
-    
-      if @current_user.first_check.nil?
-        @orders = Order.where(:is_manually_closed => '0', :sub_approval => '1').asc 
-      end
-      
-    else#nil - Search
-      if params[:item][:itemx] == "PO Number"
-         @orders = Order.search(params[:search])
-      end#PO Number
-      
-      if params[:item][:itemx] == "Project"
-         @orders = Order.search_project(params[:search])
-      end#PO Number  
-      
-      if params[:item][:itemx] == "Vendor Name"
-         @orders = Order.search_vendor(params[:search])
-      end#Vendor Name  
-      
-      if params[:item][:itemx] == "Customer"
-         @orders = Order.search_customer(params[:search])
-      end#Customer Name  
-                
-    end #end nil check
+      case @current_user.first_check.to_i 
+       when  1
+         @orders = Order.where(:is_manually_closed => '0', :sub_approval => nil).asc
+       when  2 
+         @orders = Order.where(:is_manually_closed => '0', :sub_approval => '2').asc 
+       when nil
+         @orders = Order.where(:is_manually_closed => '0', :sub_approval => '1').asc 
+       end
+     end
+     
+    if !params[:search].nil?
+      case params[:item][:itemx] 
+        when "PO Number"
+          @orders = Order.search(params[:search])
+        when "Project"
+          @orders = Order.search_project(params[:search])
+        when "Vendor Name" 
+          @orders = Order.search_vendor(params[:search])
+        when "Customer"
+          @orders = Order.search_customer(params[:search])
+       end
+    end  
   end #end of index
 
   # GET /orders/1
@@ -56,47 +48,7 @@ class OrdersController < ApplicationController
   
   # GET /orders/1/edit
   def edit
-     str_approve = Order.find_order(params[:id])
-     strApproval = str_approve[0]
-     
-     if @current_user.first_check.to_i == 1
-       task = 'Approved'
-       spy(strApproval,task)
-       strApproval.sub_approval = 1
-       strApproval.track = 1
-     end # Commodity Manger - Stephen Morrish
-     
-     #Use for Purchasing Manger to receive Item
-     if @current_user.first_check.to_i == 1  
-        strApproval.is_fully_received = 1
-        strApproval.custom_field_status = 3 #Received
-        strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-        strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
-        msg = "PO was received successfully."  
-     end # Production Manger - Rich Malone
-     
-     if @current_user.first_check.nil?
-       if strApproval.is_manually_closed == 0.to_s
-         strApproval.is_manually_closed = 1
-         strApproval.custom_field_status = 1 #Approved
-         strApproval.approve_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-         strApproval.approve_by = @current_user.first_name + " " + @current_user.last_name
-         strApproval.track = 2
-         strApproval.po_status = 'Approved'
-         msg = "PO approval  was successful."
-       else
-         strApproval.is_fully_received = 1
-         strApproval.custom_field_status = 3 #Received
-         strApproval.receive_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-         strApproval.receive_by = @current_user.first_name + " " + @current_user.last_name
-         msg = "PO was received successfully."
-         #record who approved
-         task = 'Approved'
-         spy(strApproval,task)
-       end # strApproval
-     end # Regular User    
-        
-     
+     strApproval = EditService.new.init_process(params[:id],@current_user)
      strApproval.save
      redirect_to orders_path 
      flash[:notice] = msg
@@ -121,52 +73,8 @@ class OrdersController < ApplicationController
   # PATCH/PUT /orders/1
   # PATCH/PUT /orders/1.json
   def update
-    @flowchk = 0
-    #need to be made dry...
-    if @current_user.first_check.to_i != 1
-          cmt = Order.find(params[:id])
-          cmt.acomments = nil
-          cmt.save
-          params[:order][:acomments] = nil 
-    end #end decline for nil user
-    
-    if !params[:order][:acomments].nil? 
-      if params[:order][:acomments].size != 0
-       @flowchk = 1  
-       cmt = Order.find(params[:id])
-       cmt.acomments = params[:order][:acomments]
-       cmt.save
-      
-      str_approve = Order.find_order(params[:id])
-      strApproval = str_approve[0]
-      if @current_user.first_check.to_i == 1
-        task = 'Approved'
-        spy(strApproval,task)
-        strApproval.sub_approval = 1
-        strApproval.track = 1
-        strApproval.save
-      end # Commodity Manger - Stephen Morrish
-     end #end of size check 
-    end #end check for acomments  
-    
-  
-    if !params[:order][:dcomments].nil? && @flowchk == 0
-      if params[:order][:dcomments].size != 0
-        cmt = Order.find(params[:id])
-        strcmt = cmt.dcomments if !cmt.dcomments.nil?
-        strcmt = "" if cmt.dcomments.nil?
-        cmt.update!(order_profile_parameters)
-        cmt.save
-         if cmt.po_status == "Declined"
-          recommit
-         else  
-          get_comments 
-         end #status
-        end # end of size
-       end #end check for dcomments  
-    
-    
-    redirect_to orders_path
+    UpdateService.new.init_order_information(params[:order][:acomments], params[:order][:dcomments], @current_user)
+   redirect_to orders_path
   end
 
   # DELETE /orders/1
@@ -193,19 +101,15 @@ class OrdersController < ApplicationController
   end
   
   def approved
-    if @current_user.amount.to_i == 0 || @current_user.first_check.to_i == 1 
-      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil,:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
-    else
-      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => nil ).order( sort_column + " " + sort_direction )
-    end#end if loop  
+    @orders = OrdersService.new.approved(@current_user)
   end
   
   def received
-    if @current_user.amount.to_i == 0
-      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1',:custom_field_authorized_buyer => @current_user.buyer).order( sort_column + " " + sort_direction )
-    else
-      @orders = Order.where(:is_manually_closed => '1', :is_fully_received => '1').order( sort_column + " " + sort_direction )
-    end#end if loop     
+    @orders = OrdersService.new.received(@current_user)
+  end
+  
+  def decline_rpt
+    @orders = OrdersService.new.decline_rptset_sort_order(@current_user)
   end
   
   def details
@@ -231,49 +135,7 @@ class OrdersController < ApplicationController
     @orderln = Ordln.where(:ref_number => str_vendor_ref_id)  
   end # end of details
   
-  def decline_rpt
-    if @current_user.amount.to_i == 0
-      @orders = Order.where(:decline => '1',:custom_field_authorized_buyer => @current_user.buyer ).order(params[:sort])
-    else
-      @orders = Order.where(:decline => '1').order(params[:sort])
-    end#end if loop  
-  end
-  
-  def get_comments
-    @order_decline = Order.find(params[:id])
-    if @current_user.first_check.nil? && @order_decline.classz !='Overhead:Facilities'
-      @order_decline.decline = '0'
-      @order_decline.is_manually_closed = '0'
-      @order_decline.is_fully_received = nil
-      @order_decline.po_status = '01Declined'
-      @order_decline.sub_approval = nil
-    else
-      @order_decline.is_manually_closed = 3
-      @order_decline.is_fully_received = 3
-      @order_decline.decline = 1
-      @order_decline.custom_field_status = 2 #decline
-      @order_decline.decline_date = Time.now.strftime("%Y-%d-%m %H:%M:%S %Z")
-      @order_decline.decline_by = @current_user.first_name + " " + @current_user.last_name
-      @order_decline.po_status = 'Declined'  
-    end # check whom declined
-      
-    @order_decline.save
-    task = 'Declined'
-    spy( @order_decline,task)
-  end  
-  
-  def recommit
-    @order = Order.find(params[:id])
-    @order.decline = '0'
-    @order.is_manually_closed = '0'
-    @order.is_fully_received = nil
-    @order.po_status = 'Recommited'
-    @order.save
-    task = 'Recommited'
-    spy(@order,task)
-  end  
-  
-    
+   
   def decline
      @order = Order.find(params[:id])
   end
@@ -293,27 +155,7 @@ class OrdersController < ApplicationController
       params.require(:order).permit(:time_created, :time_modified, :ref_number, :duedate, :expected_date, :total_amount, :is_manually_closed, :is_fully_received, :custom_field_authorized_buyer, :custom_field_status)
     end
     
-    def sort_column
-      #params[:sort] || "ref_number"
-      Order.column_names.include?(params[:sort]) ? params[:sort] : "ref_number"
-    end
-    
-    def sort_direction
-      %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
-      #params[:direction] || "asc"
-    end
-    
     def order_profile_parameters
       params.require(:order).permit(:date_due, :decliner_comments, :dcomments)
-    end
-    
-    def spy(suspect, task)
-      @spy = Watcher.new
-      @spy.po = suspect.ref_number
-      @spy.project = suspect.project_name
-      @spy.customer = suspect.vendor_name  
-      @spy.approver = @current_user.first_name + " " + @current_user.last_name
-      @spy.task = task
-      @spy.save
-    end  
+    end    
 end
